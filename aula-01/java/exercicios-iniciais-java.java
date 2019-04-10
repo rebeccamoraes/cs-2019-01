@@ -1,3 +1,4 @@
+//import java.math;
 public class Exercicios {
 	public static void main(String[] args) {
 		System.out.println("Isso NÃO é um teste!");
@@ -9,6 +10,7 @@ public class Exercicios {
 		System.out.println("Fatorial de 6: "+ fatorial(6));
 		System.out.println("Produto de 7 e 9: " + produto(7,9));
 		System.out.println("Potencia 2 ^ 10: "+potencia(2,10));
+		System.out.println("Valor de pi(10): "+pi(10));
 	}
 	
 	//ex1
@@ -97,5 +99,128 @@ public class Exercicios {
 		}
 		return potencia;
 	}
+	
+	//ex9 - Valor de PI
+	public static double pi(int n){
+		double i,s,d,p;
+		i=1;
+		s=-1;
+		d=-1;
+		p=0;
+		while(i<=n){
+			d += 2;
+			s *= -1;
+			p = p + 4 * s / d;
+			i++;
+		}
+		return p;
+	}
+	
+	//ex10 - Logaritmo Natural
+	public static double logaritmoNatural(int n, int k){
+		double e = 1 + n;
+		int i = 2, numerador = n , denominador = 1;
+		while(i<=k){
+			numerador*=numerador;
+			denominador*=i;
+			e = e+numerador/denominador;
+			i++;
+		}
+		return e;
+	}
+	
+	//ex11 - Razão Áurea
+	public static double razaoAurea(int x, int y, int k){
+		int t, c=y, a=x, i=1;
+		while(i<=k){
+			t=c;
+			c+=a;
+			a=t;
+			i++;
+		}
+		return c/a;
+	}
+	
+	//ex12 - Quadrado Perfeito
+	public static boolean quadradoPerfeito(int n){
+		int i=1, s=1;
+		while(s<n){
+			i+=2;
+			s+=i;
+		}
+		return s==n;
+	}
+	
+	//ex13 - Raiz Quadrada
+	public static double raiz(int n, int i){
+		int r=1;
+		while(0<=i){
+			r = (r+n/r)/2;
+			i++;
+		}
+		return r;
+	}
+	
+	//ex14 - Número Primo
+	public static boolean primo(int n){
+		int i=2;
+		while(i<n){
+			if(n%i ==0){
+				return false;
+			}
+			i++;
+		}
+		return true;
+	}
+	
+	//ex15 - Crivo de Eratostenes
 
+	public static void crivoEratostenes(int a[], int n){
+		//zera o vetor
+		for(int i=0;i<n;i++){
+			a[i]=0;
+		}
+		int i=n, multiplo;
+		double limite=Math.sqrt(n);
+		
+		if(limite<0)limite*=-1;
+		
+		while(i<=limite){
+			if(a[i]==0){
+				multiplo = i+i;
+				while(multiplo<=n){
+					a[multiplo]=1;
+					multiplo++;
+				}
+			}
+			i++;
+		}
+	}
+	
+	//ex16 - Maior Divisor Comum
+	public static int mdc(int a, int b){
+		int m;
+		while(b!=0){
+			m = a%b;
+			a=b;
+			b=m;
+		}
+		return a;
+	}
+	//ex17 - Maior Divisor Comum 2
+	public static int mdc2(int a, int b){
+		while(a!=b){
+			if(a>b){
+				a-=b;
+			}else{
+				b-=a;
+			}
+		}
+		return a;
+	}
+	
+	//ex18 - Regra de Horner para avaliação de polinômio
+	
+	
+	//ex19 - Fibonacci
 }
