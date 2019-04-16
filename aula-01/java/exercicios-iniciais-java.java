@@ -1,12 +1,12 @@
 //import java.math;
 public class Exercicios {
 	public static void main(String[] args) {
-		System.out.println("Isso N√ÉO √© um teste!");
-		System.out.println("Propriedade 3025 do n√∫meto 3025 :" + propriedade3025(3025));
-		System.out.println("Propriedade 153 do n√∫meto 153 :" + propriedade153(153));
+		System.out.println("Isso N√O È um teste!");
+		System.out.println("Propriedade 3025 do n˙meto 3025 :" + propriedade3025(3025));
+		System.out.println("Propriedade 153 do n˙meto 153 :" + propriedade153(153));
 		System.out.println("Dia da semana: " + diaDaSemana(26,4,2019));
 		System.out.println("Resto 10/6: " + mod(10,6));
-		System.out.println("Soma dos 13 primeiros n√∫meros naturais: "+ somaNaturais(13));
+		System.out.println("Soma dos 13 primeiros n˙meros naturais: "+ somaNaturais(13));
 		System.out.println("Fatorial de 6: "+ fatorial(6));
 		System.out.println("Produto de 7 e 9: " + produto(7,9));
 		System.out.println("Potencia 2 ^ 10: "+potencia(2,10));
@@ -89,7 +89,7 @@ public class Exercicios {
 		return s;
 	}
 	
-	//ex8 - Pot√™ncia usando somas
+	//ex8 - PotÍncia usando somas
 	public static int potencia(int x, int y){
 		int potencia=1;
 		int i=1;
@@ -129,7 +129,7 @@ public class Exercicios {
 		return e;
 	}
 	
-	//ex11 - Raz√£o √Åurea
+	//ex11 - Raz„o ¡urea
 	public static double razaoAurea(int x, int y, int k){
 		int t, c=y, a=x, i=1;
 		while(i<=k){
@@ -161,7 +161,7 @@ public class Exercicios {
 		return r;
 	}
 	
-	//ex14 - N√∫mero Primo
+	//ex14 - N˙mero Primo
 	public static boolean primo(int n){
 		int i=2;
 		while(i<n){
@@ -219,7 +219,7 @@ public class Exercicios {
 		return a;
 	}
 	
-	//ex18 - Regra de Horner para avalia√ß√£o de polin√¥mio
+	//ex18 - Regra de Horner para avaliaÁ„o de polinÙmio
 	
 	
 	//ex19 - Fibonacci
