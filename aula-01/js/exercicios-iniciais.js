@@ -19,7 +19,44 @@ function propriedade153(cdu){
 }
 
 //Algoritmo 3 - Dia da Semana
-
+function diaDaSemana(d, m, a) {
+	if((d<1) || (d>31)){
+		return "Dia inválido!";
+	} else if((m<1) || (m>12)){
+		return "Mês inválido!";
+	}else if(a<1753){
+		return "Ano inválido";
+	}
+	if(m==1 || m==2){
+		m+=12;
+		a--;
+	}
+	s= d + 2*m + Math.floor(3 * (m+1)/5) + a + Math.floor(a/4) - Math.floor(a/100) + Math.floor(a/400);  
+	switch(s%7){
+		case 0: 
+			console.log("Segunda-feira");
+			break;
+		case 1: 
+			console.log("Terça-feira");
+			break;
+		case 2: 
+			console.log("Quarta-feira");
+			break;
+		case 3: 
+			console.log("Quinta-feira");
+			break;
+		case 4: 
+			console.log("Sexta-feira");
+			break;
+		case 5: 
+			console.log("Sábado");
+			break;
+		case 6: 
+			console.log("Domingo");
+			break;
+	}
+	return s % 7;
+}
 //Algoritmo 4 - Resto da Divisão Inteira
 
 //Algoritmo 5 - Soma dos primeiros naturais
