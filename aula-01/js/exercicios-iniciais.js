@@ -58,29 +58,204 @@ function diaDaSemana(d, m, a) {
 	return s % 7;
 }
 //Algoritmo 4 - Resto da Divisão Inteira
+function mod(x, y) {
+	if(y < 0 ||x <= 0){
+		return "Argumentos inválidos.";
+	}else{
+		s = x;
+		while(y <= s){
+			s -= y;
+		}
+		return s;
+	}
+}
 
 //Algoritmo 5 - Soma dos primeiros naturais
+function somaNaturais(n) {
+	if(n < 1){
+		return "Número inválido.";
+	}else{
+		i = 2;
+		s = 1;
+		while(i < n){
+			s +=i;
+			i++;
+		}
+		return s;
+	}
+}
 
 //Algoritmo 6 - Fatorial
+function fatorial(n) {
+	if(n < 1){
+		return "Número inválido.";
+	}else{
+		i = 2;
+		f = 1;
+		while(i <= n){
+			f *= i;
+			i++;
+		}
+		return f;
+	}
+}
 
 //Algoritmo 7 - Produto de Inteiros Usando Somas
+function produto(a, b) {
+	if(a < 0 || b < 0){
+		return "Argumento(s) inválido(s).";
+	}else{
+		totalParcelas=a;
+		parcela=b;
+		if(b<a){
+			totalParcelas=b;
+			parcela=a;
+		}
+		i = 1;
+		s = 0;
+		while(i <= totalParcelas){
+			s += parcela;
+			i++;
+		}
+		return s;
+	}
+}
 
 //Algoritmo 8 - Potência Usando Somas
+function potencia(x, y) {
+	if(x < 0 || y < 0){
+		return "Argumento(s) inválido(s).";
+	}else{
+		potencia = 1;
+		i = 1;
+		while(i <= y){
+			potencia = produto(potencia, x);
+		}
+		return potencia;
+	}
+}
 
 //Algoritmo 9 -Valor de PI
+function pi(n) {
+	if(n < 1){
+		return "Número inválido.";
+	}else{
+		i = 1;
+		s = -1/
+		d = -1;
+		p = 0;
+		while(i <= n){
+			d += 2;
+			s *= -1;
+			p = p + 4 * s / d; 
+			i++;
+		}
+		return p;
+	}
+}
 
 //Algoritmo 10 - Logaritmo Natural
+function logaritmoNatural(n, k) {
+	if(n < 1 || k < 2){
+		return "Argumento(s) inválido(s).";
+	}else{
+		i = 2;
+		e = 1 + n;
+		numerador = n;
+		denominador = 1;
+		while (i <= k){
+			numerador *= numerador;
+			denominador *= i;
+			e += numerador / denominador;
+			i++;
+		}
+		return e;
+	}
+}
 
 //Algoritmo 11 - Razão Áurea
+function razaoAurea(x, y, k) {
+	if(x < 0 || x > y || k <= 0){
+		return "Argumento(s) inválido(s).";
+	}else{
+		c = y;
+		a = x;
+		i = 1;
+		while(i <= k){
+			t = c;
+			c += a;
+			a = t;
+			i++;
+		}
+		return c / a;
+	}
+}
 
 //Algoritmo 12 - Quadrado Perfeito
+function quadradoPerfeito(n) {
+	if(n<1){
+		return "Número inválido.";
+	}else{
+		i = 1;
+		s = 1;
+		while(s < n){
+			i += 2;
+			s += i;
+		}
+		return s==n;
+	}
+}
 
 //Algoritmo 13 - Raiz Quadrada
+function raizQuadrada(n, i) {
+	if(n <= 0){
+		return "Argumento(s) inválido(s).";
+	}else{
+		r = 1;
+		while(i > 0){
+			r = (r + n / r) / 2;;
+			i--;
+		}
+		return r;
+	}
+}
 
 //Algoritmo 14 - Número Primo
+function primo(n) {
+	if(n<=1){
+		return "Número inválido.";
+	}else{
+		i=2;
+		while(i < n){
+			if(n % i == 0){
+				return false;
+			}
+			i++;
+		}
+		return true;
+	}
+}
 
 //Algoritmo 15 - Crivo de Eratóstenes
-
+function crivoEratostenes(a, n) {
+	if(n <= 1){
+		return "Argumento(s) inválido(s).";
+	}else{
+		var i = 2;
+		var limite = Math.sqrt(n);
+		while(i <= limite){
+			if(a[i] == 0){
+				var multiplo = i + i;
+				while(multiplo <= n){
+					a[multiplo] = 1;
+					multiplo++;
+				}
+			}
+			i++;
+		}
+		return a;
+	}
+}
 
 //Algoritmo 16 - Maior Divisor Comum
 function mdc(a,b){
