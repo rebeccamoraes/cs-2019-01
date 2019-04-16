@@ -182,12 +182,26 @@ public class Exercicios {
 		//for(int i=0;i<n;i++){
 		//	a[i]=0;
 		//}
+		// TODO remova os comentários acima (e este)
 		Arrays.fill(a, 0, n, 0);
 
 		int i=n, multiplo;
 		double limite=Math.sqrt(n);
 		
-		if(limite<0)limite*=-1;
+		// Leiaute é muito importante para minimizar o esforço de interpretação
+		// Forma de escrever também é muito importante
+		// Veja como a linha comentada abaixo pode ser reescrita no comentário posterior
+		// if(limite<0)limite*=-1;
+		// if (limite < 0) {
+		// 	 limite = -1 * limite; // Ou ainda, limite = -limite;
+		// }
+
+		// Conhecer biblioteca é importante afinal, sua linha original
+		// if(limite<0)limite*=-1; pode ser reescrita simplemente como abaixo
+		// limite = Math.abs(limite);
+
+		// Por fim, não há possibilidade de Math.sqrt retornar um
+		// número negativo e, portanto, a emblemática linha é desnecessária.
 		
 		while(i<=limite){
 			if(a[i]==0){
