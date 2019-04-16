@@ -1,12 +1,13 @@
-//import java.math;
+import java.util.Arrays;
+
 public class Exercicios {
 	public static void main(String[] args) {
-		System.out.println("Isso NÃO é um teste!");
-		System.out.println("Propriedade 3025 do númeto 3025 :" + propriedade3025(3025));
-		System.out.println("Propriedade 153 do númeto 153 :" + propriedade153(153));
+		System.out.println("Isso N�O � um teste!");
+		System.out.println("Propriedade 3025 do n�meto 3025 :" + propriedade3025(3025));
+		System.out.println("Propriedade 153 do n�meto 153 :" + propriedade153(153));
 		System.out.println("Dia da semana: " + diaDaSemana(26,4,2019));
 		System.out.println("Resto 10/6: " + mod(10,6));
-		System.out.println("Soma dos 13 primeiros números naturais: "+ somaNaturais(13));
+		System.out.println("Soma dos 13 primeiros n�meros naturais: "+ somaNaturais(13));
 		System.out.println("Fatorial de 6: "+ fatorial(6));
 		System.out.println("Produto de 7 e 9: " + produto(7,9));
 		System.out.println("Potencia 2 ^ 10: "+potencia(2,10));
@@ -15,6 +16,7 @@ public class Exercicios {
 	
 	//ex1
 	public static boolean propriedade3025(int n){
+		// TODO não verifica limites?
 		int i = n/100;
 		int j = n%100;
 		return Math.pow(i+j,2) == n;
@@ -89,7 +91,7 @@ public class Exercicios {
 		return s;
 	}
 	
-	//ex8 - Potência usando somas
+	//ex8 - Pot�ncia usando somas
 	public static int potencia(int x, int y){
 		int potencia=1;
 		int i=1;
@@ -129,7 +131,7 @@ public class Exercicios {
 		return e;
 	}
 	
-	//ex11 - Razão Áurea
+	//ex11 - Raz�o �urea
 	public static double razaoAurea(int x, int y, int k){
 		int t, c=y, a=x, i=1;
 		while(i<=k){
@@ -161,7 +163,7 @@ public class Exercicios {
 		return r;
 	}
 	
-	//ex14 - Número Primo
+	//ex14 - N�mero Primo
 	public static boolean primo(int n){
 		int i=2;
 		while(i<n){
@@ -177,13 +179,29 @@ public class Exercicios {
 
 	public static void crivoEratostenes(int a[], int n){
 		//zera o vetor
-		for(int i=0;i<n;i++){
-			a[i]=0;
-		}
+		//for(int i=0;i<n;i++){
+		//	a[i]=0;
+		//}
+		// TODO remova os comentários acima (e este)
+		Arrays.fill(a, 0, n, 0);
+
 		int i=n, multiplo;
 		double limite=Math.sqrt(n);
 		
-		if(limite<0)limite*=-1;
+		// Leiaute é muito importante para minimizar o esforço de interpretação
+		// Forma de escrever também é muito importante
+		// Veja como a linha comentada abaixo pode ser reescrita no comentário posterior
+		// if(limite<0)limite*=-1;
+		// if (limite < 0) {
+		// 	 limite = -1 * limite; // Ou ainda, limite = -limite;
+		// }
+
+		// Conhecer biblioteca é importante afinal, sua linha original
+		// if(limite<0)limite*=-1; pode ser reescrita simplemente como abaixo
+		// limite = Math.abs(limite);
+
+		// Por fim, não há possibilidade de Math.sqrt retornar um
+		// número negativo e, portanto, a emblemática linha é desnecessária.
 		
 		while(i<=limite){
 			if(a[i]==0){
@@ -219,7 +237,7 @@ public class Exercicios {
 		return a;
 	}
 	
-	//ex18 - Regra de Horner para avaliação de polinômio
+	//ex18 - Regra de Horner para avalia��o de polin�mio
 	
 	
 	//ex19 - Fibonacci
