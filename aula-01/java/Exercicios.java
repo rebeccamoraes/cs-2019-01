@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Exercicios {
 	public static void main(String[] args) {
 		System.out.println("Isso N�O � um teste!");
@@ -14,6 +16,7 @@ public class Exercicios {
 	
 	//ex1
 	public static boolean propriedade3025(int n){
+		// TODO não verifica limites?
 		int i = n/100;
 		int j = n%100;
 		return Math.pow(i+j,2) == n;
@@ -176,9 +179,11 @@ public class Exercicios {
 
 	public static void crivoEratostenes(int a[], int n){
 		//zera o vetor
-		for(int i=0;i<n;i++){
-			a[i]=0;
-		}
+		//for(int i=0;i<n;i++){
+		//	a[i]=0;
+		//}
+		Arrays.fill(a, 0, n, 0);
+
 		int i=n, multiplo;
 		double limite=Math.sqrt(n);
 		
