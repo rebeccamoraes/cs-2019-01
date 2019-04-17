@@ -1,5 +1,5 @@
 class InvalidArgumentException extends Error{
-	contructor(msg){
+	constructor(msg){
 		super(msg);
 	}
 }
@@ -28,11 +28,11 @@ function propriedade153(cdu){
 
 //Algoritmo 3 - Dia da Semana
 function diaDaSemana(d, m, a) {
-	if((d<1) || (d>31) || isNaN(d) || isNaN(m) || isNaN(a)){
+	if((d<1) || (d>31) || isNaN(d)){
 		throw new InvalidArgumentException("Dia inválido!");
-	} else if((m<1) || (m>12)){
+	} else if((m<1) || (m>12) || isNaN(m)){
 		throw new InvalidArgumentException("Mês inválido!");
-	}else if(a<1753){
+	}else if(a<1753 || isNaN(a)){
 		throw new InvalidArgumentException("Ano inválido");
 	}
 	if(m==1 || m==2){
@@ -144,7 +144,7 @@ function pi(n) {
 		throw new InvalidArgumentException("Número inválido.");
 	}
 	var i = 1;
-	var s = -1/
+	var s = -1;
 	var d = -1;
 	var p = 0;
 	while(i <= n){
@@ -207,10 +207,10 @@ function quadradoPerfeito(n) {
 
 //Algoritmo 13 - Raiz Quadrada
 function raizQuadrada(n, i) {
-	if(n <= 0 || isNaN(n)){
+	if(n <= 0 || isNaN(n) || isNaN(i)){
 		throw new InvalidArgumentException("Argumento(s) inválido(s).");
 	}
-	r = 1;
+	var r = 1;
 	while(i > 0){
 		r = (r + n / r) / 2;;
 		i--;
@@ -235,7 +235,7 @@ function primo(n) {
 
 //Algoritmo 15 - Crivo de Eratóstenes
 function crivoEratostenes(a, n) {
-	if(n <= 1 || isNaN(n) || isNaN(a)){
+	if(n <= 1 || isNaN(n)){
 		throw new InvalidArgumentException("Argumento(s) inválido(s).");
 	}
 	var i = 2;
@@ -245,7 +245,7 @@ function crivoEratostenes(a, n) {
 			var multiplo = i + i;
 			while(multiplo <= n){
 				a[multiplo] = 1;
-				multiplo++;
+				multiplo= multiplo + i;
 			}
 		}
 		i++;
