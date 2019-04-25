@@ -1,4 +1,3 @@
-//import java.math;
 public class Exercicios {
 	public static void main(String[] args) {
 		System.out.println("Isso NÃO é um teste!");
@@ -15,6 +14,9 @@ public class Exercicios {
 	
 	//ex1
 	public static boolean propriedade3025(int n){
+		if(n < 0 || n > 9999){
+			throw new IllegalArgumentException("Número Inválido!");
+		}
 		int i = n/100;
 		int j = n%100;
 		return Math.pow(i+j,2) == n;
@@ -220,7 +222,12 @@ public class Exercicios {
 	}
 	
 	//ex18 - Regra de Horner para avaliação de polinômio
-	
+	public static int horner(int x, int g, int a){
+		int p = a[g];
+		var i = g - 1;
+		while(i>=0){
+			p = 
+	}
 	
 	//ex19 - Fibonacci
 }
