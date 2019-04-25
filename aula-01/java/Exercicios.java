@@ -34,24 +34,28 @@ public class Exercicios {
 		int du = cdu % 100;
 		int d = du / 10;
 		int u = du % 10;
-		
+	
 		return (Math.pow(c, 3) + Math.pow(d, 3) + Math.pow(u, 3)) == cdu; 
 	}
 	
+	public static boolean dataInvalida(int dia, int mes, int ano){
+		if(dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 1753){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	//Algoritmo 3 - Dia da Semana
-	public static int diaDaSemana(int d, int m, int a){
-		if((d < 1) || (d > 31)){
-			throw new IllegalArgumentException("Dia inválido.");
-		} else if((m < 1) || (m > 12)){
-			throw new IllegalArgumentException("Mês inválido.");
-		}else if(a < 1753){
-			throw new IllegalArgumentException("Ano inválido.");
+	public static int diaDaSemana(int dia, int mes, int ano){
+		if(dataInvalida(dia, mes, ano)){
+			throw new IllegalArgumentException("Data inválida.");
 		}
-		if(m == 1 || m == 2){
-			m += 12;
-			a += 1;
+		if(mes == 1 || mes == 2){
+			mes += 12;
+			ano += 1;
 		}
-		int s = d + 2*m + (3*(m+1))/5 + a + a/4 - a/100 + a/400;
+		int s = dia + 2*mes + (3*(mes+1))/5 + ano + ano/4 - ano/100 + ano/400;
 		return s%7;
 	}
 	
