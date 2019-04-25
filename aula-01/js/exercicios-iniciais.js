@@ -46,7 +46,7 @@ function diaDaSemana(dia, mes, ano) {
 	
 	if(mes == 1 || mes == 2){
 		mes += 12;
-		a--;
+		ano--;
 	}
 	s= dia + 2*mes + Math.floor(3 * (mes+1)/5) + ano + Math.floor(ano/4) - Math.floor(ano/100) + Math.floor(ano/400);  
 	switch(s%7){
