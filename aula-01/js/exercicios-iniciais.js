@@ -4,7 +4,6 @@ class InvalidArgumentException extends Error {
     }
 }
 
-//Algoritmo 1 - Propriedade 3025
 function propriedade3025(n) {
     if (n < 0 || n > 9999 || isNaN(n)) {
         throw new InvalidArgumentException("Número Inválido!");
