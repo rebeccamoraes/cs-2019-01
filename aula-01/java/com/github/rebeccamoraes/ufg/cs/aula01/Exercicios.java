@@ -34,9 +34,9 @@ public class Exercicios {
             throw new IllegalArgumentException("Número Inválido!");
         }
 
-        int i = n / 100;
-        int j = n % 100;
-        
+        final int i = n / 100;
+        final int j = n % 100;
+
         return Math.pow(i + j, 2) == n;
     }
 
