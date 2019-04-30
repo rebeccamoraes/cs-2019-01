@@ -48,12 +48,17 @@ function diaDaSemana(d, m, a) {
     if (a < 1753 || isNaN(a)) {
         throw new InvalidArgumentException("Ano inválido");
     }
-    
+
     if (m == 1 || m == 2) {
         m += 12;
         a--;
     }
     s = d + 2 * m + Math.floor(3 * (m + 1) / 5) + a + Math.floor(a / 4) - Math.floor(a / 100) + Math.floor(a / 400);
+    exibeNomeDiaDaSemana(s);
+    return s % 7;
+}
+
+function exibeNomeDiaDaSemana(s) {
     switch (s % 7) {
         case 0:
             console.log("Segunda-feira");
@@ -77,7 +82,6 @@ function diaDaSemana(d, m, a) {
             console.log("Domingo");
             break;
     }
-    return s % 7;
 }
 
 //Algoritmo 4 - Resto da Divisão Inteira
