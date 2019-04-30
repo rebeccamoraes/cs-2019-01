@@ -9,8 +9,8 @@ function propriedade3025(n) {
         throw new InvalidArgumentException("Número Inválido!");
     }
 
-    var i = Math.round(n / 100);
-    var j = n % 100;
+    const i = Math.round(n / 100);
+    const j = n % 100;
 
     return (((i + j) * (i + j) == n));
 }
