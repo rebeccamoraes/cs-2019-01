@@ -1,5 +1,7 @@
 package com.github.rebeccamoraes.ufg.cs.aula01;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.Arrays;
 
 public class Exercicios {
@@ -44,7 +46,9 @@ public class Exercicios {
         return (Math.pow(c, 3) + Math.pow(d, 3) + Math.pow(u, 3)) == cdu;
     }
 
-    //Algoritmo 3 - Dia da Semana
+    // TODO nao seria melhor ano em vez de a?
+    // TODO nao seria melhor mes em vez de m?
+    // TODO não seria melhor dia em vez de d?
     public static int diaDaSemana(int d, int m, int a) {
         if ((d < 1) || (d > 31)) {
             throw new IllegalArgumentException("Dia inválido.");
@@ -53,6 +57,14 @@ public class Exercicios {
         } else if (a < 1753) {
             throw new IllegalArgumentException("Ano inválido.");
         }
+
+        // TODO faça o equivalente no código em JS
+        try {
+            LocalDate.of(a, m, d);
+        } catch (DateTimeException excecao) {
+            throw new IllegalArgumentException("data inválida", excecao);
+        }
+
         if (m == 1 || m == 2) {
             m += 12;
             a += 1;
