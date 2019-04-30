@@ -37,7 +37,7 @@ public class Exercicios {
         final int i = n / 100;
         final int j = n % 100;
 
-        return Math.pow(i + j, 2) == n;
+        return ((i + j) * (i + j)) == n;
     }
 
     //Algoritmo 2 - Propriedade 153
