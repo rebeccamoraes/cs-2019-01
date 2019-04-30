@@ -17,7 +17,18 @@ public class Exercicios {
         System.out.println("Valor de pi(10): " + pi(10));
     }
 
-    //Algoritmo 1 - Propriedade 3025
+    /**
+     * Verifica se o inteiro fornecido satisfaz a propriedade 3025
+     * (algoritmo 1).
+     *
+     * @param n O número inteiro a ser verificado.
+     *
+     * @return {@code true} se e somente se o número satisfaz a propriedade
+     * 3025.
+     *
+     * @throws IllegalArgumentException Se o número fornecido está fora da
+     * faixa admitida, ou seja, negativo ou maior que 9999.
+     */
     public static boolean propriedade3025(int n) {
         if (n < 0 || n > 9999) {
             throw new IllegalArgumentException("Número Inválido!");
