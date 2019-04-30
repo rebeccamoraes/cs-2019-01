@@ -13,7 +13,7 @@ function propriedade3025(n) {
         throw new InvalidArgumentException("Número Inválido!");
     }
 
-    const i = Math.round(n / 100);
+    const i = Math.floor(n / 100);
     const j = n % 100;
 
     return (i + j) * (i + j) == n;
