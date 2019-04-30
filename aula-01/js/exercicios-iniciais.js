@@ -8,8 +8,10 @@ function propriedade3025(n) {
     if (n < 0 || n > 9999 || isNaN(n)) {
         throw new InvalidArgumentException("Número Inválido!");
     }
+
     var i = Math.round(n / 100);
     var j = n % 100;
+
     return (((i + j) * (i + j) == n));
 }
 
