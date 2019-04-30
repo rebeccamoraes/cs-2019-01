@@ -12,7 +12,7 @@ function propriedade3025(n) {
     const i = Math.round(n / 100);
     const j = n % 100;
 
-    return (((i + j) * (i + j) == n));
+    return (i + j) * (i + j) == n;
 }
 
 //Algoritmo 2 - Propriedade 153
