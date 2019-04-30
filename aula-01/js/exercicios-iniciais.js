@@ -60,7 +60,7 @@ function diaDaSemana(d, m, a) {
 function exibeNomeDiaDaSemana(s) {
     const nomes = [ "Segunda-feira", "Terça-feira", "Quarta-feira",
         "Quinta-feira", "Sexta-feira", "Sábado", "Domingo" ];
-    
+
     console.log(nomes[s % 7]);
 }
 
@@ -69,7 +69,7 @@ function mod(x, y) {
     if (y < 0 || x <= 0 || isNaN(x) || isNaN(y)) {
         throw new InvalidArgumentException("Argumentos inválidos.");
     }
-    var s = x;
+    let s = x;
     while (y <= s) {
         s -= y;
     }
