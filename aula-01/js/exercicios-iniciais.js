@@ -8,7 +8,8 @@ function propriedade3025(n) {
     if (n == null) {
         throw new InvalidArgumentException("argumento nao pode ser null");
     }
-    
+
+    // Bug: primeiro verificar se não é um número
     if (n < 0 || n > 9999 || isNaN(n)) {
         throw new InvalidArgumentException("Número Inválido!");
     }
