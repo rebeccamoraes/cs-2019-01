@@ -65,7 +65,6 @@ function diaDaSemana(d, m, a) {
         a--;
     }
     s = d + 2 * m + Math.floor(3 * (m + 1) / 5) + a + Math.floor(a / 4) - Math.floor(a / 100) + Math.floor(a / 400);
-    exibeNomeDiaDaSemana(s);
     return s % 7;
 }
 
