@@ -75,15 +75,23 @@ function exibeNomeDiaDaSemana(s) {
     console.log(nomes[s % 7]);
 }
 
-//Algoritmo 4 - Resto da Divisão Inteira
+// TODO melhor dividendo em vez de x
+// TODO melhor divisor em vez de y
+// TODO melhor resto em vez de s
 function mod(x, y) {
+
+    // TODO testar por null
+    // TODO testar isNaN, depois vem < 0 ...
+
     if (y < 0 || x <= 0 || isNaN(x) || isNaN(y)) {
         throw new InvalidArgumentException("Argumentos inválidos.");
     }
+
     let s = x;
-    while (y <= s) {
-        s -= y;
+    while (s >= y) {
+        s = s - y;
     }
+
     return s;
 }
 
