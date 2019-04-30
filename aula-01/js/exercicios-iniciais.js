@@ -58,29 +58,10 @@ function diaDaSemana(d, m, a) {
 }
 
 function exibeNomeDiaDaSemana(s) {
-    switch (s % 7) {
-        case 0:
-            console.log("Segunda-feira");
-            break;
-        case 1:
-            console.log("Terça-feira");
-            break;
-        case 2:
-            console.log("Quarta-feira");
-            break;
-        case 3:
-            console.log("Quinta-feira");
-            break;
-        case 4:
-            console.log("Sexta-feira");
-            break;
-        case 5:
-            console.log("Sábado");
-            break;
-        case 6:
-            console.log("Domingo");
-            break;
-    }
+    const nomes = [ "Segunda-feira", "Terça-feira", "Quarta-feira",
+        "Quinta-feira", "Sexta-feira", "Sábado", "Domingo" ];
+    
+    console.log(nomes[s % 7]);
 }
 
 //Algoritmo 4 - Resto da Divisão Inteira
