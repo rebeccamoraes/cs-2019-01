@@ -24,8 +24,10 @@ public class Exercicios {
         if (n < 0 || n > 9999) {
             throw new IllegalArgumentException("Número Inválido!");
         }
+
         int i = n / 100;
         int j = n % 100;
+        
         return Math.pow(i + j, 2) == n;
     }
 
