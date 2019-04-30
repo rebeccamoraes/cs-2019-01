@@ -13,6 +13,10 @@ function propriedade3025(n) {
         throw new InvalidArgumentException("Número Inválido!");
     }
 
+    if (n % 1 != 0) {
+        throw new InvalidArgumentException("numero nao é inteiro");
+    }
+
     const i = Math.floor(n / 100);
     const j = n % 100;
 
