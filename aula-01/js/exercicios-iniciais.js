@@ -5,12 +5,11 @@ class InvalidArgumentException extends Error {
 }
 
 function propriedade3025(n) {
-    if (n == null) {
+    if (n == null || isNaN(n)) {
         throw new InvalidArgumentException("argumento nao pode ser null");
     }
 
-    // Bug: primeiro verificar se não é um número
-    if (n < 0 || n > 9999 || isNaN(n)) {
+    if (n < 0 || n > 9999) {
         throw new InvalidArgumentException("Número Inválido!");
     }
 
