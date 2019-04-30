@@ -1,3 +1,5 @@
+package com.github.rebeccamoraes.ufg.cs.aula01;
+
 import java.util.Arrays;
 
 public class Exercicios {
