@@ -50,11 +50,16 @@ function dataInvalida(dia, mes, ano){
 function diaDaSemana(d, m, a) {
     if ((d < 1) || (d > 31) || isNaN(d)) {
         throw new InvalidArgumentException("Dia inválido!");
-    } else if ((m < 1) || (m > 12) || isNaN(m)) {
+    }
+
+    if ((m < 1) || (m > 12) || isNaN(m)) {
         throw new InvalidArgumentException("Mês inválido!");
-    } else if (a < 1753 || isNaN(a)) {
+    }
+
+    if (a < 1753 || isNaN(a)) {
         throw new InvalidArgumentException("Ano inválido");
     }
+    
     if (m == 1 || m == 2) {
         m += 12;
         a--;
