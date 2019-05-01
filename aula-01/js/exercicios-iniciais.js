@@ -75,24 +75,25 @@ function exibeNomeDiaDaSemana(s) {
     console.log(nomes[s % 7]);
 }
 
-// TODO melhor dividendo em vez de x
-// TODO melhor divisor em vez de y
-// TODO melhor resto em vez de s
-function mod(x, y) {
+function mod(dividendo, divisor) {
 
-    // TODO testar por null
-    // TODO testar isNaN, depois vem < 0 ...
-
-    if (y < 0 || x <= 0 || isNaN(x) || isNaN(y)) {
+    if(dividendo == null || divisor == null){
+			throw new InvalidArgumentException("Argumentos inválidos. Valor(es) não numérico(s).");    	
+    }
+	if (isNaN(dividendo) || isNaN(divisor)){
+		throw new InvalidArgumentException("Argumentos inválidos. Valor(es) não numérico(s).");
+	}
+    if (dividendo < 0 || divisor <= 0 ) {
         throw new InvalidArgumentException("Argumentos inválidos.");
     }
 
-    let s = x;
-    while (s >= y) {
-        s = s - y;
+    let resto = dividendo;
+    
+    while (resto >= divisor) {
+        resto = resto - divisor;
     }
 
-    return s;
+    return resto;
 }
 
 //Algoritmo 5 - Soma dos primeiros naturais
