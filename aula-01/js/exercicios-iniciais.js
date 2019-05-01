@@ -27,7 +27,7 @@ function propriedade153(cdu){
 }
 
 
-function dataInvalida(dia, mes, ano){
+function dataInvalida(d, m, a){
 	if(isNaN(dia) || (dia<1) || (dia>31)
 	|| (mes<1) || (mes>12) || isNaN(mes)
 	|| ano < 1753 || isNaN(ano)){
@@ -37,18 +37,20 @@ function dataInvalida(dia, mes, ano){
 	}	
 }
 
-
 //Algoritmo 3 - Dia da Semana
-function diaDaSemana(dia, mes, ano) {
-	if(dataInvalida(dia, mes, ano)){
-		throw new InvalidArgumentException("Data inválida!");
+function diaDaSemana(d, m, a) {
+	if((d<1) || (d>31) || isNaN(d)){
+		throw new InvalidArgumentException("Dia inválido!");
+	} else if((m<1) || (m>12) || isNaN(m)){
+		throw new InvalidArgumentException("Mês inválido!");
+	}else if(a<1753 || isNaN(a)){
+		throw new InvalidArgumentException("Ano inválido");
 	}
-	
-	if(mes == 1 || mes == 2){
-		mes += 12;
-		ano--;
+	if(m==1 || m==2){
+		m+=12;
+		a--;
 	}
-	s= dia + 2*mes + Math.floor(3 * (mes+1)/5) + ano + Math.floor(ano/4) - Math.floor(ano/100) + Math.floor(ano/400);  
+	s= d + 2*m + Math.floor(3 * (m+1)/5) + a + Math.floor(a/4) - Math.floor(a/100) + Math.floor(a/400);  
 	switch(s%7){
 		case 0: 
 			console.log("Segunda-feira");
