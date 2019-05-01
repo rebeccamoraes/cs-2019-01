@@ -47,24 +47,24 @@ function dataInvalida(dia, mes, ano){
 }
 
 //Algoritmo 3 - Dia da Semana
-function diaDaSemana(d, m, a) {
-    if ((d < 1) || (d > 31) || isNaN(d)) {
+function diaDaSemana(dia, mes, ano) {
+    if ((dia < 1) || (dia > 31) || isNaN(dia)) {
         throw new InvalidArgumentException("Dia inválido!");
     }
 
-    if ((m < 1) || (m > 12) || isNaN(m)) {
+    if ((mes < 1) || (mes > 12) || isNaN(mes)) {
         throw new InvalidArgumentException("Mês inválido!");
     }
 
-    if (a < 1753 || isNaN(a)) {
+    if (ano < 1753 || isNaN(ano)) {
         throw new InvalidArgumentException("Ano inválido");
     }
 
-    if (m == 1 || m == 2) {
-        m += 12;
-        a--;
+    if (mes == 1 || mes == 2) {
+        mes += 12;
+        ano --;
     }
-    s = d + 2 * m + Math.floor(3 * (m + 1) / 5) + a + Math.floor(a / 4) - Math.floor(a / 100) + Math.floor(a / 400);
+    s = dia + 2 * mes + Math.floor(3 * (mes + 1) / 5) + ano + Math.floor(ano / 4) - Math.floor(ano / 100) + Math.floor(ano / 400);
     return s % 7;
 }
 
