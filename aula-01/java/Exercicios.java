@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Exercicios {
 	public static void main(String[] args) {
-		System.out.println("Isso NAO É um teste!");
+		/*System.out.println("Isso NAO É um teste!");
 		System.out.println("Propriedade 3025 do número 3025 :" + propriedade3025(3025));
 		//System.out.println("Propriedade 3025 do número 10000 :" + propriedade3025(10000));
 		System.out.println("Propriedade 153 do número 153 :" + propriedade153(153));
@@ -12,7 +12,7 @@ public class Exercicios {
 		System.out.println("Fatorial de 6: "+ fatorial(6));
 		System.out.println("Produto de 7 e 9: " + produto(7,9));
 		System.out.println("Potencia 2 ^ 10: "+potencia(2,10));
-		System.out.println("Valor de pi(10): "+pi(10));
+		System.out.println("Valor de pi(10): "+pi(10));*/
 	}
 	
 //Algoritmo 1 - Propriedade 3025
@@ -39,19 +39,19 @@ public class Exercicios {
 	}
 	
 	//Algoritmo 3 - Dia da Semana
-	public static int diaDaSemana(int d, int m, int a){
-		if((d < 1) || (d > 31)){
+	public static int diaDaSemana(int dia, int mes, int ano){
+		if((dia < 1) || (dia > 31)){
 			throw new IllegalArgumentException("Dia inválido.");
-		} else if((m < 1) || (m > 12)){
+		} else if((mes < 1) || (mes > 12)){
 			throw new IllegalArgumentException("Mês inválido.");
-		}else if(a < 1753){
+		}else if(ano < 1753){
 			throw new IllegalArgumentException("Ano inválido.");
 		}
-		if(m == 1 || m == 2){
-			m += 12;
-			a += 1;
+		if(mes == 1 || mes == 2){
+			mes += 12;
+			ano += 1;
 		}
-		int s = d + 2*m + (3*(m+1))/5 + a + a/4 - a/100 + a/400;
+		int s = dia + 2*mes + (3*(mes+1))/5 + ano + ano/4 - ano/100 + ano/400;
     
 		return s%7;
 	}
