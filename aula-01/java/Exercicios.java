@@ -52,6 +52,7 @@ public class Exercicios {
 			a += 1;
 		}
 		int s = d + 2*m + (3*(m+1))/5 + a + a/4 - a/100 + a/400;
+    
 		return s%7;
 	}
 	

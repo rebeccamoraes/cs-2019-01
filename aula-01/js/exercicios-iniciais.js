@@ -26,6 +26,17 @@ function propriedade153(cdu){
 	return (Math.pow(c,3)+Math.pow(d,3)+Math.pow(u,3))==cdu;
 }
 
+
+function dataInvalida(d, m, a){
+	if(isNaN(dia) || (dia<1) || (dia>31)
+	|| (mes<1) || (mes>12) || isNaN(mes)
+	|| ano < 1753 || isNaN(ano)){
+		return true;
+	}else{
+		return false;
+	}	
+}
+
 //Algoritmo 3 - Dia da Semana
 function diaDaSemana(d, m, a) {
 	if((d<1) || (d>31) || isNaN(d)){
