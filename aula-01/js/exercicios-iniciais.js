@@ -36,35 +36,35 @@ function propriedade153(cdu) {
 }
 
 
-function dataInvalida(dia, mes, ano){
-	if(isNaN(dia) || (dia<1) || (dia>31)
-	|| (mes<1) || (mes>12) || isNaN(mes)
-	|| ano < 1753 || isNaN(ano)){
-		return true;
-	}else{
-		return false;
+function validaData(dia, mes, ano){
+	if(dia == null || mes == null || ano == null){
+		throw new InvalidArgumentException("Data inválida. Valor(es) nulo(s).");
+	}
+	if(isNaN(dia) || isNaN(mes) || isNaN(ano)){
+		throw new InvalidArgumentException("Data inválida. Valor(es) não numérico(s).");
+	}
+	if(dia < 1 || dia > 31){
+		throw new InvalidArgumentException("Dia inválido!");
+	}
+	if(mes < 1 || mes > 12){
+		throw new InvalidArgumentException("Mês inválido!");
+	}
+	if(ano < 1753){
+		throw new InvalidArgumentException("Ano inválido");
 	}	
 }
 
 //Algoritmo 3 - Dia da Semana
 function diaDaSemana(dia, mes, ano) {
-    if ((dia < 1) || (dia > 31) || isNaN(dia)) {
-        throw new InvalidArgumentException("Dia inválido!");
-    }
-
-    if ((mes < 1) || (mes > 12) || isNaN(mes)) {
-        throw new InvalidArgumentException("Mês inválido!");
-    }
-
-    if (ano < 1753 || isNaN(ano)) {
-        throw new InvalidArgumentException("Ano inválido");
-    }
-
+	validaData(dia, mes, ano);
+	
     if (mes == 1 || mes == 2) {
         mes += 12;
         ano --;
     }
+    
     s = dia + 2 * mes + Math.floor(3 * (mes + 1) / 5) + ano + Math.floor(ano / 4) - Math.floor(ano / 100) + Math.floor(ano / 400);
+
     return s % 7;
 }
 
