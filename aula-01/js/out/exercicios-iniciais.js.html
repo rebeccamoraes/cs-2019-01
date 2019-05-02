@@ -1,4 +1,32 @@
-class InvalidArgumentException extends Error {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: exercicios-iniciais.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: exercicios-iniciais.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>class InvalidArgumentException extends Error {
     constructor(msg) {
         super("Argumento(s) inválido(s). " + msg);
     }
@@ -27,7 +55,7 @@ function validaArgumentoNumericoObrigatorio(numero){
 function propriedade3025(n) {
     validaArgumentoNumericoObrigatorio(n);
 
-    if (n < 0 || n > 9999) {
+    if (n &lt; 0 || n > 9999) {
         throw new InvalidArgumentException("Número Inválido!");
     }
 
@@ -51,7 +79,7 @@ function propriedade3025(n) {
 	
 function propriedade153(cdu) {
 	validaArgumentoNumericoObrigatorio(n);
-    if (cdu < 100 || cdu > 999) {
+    if (cdu &lt; 100 || cdu > 999) {
         throw new InvalidArgumentException("Número Inválido!");
     }
     var c = Math.floor(cdu / 100);
@@ -69,13 +97,13 @@ function validaData(dia, mes, ano){
 	if(isNaN(dia) || isNaN(mes) || isNaN(ano)){
 		throw new InvalidArgumentException("Data inválida. Valor(es) não numérico(s).");
 	}
-	if(dia < 1 || dia > 31){
+	if(dia &lt; 1 || dia > 31){
 		throw new InvalidArgumentException("Dia inválido!");
 	}
-	if(mes < 1 || mes > 12){
+	if(mes &lt; 1 || mes > 12){
 		throw new InvalidArgumentException("Mês inválido!");
 	}
-	if(ano < 1753){
+	if(ano &lt; 1753){
 		throw new InvalidArgumentException("Ano inválido");
 	}	
 }
@@ -124,7 +152,7 @@ function mod(dividendo, divisor) {
 	validaArgumentoNumericoObrigatorio(dividendo);
 	validaArgumentoNumericoObrigatorio(divisor);
 	
-    if (dividendo < 0 || divisor <= 0 ) {
+    if (dividendo &lt; 0 || divisor &lt;= 0 ) {
         throw new InvalidArgumentException("Argumentos inválidos.");
     }
 
@@ -147,12 +175,12 @@ function mod(dividendo, divisor) {
 	
 function somaNaturais(n) {
 	validaArgumentoNumericoObrigatorio(n);
-    if (n < 1) {
+    if (n &lt; 1) {
         throw new InvalidArgumentException("Número Inválido!");
     }
     var i = 2;
     var s = 1;
-    while (i < n) {
+    while (i &lt; n) {
         s += i;
         i++;
     }
@@ -168,12 +196,12 @@ function somaNaturais(n) {
 	*/
 function fatorial(n) {
 	validaArgumentoNumericoObrigatorio(n);
-    if (n < 1) {
+    if (n &lt; 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
     var i = 2;
     var f = 1;
-    while (i <= n) {
+    while (i &lt;= n) {
         f *= i;
         i++;
     }
@@ -190,18 +218,18 @@ function fatorial(n) {
 function produto(a, b) {
 	validaArgumentoNumericoObrigatorio(a);
 	validaArgumentoNumericoObrigatorio(b);
-    if (a < 0 || b < 0) {
+    if (a &lt; 0 || b &lt; 0) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var totalParcelas = a;
     var parcela = b;
-    if (b < a) {
+    if (b &lt; a) {
         totalParcelas = b;
         parcela = a;
     }
     var i = 1;
     var s = 0;
-    while (i <= totalParcelas) {
+    while (i &lt;= totalParcelas) {
         s += parcela;
         i++;
     }
@@ -220,12 +248,12 @@ function potencia(x, y) {
 	validaArgumentoNumericoObrigatorio(x);
 	validaArgumentoNumericoObrigatorio(y);
 	
-    if (x < 0 || y < 0) {
+    if (x &lt; 0 || y &lt; 0) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var potencia = 1;
     var i = 1;
-    while (i <= y) {
+    while (i &lt;= y) {
         potencia = produto(potencia, x);
     }
     return potencia;
@@ -241,14 +269,14 @@ function potencia(x, y) {
 function pi(n) {
 	validaArgumentoNumericoObrigatorio(n);
 	
-    if (n < 1) {
+    if (n &lt; 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
     var i = 1;
     var s = -1;
     var d = -1;
     var p = 0;
-    while (i <= n) {
+    while (i &lt;= n) {
         d += 2;
         s *= -1;
         p = p + 4 * s / d;
@@ -268,14 +296,14 @@ function pi(n) {
 function logaritmoNatural(n, k) {
 	validaArgumentoNumericoObrigatorio(n);
 	validaArgumentoNumericoObrigatorio(k);
-    if (n < 1 || k < 2) {
+    if (n &lt; 1 || k &lt; 2) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var i = 2;
     var e = 1 + n;
     var numerador = n;
     var denominador = 1;
-    while (i <= k) {
+    while (i &lt;= k) {
         numerador *= numerador;
         denominador *= i;
         e += numerador / denominador;
@@ -297,13 +325,13 @@ function razaoAurea(x, y, k) {
 	validaArgumentoNumericoObrigatorio(x);
 	validaArgumentoNumericoObrigatorio(y);
 	validaArgumentoNumericoObrigatorio(k);
-    if (x < 0 || x > y || k <= 0) {
+    if (x &lt; 0 || x > y || k &lt;= 0) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var c = y;
     var a = x;
     var i = 1;
-    while (i <= k) {
+    while (i &lt;= k) {
         t = c;
         c += a;
         a = t;
@@ -321,12 +349,12 @@ function razaoAurea(x, y, k) {
  	*/
 function quadradoPerfeito(n) {
 	validaArgumentoNumericoObrigatorio(n);
-    if (n < 1) {
+    if (n &lt; 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
     var i = 1;
     var s = 1;
-    while (s < n) {
+    while (s &lt; n) {
         i += 2;
         s += i;
     }
@@ -344,7 +372,7 @@ function quadradoPerfeito(n) {
 function raizQuadrada(n, i) {
 	validaArgumentoNumericoObrigatorio(n);
 	validaArgumentoNumericoObrigatorio(i);
-    if (n <= 0) {
+    if (n &lt;= 0) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var r = 1;
@@ -365,11 +393,11 @@ function raizQuadrada(n, i) {
  	*/
 function primo(n) {
 	validaArgumentoNumericoObrigatorio(n);
-    if (n <= 1) {
+    if (n &lt;= 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
     i = 2;
-    while (i < n) {
+    while (i &lt; n) {
         if (n % i == 0) {
             return false;
         }
@@ -388,15 +416,15 @@ function primo(n) {
  	*/
 function crivoEratostenes(a, n) {
 	validaArgumentoNumericoObrigatorio(n);
-    if (n <= 1) {
+    if (n &lt;= 1) {
         throw new InvalidArgumentException("Argumento(s) inválido(s).");
     }
     var i = 2;
     var limite = Math.sqrt(n);
-    while (i <= limite) {
+    while (i &lt;= limite) {
         if (a[i] == 0) {
             var multiplo = i + i;
-            while (multiplo <= n) {
+            while (multiplo &lt;= n) {
                 a[multiplo] = 1;
                 multiplo = multiplo + i;
             }
@@ -417,7 +445,7 @@ function crivoEratostenes(a, n) {
 function mdc(a, b) {
 	validaArgumentoNumericoObrigatorio(a);
 	validaArgumentoNumericoObrigatorio(bb);
-    if (b > a || b <= 0) {
+    if (b > a || b &lt;= 0) {
         throw new InvalidArgumentException("Número(s) inválidos.");
     }
     while (b != 0) {
@@ -439,7 +467,7 @@ function mdc(a, b) {
 function mdc2(b, a) {
 	validaArgumentoNumericoObrigatorio(a);
 	validaArgumentoNumericoObrigatorio(b);
-    if (b > a || b <= 0) {
+    if (b > a || b &lt;= 0) {
         throw new InvalidArgumentException("Número(s) inválidos!");
     }
     while (a != b) {
@@ -465,12 +493,12 @@ function horner(x, g, a) {
 	validaArgumentoNumericoObrigatorio(x);
 	validaArgumentoNumericoObrigatorio(g);
 	validaArgumentoNumericoObrigatorio(a);
-    if (g < 1) {
+    if (g &lt; 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
     var p = a[g];
     var i = g - 1;
-    while (0 <= i) {
+    while (0 &lt;= i) {
         p = p * x + a[i];
         i--;
     }
@@ -486,7 +514,7 @@ function horner(x, g, a) {
  	*/
 function fibonacci(n) {
 	validaArgumentoNumericoObrigatorio(n);
-    if (n < 0) {
+    if (n &lt; 0) {
         throw new InvalidArgumentException("Número inválido.");
     }
     var a = 0;
@@ -495,7 +523,7 @@ function fibonacci(n) {
         return n;
     }
     var i = 2;
-    while (i <= n) {
+    while (i &lt;= n) {
         var t = c;
         c += a;
         a = t;
@@ -518,7 +546,7 @@ function cpf(d) {
         + 8 * d[8] + 9 * d[9];
     var dj = (j % 11) % 10;
     var dk = (k % 11) % 10;
-    return (dj == d[9] && dk == d[10]);
+    return (dj == d[9] &amp;&amp; dk == d[10]);
 }
 
  /**
@@ -532,12 +560,35 @@ function cpf2(d) {
     var c = 7;
     var p = d[8];
     var s = d[8];
-    while (0 <= c) {
+    while (0 &lt;= c) {
         p += d[c];
         s += p;
         c--;
     }
     var j = (s % 11) % 10;
     var k = ((s - p + 9 * d[9]) % 11) % 10;
-    return (j == d[9]) && (k == d[10]);
+    return (j == d[9]) &amp;&amp; (k == d[10]);
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#cpf">cpf</a></li><li><a href="global.html#cpf2">cpf2</a></li><li><a href="global.html#crivoEratostenes">crivoEratostenes</a></li><li><a href="global.html#diaDaSemana">diaDaSemana</a></li><li><a href="global.html#fatorial">fatorial</a></li><li><a href="global.html#fibonacci">fibonacci</a></li><li><a href="global.html#horner">horner</a></li><li><a href="global.html#logaritmoNatural">logaritmoNatural</a></li><li><a href="global.html#mdc">mdc</a></li><li><a href="global.html#mdc2">mdc2</a></li><li><a href="global.html#mod">mod</a></li><li><a href="global.html#pi">pi</a></li><li><a href="global.html#potencia">potencia</a></li><li><a href="global.html#primo">primo</a></li><li><a href="global.html#produto">produto</a></li><li><a href="global.html#propriedade153">propriedade153</a></li><li><a href="global.html#propriedade3025">propriedade3025</a></li><li><a href="global.html#quadradoPerfeito">quadradoPerfeito</a></li><li><a href="global.html#raizQuadrada">raizQuadrada</a></li><li><a href="global.html#razaoAurea">razaoAurea</a></li><li><a href="global.html#somaNaturais">somaNaturais</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu May 02 2019 20:46:06 GMT-0300 (-03)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
