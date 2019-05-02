@@ -1,20 +1,31 @@
 class InvalidArgumentException extends Error {
     constructor(msg) {
-        super(msg);
+        super("Argumento(s) inválido(s). " + msg);
     }
 }
 
+function validaArgumentoObrigatorio(argumento){
+	if(argumento == null){
+		throw new InvalidArgumentException("Valor nulo.");
+	}
+}
+
+function validaArgumentoNumericoObrigatorio(numero){
+	validaArgumentoObrigatorio(numero);
+	if(isNaN(numero)){
+		throw new InvalidArgumentException("Valor não numérico.");
+	}
+}
+
 function propriedade3025(n) {
-    if (n == null || isNaN(n)) {
-        throw new InvalidArgumentException("argumento nao pode ser null");
-    }
+    validaArgumentoNumericoObrigatorio(n);
 
     if (n < 0 || n > 9999) {
         throw new InvalidArgumentException("Número Inválido!");
     }
 
     if (n % 1 != 0) {
-        throw new InvalidArgumentException("numero nao é inteiro");
+        throw new InvalidArgumentException("Número não é inteiro.");
     }
 
     const i = Math.floor(n / 100);
@@ -25,7 +36,8 @@ function propriedade3025(n) {
 
 //Algoritmo 2 - Propriedade 153
 function propriedade153(cdu) {
-    if ((cdu < 100) || (cdu > 999) || isNaN(n)) {
+	validaArgumentoNumericoObrigatorio(n);
+    if (cdu < 100 || cdu > 999) {
         throw new InvalidArgumentException("Número Inválido!");
     }
     var c = Math.floor(cdu / 100);
@@ -36,35 +48,35 @@ function propriedade153(cdu) {
 }
 
 
-function dataInvalida(dia, mes, ano){
-	if(isNaN(dia) || (dia<1) || (dia>31)
-	|| (mes<1) || (mes>12) || isNaN(mes)
-	|| ano < 1753 || isNaN(ano)){
-		return true;
-	}else{
-		return false;
+function validaData(dia, mes, ano){
+	if(dia == null || mes == null || ano == null){
+		throw new InvalidArgumentException("Data inválida. Valor(es) nulo(s).");
+	}
+	if(isNaN(dia) || isNaN(mes) || isNaN(ano)){
+		throw new InvalidArgumentException("Data inválida. Valor(es) não numérico(s).");
+	}
+	if(dia < 1 || dia > 31){
+		throw new InvalidArgumentException("Dia inválido!");
+	}
+	if(mes < 1 || mes > 12){
+		throw new InvalidArgumentException("Mês inválido!");
+	}
+	if(ano < 1753){
+		throw new InvalidArgumentException("Ano inválido");
 	}	
 }
 
 //Algoritmo 3 - Dia da Semana
-function diaDaSemana(d, m, a) {
-    if ((d < 1) || (d > 31) || isNaN(d)) {
-        throw new InvalidArgumentException("Dia inválido!");
+function diaDaSemana(dia, mes, ano) {
+	validaData(dia, mes, ano);
+	
+    if (mes == 1 || mes == 2) {
+        mes += 12;
+        ano --;
     }
+    
+    s = dia + 2 * mes + Math.floor(3 * (mes + 1) / 5) + ano + Math.floor(ano / 4) - Math.floor(ano / 100) + Math.floor(ano / 400);
 
-    if ((m < 1) || (m > 12) || isNaN(m)) {
-        throw new InvalidArgumentException("Mês inválido!");
-    }
-
-    if (a < 1753 || isNaN(a)) {
-        throw new InvalidArgumentException("Ano inválido");
-    }
-
-    if (m == 1 || m == 2) {
-        m += 12;
-        a--;
-    }
-    s = d + 2 * m + Math.floor(3 * (m + 1) / 5) + a + Math.floor(a / 4) - Math.floor(a / 100) + Math.floor(a / 400);
     return s % 7;
 }
 
@@ -75,29 +87,27 @@ function exibeNomeDiaDaSemana(s) {
     console.log(nomes[s % 7]);
 }
 
-// TODO melhor dividendo em vez de x
-// TODO melhor divisor em vez de y
-// TODO melhor resto em vez de s
-function mod(x, y) {
-
-    // TODO testar por null
-    // TODO testar isNaN, depois vem < 0 ...
-
-    if (y < 0 || x <= 0 || isNaN(x) || isNaN(y)) {
+function mod(dividendo, divisor) {
+	validaArgumentoNumericoObrigatorio(dividendo);
+	validaArgumentoNumericoObrigatorio(divisor);
+	
+    if (dividendo < 0 || divisor <= 0 ) {
         throw new InvalidArgumentException("Argumentos inválidos.");
     }
 
-    let s = x;
-    while (s >= y) {
-        s = s - y;
+    let resto = dividendo;
+    
+    while (resto >= divisor) {
+        resto = resto - divisor;
     }
 
-    return s;
+    return resto;
 }
 
 //Algoritmo 5 - Soma dos primeiros naturais
 function somaNaturais(n) {
-    if (n < 1 || isNaN(n)) {
+	validaArgumentoNumericoObrigatorio(n);
+    if (n < 1) {
         throw new InvalidArgumentException("Número Inválido!");
     }
     var i = 2;
@@ -111,7 +121,8 @@ function somaNaturais(n) {
 
 //Algoritmo 6 - Fatorial
 function fatorial(n) {
-    if (n < 1 || isNaN(n)) {
+	validaArgumentoNumericoObrigatorio(n);
+    if (n < 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
     var i = 2;
@@ -125,8 +136,10 @@ function fatorial(n) {
 
 //Algoritmo 7 - Produto de Inteiros Usando Somas
 function produto(a, b) {
-    if (a < 0 || b < 0 || isNaN(n)) {
-        throw new InvalidArgumentException("Argumento(s) inválido(s).");
+	validaArgumentoNumericoObrigatorio(a);
+	validaArgumentoNumericoObrigatorio(b);
+    if (a < 0 || b < 0) {
+        throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var totalParcelas = a;
     var parcela = b;
@@ -145,8 +158,11 @@ function produto(a, b) {
 
 //Algoritmo 8 - Potência Usando Somas
 function potencia(x, y) {
-    if (x < 0 || y < 0 || isNaN(n)) {
-        throw new InvalidArgumentException("Argumento(s) inválido(s).");
+	validaArgumentoNumericoObrigatorio(x);
+	validaArgumentoNumericoObrigatorio(y);
+	
+    if (x < 0 || y < 0) {
+        throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var potencia = 1;
     var i = 1;
@@ -158,7 +174,9 @@ function potencia(x, y) {
 
 //Algoritmo 9 -Valor de PI
 function pi(n) {
-    if (n < 1 || isNaN(n)) {
+	validaArgumentoNumericoObrigatorio(n);
+	
+    if (n < 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
     var i = 1;
@@ -176,8 +194,10 @@ function pi(n) {
 
 //Algoritmo 10 - Logaritmo Natural
 function logaritmoNatural(n, k) {
-    if (n < 1 || k < 2 || isNaN(n)) {
-        throw new InvalidArgumentException("Argumento(s) inválido(s).");
+	validaArgumentoNumericoObrigatorio(n);
+	validaArgumentoNumericoObrigatorio(k);
+    if (n < 1 || k < 2) {
+        throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var i = 2;
     var e = 1 + n;
@@ -194,8 +214,11 @@ function logaritmoNatural(n, k) {
 
 //Algoritmo 11 - Razão Áurea
 function razaoAurea(x, y, k) {
-    if (x < 0 || x > y || k <= 0 || isNaN(n)) {
-        throw new InvalidArgumentException("Argumento(s) inválido(s).");
+	validaArgumentoNumericoObrigatorio(x);
+	validaArgumentoNumericoObrigatorio(y);
+	validaArgumentoNumericoObrigatorio(k);
+    if (x < 0 || x > y || k <= 0) {
+        throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var c = y;
     var a = x;
@@ -211,7 +234,8 @@ function razaoAurea(x, y, k) {
 
 //Algoritmo 12 - Quadrado Perfeito
 function quadradoPerfeito(n) {
-    if (n < 1 || isNaN(n)) {
+	validaArgumentoNumericoObrigatorio(n);
+    if (n < 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
     var i = 1;
@@ -225,8 +249,10 @@ function quadradoPerfeito(n) {
 
 //Algoritmo 13 - Raiz Quadrada
 function raizQuadrada(n, i) {
-    if (n <= 0 || isNaN(n) || isNaN(i)) {
-        throw new InvalidArgumentException("Argumento(s) inválido(s).");
+	validaArgumentoNumericoObrigatorio(n);
+	validaArgumentoNumericoObrigatorio(i);
+    if (n <= 0) {
+        throw new InvalidArgumentException("Número(s) inválido(s).");
     }
     var r = 1;
     while (i > 0) {
@@ -239,7 +265,8 @@ function raizQuadrada(n, i) {
 
 //Algoritmo 14 - Número Primo
 function primo(n) {
-    if (n <= 1 || isNaN(n)) {
+	validaArgumentoNumericoObrigatorio(n);
+    if (n <= 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
     i = 2;
@@ -254,7 +281,8 @@ function primo(n) {
 
 //Algoritmo 15 - Crivo de Eratóstenes
 function crivoEratostenes(a, n) {
-    if (n <= 1 || isNaN(n)) {
+	validaArgumentoNumericoObrigatorio(n);
+    if (n <= 1) {
         throw new InvalidArgumentException("Argumento(s) inválido(s).");
     }
     var i = 2;
@@ -274,8 +302,10 @@ function crivoEratostenes(a, n) {
 
 //Algoritmo 16 - Maior Divisor Comum
 function mdc(a, b) {
-    if (b > a || b <= 0 || isNaN(a) || isNaN(b)) {
-        throw new InvalidArgumentException("Argumento(s) inválidos!");
+	validaArgumentoNumericoObrigatorio(a);
+	validaArgumentoNumericoObrigatorio(bb);
+    if (b > a || b <= 0) {
+        throw new InvalidArgumentException("Número(s) inválidos.");
     }
     while (b != 0) {
         var m = a % b;
@@ -287,8 +317,10 @@ function mdc(a, b) {
 
 //Algoritmo 17 - Maior Divisor Comum
 function mdc2(b, a) {
-    if (b > a || b <= 0 || isNaN(b) || isNaN(a)) {
-        throw new InvalidArgumentException("Argumento(s) inválidos!");
+	validaArgumentoNumericoObrigatorio(a);
+	validaArgumentoNumericoObrigatorio(b);
+    if (b > a || b <= 0) {
+        throw new InvalidArgumentException("Número(s) inválidos!");
     }
     while (a != b) {
         if (a > b) {
@@ -302,8 +334,11 @@ function mdc2(b, a) {
 
 //algoritmo 18 - Regra de Horner para avaliação de polinômio
 function horner(x, g, a) {
-    if (g < 1 || isNaN(x) || isNaN(g) || isNaN(a)) {
-        throw new InvalidArgumentException("Número inválido!");
+	validaArgumentoNumericoObrigatorio(x);
+	validaArgumentoNumericoObrigatorio(g);
+	validaArgumentoNumericoObrigatorio(a);
+    if (g < 1) {
+        throw new InvalidArgumentException("Número inválido.");
     }
     var p = a[g];
     var i = g - 1;
@@ -316,8 +351,9 @@ function horner(x, g, a) {
 
 //algoritmo 19 - Fibonacci
 function fibonacci(n) {
-    if (n < 0 || isNaN(n)) {
-        throw new InvalidArgumentException("Número inválido!");
+	validaArgumentoNumericoObrigatorio(n);
+    if (n < 0) {
+        throw new InvalidArgumentException("Número inválido.");
     }
     var a = 0;
     var c = 1;
