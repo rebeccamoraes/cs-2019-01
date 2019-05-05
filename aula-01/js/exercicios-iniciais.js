@@ -50,7 +50,7 @@ function propriedade3025(n) {
 	*/
 	
 function propriedade153(cdu) {
-	validaArgumentoNumericoObrigatorio(n);
+	validaArgumentoNumericoObrigatorio(cdu);
     if (cdu < 100 || cdu > 999) {
         throw new InvalidArgumentException("Número Inválido!");
     }
@@ -99,7 +99,7 @@ function diaDaSemana(dia, mes, ano) {
         ano --;
     }
     
-    s = dia + 2 * mes + Math.floor(3 * (mes + 1) / 5) + ano + Math.floor(ano / 4) - Math.floor(ano / 100) + Math.floor(ano / 400);
+    let s = dia + 2 * mes + Math.floor(3 * (mes + 1) / 5) + ano + Math.floor(ano / 4) - Math.floor(ano / 100) + Math.floor(ano / 400);
 
     return s % 7;
 }
@@ -111,7 +111,7 @@ function exibeNomeDiaDaSemana(s) {
     console.log(nomes[s % 7]);
 }
 
- /**
+/**
  * Calcula o resto da divisão do "dividendo" pelo "divisor" informados.
  *
  * @param {inteiro} dividendo número a ser dividido.
@@ -137,14 +137,13 @@ function mod(dividendo, divisor) {
     return resto;
 }
 
- /** 
+/** 
 	* Soma dos N primeiros números naturais
 	* 
 	* @param {inteiro} n quantidade de números à serem somados.
 	*
 	* @returns {inteiro} Número correspondente à soma dos n primeiros números naturais.
 	*/
-	
 function somaNaturais(n) {
 	validaArgumentoNumericoObrigatorio(n);
     if (n < 1) {
@@ -159,7 +158,7 @@ function somaNaturais(n) {
     return s;
 }
 
- /**
+/**
 	* Fatorial de um número n
 	*
 	* @param {inteiro} n número inteiro sobre o qual deseja-se obter o fatorial.
@@ -179,7 +178,7 @@ function fatorial(n) {
     }
     return f;
 }
- /**
+/**
 	* Produto de Inteiros Usando Somas
 	*
 	* @param {inteiro} a primeiro número inteiro à ser multiplicado.
@@ -207,8 +206,7 @@ function produto(a, b) {
     }
     return s;
 }
-
- /**
+/**
 	* Potência Usando Somas
 	*
 	* @param {inteiro} x número inteiro usado como base da potência.
@@ -231,7 +229,7 @@ function potencia(x, y) {
     return potencia;
 }
 
- /**
+/**
  	* Valor de PI
   *
   * @param {inteiro} n
@@ -257,7 +255,7 @@ function pi(n) {
     return p;
 }
 
- /**
+/**
   * Logaritmo Natural
   *
   * @param {inteiro} n
@@ -284,7 +282,7 @@ function logaritmoNatural(n, k) {
     return e;
 }
 
- /**
+/**
   * Razão Áurea
   *
   * @param {inteiro} x
@@ -304,7 +302,7 @@ function razaoAurea(x, y, k) {
     var a = x;
     var i = 1;
     while (i <= k) {
-        t = c;
+        let t = c;
         c += a;
         a = t;
         i++;
@@ -312,7 +310,7 @@ function razaoAurea(x, y, k) {
     return c / a;
 }
 
- /**
+/**
   * Quadrado Perfeito
   *
   * @param {inteiro} n
@@ -333,7 +331,7 @@ function quadradoPerfeito(n) {
     return (s == n);
 }
 
- /**
+/**
   * Raiz Quadrada
   *
   * @param {inteiro} n
@@ -350,25 +348,24 @@ function raizQuadrada(n, i) {
     var r = 1;
     while (i > 0) {
         r = (r + n / r) / 2;
-        ;
         i--;
     }
     return r;
 }
 
- /** 
- 	* Número Primo
-  *
-  * @param {inteiro} n número à ser verificado.
+/** 
+	* Número Primo
+	*
+	* @param {inteiro} n número à ser verificado.
   *
   * @returns {boolean} Verdadeiro, caso o número seja primo, ou falso, caso contrário.
  	*/
 function primo(n) {
-	validaArgumentoNumericoObrigatorio(n);
+  validaArgumentoNumericoObrigatorio(n);
     if (n <= 1) {
-        throw new InvalidArgumentException("Número inválido.");
+      throw new InvalidArgumentException("Número inválido.");
     }
-    i = 2;
+    let i = 2;
     while (i < n) {
         if (n % i == 0) {
             return false;
@@ -378,7 +375,7 @@ function primo(n) {
     return true;
 }
 
- /**
+/**
   * Crivo de Eratóstenes
   *
   * @param {vetor} a
@@ -406,7 +403,7 @@ function crivoEratostenes(a, n) {
     return a;
 }
 
- /**
+/**
   * Maior Divisor Comum
   *
   * @param {inteiro} a número inteiro
@@ -416,7 +413,7 @@ function crivoEratostenes(a, n) {
  	*/
 function mdc(a, b) {
 	validaArgumentoNumericoObrigatorio(a);
-	validaArgumentoNumericoObrigatorio(bb);
+	validaArgumentoNumericoObrigatorio(b);
     if (b > a || b <= 0) {
         throw new InvalidArgumentException("Número(s) inválidos.");
     }
@@ -428,7 +425,7 @@ function mdc(a, b) {
     return a;
 }
 
- /**
+/**
   * Maior Divisor Comum
   *
   * @param {inteiro} a número inteiro
@@ -452,8 +449,8 @@ function mdc2(b, a) {
     return a;
 }
 
-//algoritmo 18 - Regra de Horner para avaliação de polinômio
- /**
+/**
+  * Regra de Horner para avaliação de polinômio
   *
   * @param {inteiro} n
   * @param {inteiro} g
@@ -477,7 +474,7 @@ function horner(x, g, a) {
     return p;
 }
 
- /**
+/**
   * Fibonacci
   *
   * @param {inteiro} n
@@ -504,7 +501,7 @@ function fibonacci(n) {
     return c;
 }
 
- /**
+/**
   * Cadastro de Pessoas Físicas (CPF)
   *
   * @param {vetor} d
@@ -521,7 +518,7 @@ function cpf(d) {
     return (dj == d[9] && dk == d[10]);
 }
 
- /**
+/**
   * Cadastro de Pessoas Físicas (CPF)
   *
   * @param {vetor} d
