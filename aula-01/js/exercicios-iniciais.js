@@ -13,10 +13,15 @@ function validaArgumentoObrigatorio(argumento){
 function validaArgumentoNumericoObrigatorio(numero){
     validaArgumentoObrigatorio(numero);
     if(isNaN(numero)){
-        throw new InvalidArgumentException("Valor não numérico.");
+        throw new RangeError("Valor não numérico.");
     }
 }
 
+function validaInteiro(numero) {
+    if(numero%1 !== 0){
+        throw new TypeError("Número não inteiro.");
+    }
+}
 /**
  * Verifica se o argumento fornecido é um número que possui a propriedade 3025.
  *
@@ -27,13 +32,9 @@ function validaArgumentoNumericoObrigatorio(numero){
 
 function propriedade3025(n) {
     validaArgumentoNumericoObrigatorio(n);
-
+    validaInteiro(n);
     if (n < 0 || n > 9999) {
-        throw new InvalidArgumentException("Número Inválido!");
-    }
-
-    if (n % 1 != 0) {
-        throw new InvalidArgumentException("Número não é inteiro.");
+        throw new RangeError("Número Inválido!");
     }
 
     const i = Math.floor(n / 100);
@@ -64,9 +65,9 @@ function propriedade153(cdu) {
 
  
 function validaData(dia, mes, ano){
-	if(dia == null || mes == null || ano == null){
-		throw new InvalidArgumentException("Data inválida. Valor(es) nulo(s).");
-	}
+    if(dia == null || mes == null || ano == null){
+	    throw new InvalidArgumentException("Data inválida. Valor(es) nulo(s).");
+    }
 	if(isNaN(dia) || isNaN(mes) || isNaN(ano)){
 		throw new InvalidArgumentException("Data inválida. Valor(es) não numérico(s).");
 	}
@@ -81,7 +82,7 @@ function validaData(dia, mes, ano){
 	}	
 }
 
- /**
+/**
 	* Define o dia da semana para uma data
 	*
 	* @param {inteiro} dia Número inteiro referente ao dia
