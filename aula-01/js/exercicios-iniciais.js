@@ -54,7 +54,7 @@ function propriedade3025(n) {
 function propriedade153(cdu) {
     validaArgumentoNumericoObrigatorio(cdu);
     if (cdu < 100 || cdu > 999) {
-        throw new InvalidArgumentException("Número Inválido!");
+        throw new RangeError("Número Inválido!");
     }
     let c = Math.floor(cdu / 100);
     let du = cdu % 100;
@@ -69,7 +69,7 @@ function validaData(dia, mes, ano){
 	    throw new InvalidArgumentException("Data inválida. Valor(es) nulo(s).");
     }
 	if(isNaN(dia) || isNaN(mes) || isNaN(ano)){
-		throw new InvalidArgumentException("Data inválida. Valor(es) não numérico(s).");
+		throw new TypeError("Data inválida. Valor(es) não numérico(s).");
 	}
 	if(dia < 1 || dia > 31){
 		throw new InvalidArgumentException("Dia inválido!");
@@ -121,7 +121,6 @@ function exibeNomeDiaDaSemana(s) {
  *
  * @returns {inteiro} Resto inteiro da divisão do divisor pelo dividendo.
  */
-
 function mod(dividendo, divisor) {
     validaArgumentoNumericoObrigatorio(dividendo);
     validaArgumentoNumericoObrigatorio(divisor);
@@ -139,25 +138,26 @@ function mod(dividendo, divisor) {
     return resto;
 }
 
-/** 
-	* Soma dos N primeiros números naturais
-	* 
-	* @param {inteiro} n quantidade de números à serem somados.
-	*
-	* @returns {inteiro} Número correspondente à soma dos n primeiros números naturais.
-	*/
+/**
+ * Soma dos N primeiros números naturais
+ *
+ * @param {inteiro} n quantidade de números à serem somados.
+ *
+ * @returns {inteiro} Número correspondente à soma dos n primeiros números naturais.
+ */
 function somaNaturais(n) {
     validaArgumentoNumericoObrigatorio(n);
+    validaInteiro(n)
     if (n < 1) {
-        throw new InvalidArgumentException("Número Inválido!");
+        throw new RangeError("Número Inválido!");
     }
     let i = 2;
-    let s = 1;
+    let soma = 1;
     while (i < n) {
-        s += i;
+        soma += i;
         i++;
     }
-    return s;
+    return soma;
 }
 
 /**
@@ -169,8 +169,9 @@ function somaNaturais(n) {
 	*/
 function fatorial(n) {
     validaArgumentoNumericoObrigatorio(n);
+    validaInteiro(n);
     if (n < 1) {
-        throw new InvalidArgumentException("Número inválido.");
+        throw new RangeError("Número inválido.");
     }
     let i = 2;
     let f = 1;
@@ -192,7 +193,7 @@ function produto(a, b){
     validaArgumentoNumericoObrigatorio(a);
     validaArgumentoNumericoObrigatorio(b);
     if (a < 0 || b < 0) {
-        throw new InvalidArgumentException("Número(s) inválido(s).");
+        throw new RangeError("Número(s) inválido(s).");
     }
     let totalParcelas = a;
     let parcela = b;
@@ -221,7 +222,7 @@ function potencia(x, y) {
     validaArgumentoNumericoObrigatorio(y);
 	
     if (x < 0 || y < 0) {
-        throw new InvalidArgumentException("Número(s) inválido(s).");
+        throw new RangeError("Número(s) inválido(s).");
     }
     let potencia = 1;
     let i = 1;
@@ -242,7 +243,7 @@ function pi(n) {
     validaArgumentoNumericoObrigatorio(n);
 	
     if (n < 1) {
-        throw new InvalidArgumentException("Número inválido.");
+        throw new RangeError("Número inválido.");
     }
     let i = 1;
     let s = -1;
@@ -269,7 +270,7 @@ function logaritmoNatural(n, k) {
     validaArgumentoNumericoObrigatorio(n);
     validaArgumentoNumericoObrigatorio(k);
     if (n < 1 || k < 2) {
-        throw new InvalidArgumentException("Número(s) inválido(s).");
+        throw new RangeError("Número(s) inválido(s).");
     }
     let i = 2;
     let e = 1 + n;
@@ -298,7 +299,7 @@ function razaoAurea(x, y, k) {
     validaArgumentoNumericoObrigatorio(y);
     validaArgumentoNumericoObrigatorio(k);
     if (x < 0 || x > y || k <= 0) {
-        throw new InvalidArgumentException("Número(s) inválido(s).");
+        throw new RangeError("Número(s) inválido(s).");
     }
     let c = y;
     let a = x;
@@ -322,7 +323,7 @@ function razaoAurea(x, y, k) {
 function quadradoPerfeito(n) {
     validaArgumentoNumericoObrigatorio(n);
     if (n < 1) {
-        throw new InvalidArgumentException("Número inválido.");
+        throw new RangeError("Número inválido.");
     }
     let i = 1;
     let s = 1;
@@ -345,7 +346,7 @@ function raizQuadrada(n, i) {
     validaArgumentoNumericoObrigatorio(n);
     validaArgumentoNumericoObrigatorio(i);
     if (n <= 0) {
-        throw new InvalidArgumentException("Número(s) inválido(s).");
+        throw new RangeError("Número(s) inválido(s).");
     }
     let r = 1;
     while (i > 0) {
@@ -365,7 +366,7 @@ function raizQuadrada(n, i) {
 function primo(n) {
     validaArgumentoNumericoObrigatorio(n);
     if (n <= 1) {
-        throw new InvalidArgumentException("Número inválido.");
+        throw new RangeError("Número inválido.");
     }
     let i = 2;
     while (i < n) {
@@ -388,7 +389,7 @@ function primo(n) {
 function crivoEratostenes(a, n) {
     validaArgumentoNumericoObrigatorio(n);
     if (n <= 1) {
-        throw new InvalidArgumentException("Argumento(s) inválido(s).");
+        throw new RangeError("Argumento(s) inválido(s).");
     }
     let i = 2;
     let limite = Math.sqrt(n);
@@ -417,7 +418,7 @@ function mdc(a, b) {
     validaArgumentoNumericoObrigatorio(a);
     validaArgumentoNumericoObrigatorio(b);
     if (b > a || b <= 0) {
-        throw new InvalidArgumentException("Número(s) inválidos.");
+        throw new RangeError("Número(s) inválidos.");
     }
     while (b != 0) {
         let m = a % b;
@@ -439,7 +440,7 @@ function mdc2(b, a) {
     validaArgumentoNumericoObrigatorio(a);
     validaArgumentoNumericoObrigatorio(b);
     if (b > a || b <= 0) {
-        throw new InvalidArgumentException("Número(s) inválidos!");
+        throw new RangeError("Número(s) inválidos!");
     }
     while (a != b) {
         if (a > b) {
@@ -465,7 +466,7 @@ function horner(x, g, a) {
     validaArgumentoNumericoObrigatorio(g);
     validaArgumentoNumericoObrigatorio(a);
     if (g < 1) {
-        throw new InvalidArgumentException("Número inválido.");
+        throw new RangeError("Número inválido.");
     }
     let p = a[g];
     let i = g - 1;
@@ -486,7 +487,7 @@ function horner(x, g, a) {
 function fibonacci(n) {
     validaArgumentoNumericoObrigatorio(n);
     if (n < 0) {
-        throw new InvalidArgumentException("Número inválido.");
+        throw new RangeError("Número inválido.");
     }
     let a = 0;
     let c = 1;
