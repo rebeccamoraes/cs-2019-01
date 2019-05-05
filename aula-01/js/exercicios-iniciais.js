@@ -55,10 +55,10 @@ function propriedade153(cdu) {
     if (cdu < 100 || cdu > 999) {
         throw new InvalidArgumentException("Número Inválido!");
     }
-    var c = Math.floor(cdu / 100);
-    var du = cdu % 100;
-    var d = Math.floor(du / 10);
-    var u = du % 10;
+    let c = Math.floor(cdu / 100);
+    let du = cdu % 100;
+    let d = Math.floor(du / 10);
+    let u = du % 10;
     return (Math.pow(c, 3) + Math.pow(d, 3) + Math.pow(u, 3)) == cdu;
 }
 
@@ -122,8 +122,8 @@ function exibeNomeDiaDaSemana(s) {
  */
 
 function mod(dividendo, divisor) {
-	validaArgumentoNumericoObrigatorio(dividendo);
-	validaArgumentoNumericoObrigatorio(divisor);
+    validaArgumentoNumericoObrigatorio(dividendo);
+    validaArgumentoNumericoObrigatorio(divisor);
 	
     if (dividendo < 0 || divisor <= 0 ) {
         throw new InvalidArgumentException("Argumentos inválidos.");
@@ -146,12 +146,12 @@ function mod(dividendo, divisor) {
 	* @returns {inteiro} Número correspondente à soma dos n primeiros números naturais.
 	*/
 function somaNaturais(n) {
-	validaArgumentoNumericoObrigatorio(n);
+    validaArgumentoNumericoObrigatorio(n);
     if (n < 1) {
         throw new InvalidArgumentException("Número Inválido!");
     }
-    var i = 2;
-    var s = 1;
+    let i = 2;
+    let s = 1;
     while (i < n) {
         s += i;
         i++;
@@ -167,12 +167,12 @@ function somaNaturais(n) {
 	* @returns {inteiro} Número inteiro correspondente ao fatorial do número n.
 	*/
 function fatorial(n) {
-	validaArgumentoNumericoObrigatorio(n);
+    validaArgumentoNumericoObrigatorio(n);
     if (n < 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
-    var i = 2;
-    var f = 1;
+    let i = 2;
+    let f = 1;
     while (i <= n) {
         f *= i;
         i++;
@@ -187,20 +187,20 @@ function fatorial(n) {
 	*
 	* @returns {number} Número inteiro correspondente ao produto dos dois inteiros fornecidos.
 	*/
-function produto(a, b) {
-	validaArgumentoNumericoObrigatorio(a);
-	validaArgumentoNumericoObrigatorio(b);
+function produto(a, b){
+    validaArgumentoNumericoObrigatorio(a);
+    validaArgumentoNumericoObrigatorio(b);
     if (a < 0 || b < 0) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
-    var totalParcelas = a;
-    var parcela = b;
+    let totalParcelas = a;
+    let parcela = b;
     if (b < a) {
         totalParcelas = b;
         parcela = a;
     }
-    var i = 1;
-    var s = 0;
+    let i = 1;
+    let s = 0;
     while (i <= totalParcelas) {
         s += parcela;
         i++;
@@ -216,14 +216,14 @@ function produto(a, b) {
 	* @returns {inteiro} Resultado do número x elevado a y.
 	*/
 function potencia(x, y) {
-	validaArgumentoNumericoObrigatorio(x);
-	validaArgumentoNumericoObrigatorio(y);
+    validaArgumentoNumericoObrigatorio(x);
+    validaArgumentoNumericoObrigatorio(y);
 	
     if (x < 0 || y < 0) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
-    var potencia = 1;
-    var i = 1;
+    let potencia = 1;
+    let i = 1;
     while (i <= y) {
         potencia = produto(potencia, x);
     }
@@ -238,15 +238,15 @@ function potencia(x, y) {
   * @returns {decimal} Valor de PI, com precisão n.
  	*/
 function pi(n) {
-	validaArgumentoNumericoObrigatorio(n);
+    validaArgumentoNumericoObrigatorio(n);
 	
     if (n < 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
-    var i = 1;
-    var s = -1;
-    var d = -1;
-    var p = 0;
+    let i = 1;
+    let s = -1;
+    let d = -1;
+    let p = 0;
     while (i <= n) {
         d += 2;
         s *= -1;
@@ -265,15 +265,15 @@ function pi(n) {
   * @returns {decimal} Logaritmo natual
  	*/
 function logaritmoNatural(n, k) {
-	validaArgumentoNumericoObrigatorio(n);
-	validaArgumentoNumericoObrigatorio(k);
+    validaArgumentoNumericoObrigatorio(n);
+    validaArgumentoNumericoObrigatorio(k);
     if (n < 1 || k < 2) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
-    var i = 2;
-    var e = 1 + n;
-    var numerador = n;
-    var denominador = 1;
+    let i = 2;
+    let e = 1 + n;
+    let numerador = n;
+    let denominador = 1;
     while (i <= k) {
         numerador *= numerador;
         denominador *= i;
@@ -293,15 +293,15 @@ function logaritmoNatural(n, k) {
   * @returns {decimal} Razão áurea obtida através dos números fornecidos.
  	*/
 function razaoAurea(x, y, k) {
-	validaArgumentoNumericoObrigatorio(x);
-	validaArgumentoNumericoObrigatorio(y);
-	validaArgumentoNumericoObrigatorio(k);
+    validaArgumentoNumericoObrigatorio(x);
+    validaArgumentoNumericoObrigatorio(y);
+    validaArgumentoNumericoObrigatorio(k);
     if (x < 0 || x > y || k <= 0) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
-    var c = y;
-    var a = x;
-    var i = 1;
+    let c = y;
+    let a = x;
+    let i = 1;
     while (i <= k) {
         let t = c;
         c += a;
@@ -319,12 +319,12 @@ function razaoAurea(x, y, k) {
   * @returns {boolean} Verdadeiro, caso o número fornecido seja um quadrado perfeito, ou falso, caso contrário.
  	*/
 function quadradoPerfeito(n) {
-	validaArgumentoNumericoObrigatorio(n);
+    validaArgumentoNumericoObrigatorio(n);
     if (n < 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
-    var i = 1;
-    var s = 1;
+    let i = 1;
+    let s = 1;
     while (s < n) {
         i += 2;
         s += i;
@@ -341,12 +341,12 @@ function quadradoPerfeito(n) {
   * @returns {decimal} Raiz quadrada do número n, com a precisão informada.
  	*/
 function raizQuadrada(n, i) {
-	validaArgumentoNumericoObrigatorio(n);
-	validaArgumentoNumericoObrigatorio(i);
+    validaArgumentoNumericoObrigatorio(n);
+    validaArgumentoNumericoObrigatorio(i);
     if (n <= 0) {
         throw new InvalidArgumentException("Número(s) inválido(s).");
     }
-    var r = 1;
+    let r = 1;
     while (i > 0) {
         r = (r + n / r) / 2;
         i--;
@@ -362,9 +362,9 @@ function raizQuadrada(n, i) {
   * @returns {boolean} Verdadeiro, caso o número seja primo, ou falso, caso contrário.
  	*/
 function primo(n) {
-  validaArgumentoNumericoObrigatorio(n);
+    validaArgumentoNumericoObrigatorio(n);
     if (n <= 1) {
-      throw new InvalidArgumentException("Número inválido.");
+        throw new InvalidArgumentException("Número inválido.");
     }
     let i = 2;
     while (i < n) {
@@ -385,15 +385,15 @@ function primo(n) {
   * @returns {vetor} Vetor com as posições cujos índices são números primos marcadas com 0.
  	*/
 function crivoEratostenes(a, n) {
-	validaArgumentoNumericoObrigatorio(n);
+    validaArgumentoNumericoObrigatorio(n);
     if (n <= 1) {
         throw new InvalidArgumentException("Argumento(s) inválido(s).");
     }
-    var i = 2;
-    var limite = Math.sqrt(n);
+    let i = 2;
+    let limite = Math.sqrt(n);
     while (i <= limite) {
         if (a[i] == 0) {
-            var multiplo = i + i;
+            let multiplo = i + i;
             while (multiplo <= n) {
                 a[multiplo] = 1;
                 multiplo = multiplo + i;
@@ -413,13 +413,13 @@ function crivoEratostenes(a, n) {
   * @returns {inteiro} Maior divisor comum entre os inteiros fornecidos.
  	*/
 function mdc(a, b) {
-	validaArgumentoNumericoObrigatorio(a);
-	validaArgumentoNumericoObrigatorio(b);
+    validaArgumentoNumericoObrigatorio(a);
+    validaArgumentoNumericoObrigatorio(b);
     if (b > a || b <= 0) {
         throw new InvalidArgumentException("Número(s) inválidos.");
     }
     while (b != 0) {
-        var m = a % b;
+        let m = a % b;
         a = b;
         b = m;
     }
@@ -435,8 +435,8 @@ function mdc(a, b) {
   * @returns {inteiro} Maior divisor comum entre os inteiros fornecidos.
  	*/
 function mdc2(b, a) {
-	validaArgumentoNumericoObrigatorio(a);
-	validaArgumentoNumericoObrigatorio(b);
+    validaArgumentoNumericoObrigatorio(a);
+    validaArgumentoNumericoObrigatorio(b);
     if (b > a || b <= 0) {
         throw new InvalidArgumentException("Número(s) inválidos!");
     }
@@ -460,14 +460,14 @@ function mdc2(b, a) {
   * @returns {number}
  	*/
 function horner(x, g, a) {
-	validaArgumentoNumericoObrigatorio(x);
-	validaArgumentoNumericoObrigatorio(g);
-	validaArgumentoNumericoObrigatorio(a);
+    validaArgumentoNumericoObrigatorio(x);
+    validaArgumentoNumericoObrigatorio(g);
+    validaArgumentoNumericoObrigatorio(a);
     if (g < 1) {
         throw new InvalidArgumentException("Número inválido.");
     }
-    var p = a[g];
-    var i = g - 1;
+    let p = a[g];
+    let i = g - 1;
     while (0 <= i) {
         p = p * x + a[i];
         i--;
@@ -483,18 +483,18 @@ function horner(x, g, a) {
   * @returns {inteiro} n-ésimo número de Fibonacci.
  	*/
 function fibonacci(n) {
-	validaArgumentoNumericoObrigatorio(n);
+    validaArgumentoNumericoObrigatorio(n);
     if (n < 0) {
         throw new InvalidArgumentException("Número inválido.");
     }
-    var a = 0;
-    var c = 1;
+    let a = 0;
+    let c = 1;
     if (n == 0 || n == 1) {
         return n;
     }
-    var i = 2;
+    let i = 2;
     while (i <= n) {
-        var t = c;
+        let t = c;
         c += a;
         a = t;
         i++;
@@ -510,12 +510,12 @@ function fibonacci(n) {
   * @return {boolean} Verdadeiro, caso o cpf informado seja válido, ou falso, caso contrário.
  	*/
 function cpf(d) {
-    var j = d[0] + 2 * d[1] + 3 * d[2] + 4 * d[3] + 5 * d[4] + 6 * d[5] + 7 * d[6]
+    let j = d[0] + 2 * d[1] + 3 * d[2] + 4 * d[3] + 5 * d[4] + 6 * d[5] + 7 * d[6]
         + 8 * d[7] + 9 * d[8];
-    var k = d[1] + 2 * d[2] + 3 * d[3] + 4 * d[4] + 5 * d[5] + 6 * d[6] + 7 * d[7]
+    let k = d[1] + 2 * d[2] + 3 * d[3] + 4 * d[4] + 5 * d[5] + 6 * d[6] + 7 * d[7]
         + 8 * d[8] + 9 * d[9];
-    var dj = (j % 11) % 10;
-    var dk = (k % 11) % 10;
+    let dj = (j % 11) % 10;
+    let dk = (k % 11) % 10;
     return (dj == d[9] && dk == d[10]);
 }
 
@@ -527,16 +527,16 @@ function cpf(d) {
   * @return {boolean} Verdadeiro, caso o cpf informado seja válido, ou falso, caso contrário.
  	*/
 function cpf2(d) {
-    var c = 7;
-    var p = d[8];
-    var s = d[8];
+    let c = 7;
+    let p = d[8];
+    let s = d[8];
     while (0 <= c) {
         p += d[c];
         s += p;
         c--;
     }
-    var j = (s % 11) % 10;
-    var k = ((s - p + 9 * d[9]) % 11) % 10;
+    let j = (s % 11) % 10;
+    let k = ((s - p + 9 * d[9]) % 11) % 10;
     return (j == d[9]) && (k == d[10]);
 }
 
