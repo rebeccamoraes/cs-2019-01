@@ -5,24 +5,25 @@ class InvalidArgumentException extends Error {
 }
 
 function validaArgumentoObrigatorio(argumento){
-	if(argumento == null){
-		throw new InvalidArgumentException("Valor nulo.");
-	}
+    if(argumento == null){
+        throw new InvalidArgumentException("Valor nulo.");
+    }
 }
 
 function validaArgumentoNumericoObrigatorio(numero){
-	validaArgumentoObrigatorio(numero);
-	if(isNaN(numero)){
-		throw new InvalidArgumentException("Valor não numérico.");
-	}
+    validaArgumentoObrigatorio(numero);
+    if(isNaN(numero)){
+        throw new InvalidArgumentException("Valor não numérico.");
+    }
 }
- /**
- 	* Verifica se o argumento fornecido é um número que possui a propriedade 3025.
- 	*
-	* @param {inteiro} n Número inteiro à ser verificado.
-	* 
-	* @returns {boolean} Verdadeiro, caso o número possua a propriedade 3025, ou falso, caso contrário.
-	*/
+
+/**
+ * Verifica se o argumento fornecido é um número que possui a propriedade 3025.
+ *
+ * @param {inteiro} n Número inteiro à ser verificado.
+ *
+ * @returns {boolean} Verdadeiro, caso o número possua a propriedade 3025, ou falso, caso contrário.
+ */
 
 function propriedade3025(n) {
     validaArgumentoNumericoObrigatorio(n);
@@ -41,7 +42,7 @@ function propriedade3025(n) {
     return (i + j) * (i + j) == n;
 }
 
- /**
+/**
  	* Verifica se o argumento fornecido é um número que possui a propriedade 153, ou seja, a soma do quadrado de seus dígitos é igual a ele próprio.
  	*
 	* @param {number} cdu Número inteiro à ser verificado.
@@ -50,7 +51,7 @@ function propriedade3025(n) {
 	*/
 	
 function propriedade153(cdu) {
-	validaArgumentoNumericoObrigatorio(cdu);
+    validaArgumentoNumericoObrigatorio(cdu);
     if (cdu < 100 || cdu > 999) {
         throw new InvalidArgumentException("Número Inválido!");
     }
@@ -538,3 +539,5 @@ function cpf2(d) {
     var k = ((s - p + 9 * d[9]) % 11) % 10;
     return (j == d[9]) && (k == d[10]);
 }
+
+module.exports = { propriedade3025 : propriedade3025 };
