@@ -381,10 +381,10 @@ function primo(n) {
 /**
   * Crivo de Eratóstenes
   *
-  * @param {vetor} a
+  * @param {Array} a
   * @param {inteiro} n
   *
-  * @returns {vetor} Vetor com as posições cujos índices são números primos marcadas com 0.
+  * @returns {Array} Array com as posições cujos índices são números primos marcadas com 0.
  	*/
 function crivoEratostenes(a, n) {
     validaArgumentoNumericoObrigatorio(n);
@@ -505,9 +505,9 @@ function fibonacci(n) {
 }
 
 /**
-  * Cadastro de Pessoas Físicas (CPF)
+  * Verificação de CPF (Cadastro de Pessoas Físicas)
   *
-  * @param {vetor} d
+  * @param {Array} d
   *
   * @return {boolean} Verdadeiro, caso o cpf informado seja válido, ou falso, caso contrário.
  	*/
@@ -522,9 +522,9 @@ function cpf(d) {
 }
 
 /**
-  * Cadastro de Pessoas Físicas (CPF)
+  * Implementação alternativa de verificação de CPF (Cadastro de Pessoas Físicas)
   *
-  * @param {vetor} d
+  * @param {Array} d
   *
   * @return {boolean} Verdadeiro, caso o cpf informado seja válido, ou falso, caso contrário.
  	*/
