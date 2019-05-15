@@ -109,20 +109,20 @@ function propriedade153(cdu) {
 */
 function validaData(dia, mes, ano){
     if(dia == null || mes == null || ano == null){
-	    throw new InvalidArgumentException("Data inválida. Valor(es) nulo(s).");
+        throw new InvalidArgumentException("Data inválida. Valor(es) nulo(s).");
     }
-	if(isNaN(dia) || isNaN(mes) || isNaN(ano)){
-		throw new TypeError("Data inválida. Valor(es) não numérico(s).");
-	}
-	if(dia < 1 || dia > 31){
-		throw new InvalidArgumentException("Dia inválido!");
-	}
-	if(mes < 1 || mes > 12){
-		throw new InvalidArgumentException("Mês inválido!");
-	}
-	if(ano < 1753){
-		throw new InvalidArgumentException("Ano inválido");
-	}	
+    if(isNaN(dia) || isNaN(mes) || isNaN(ano)){
+        throw new TypeError("Data inválida. Valor(es) não numérico(s).");
+    }
+    if(dia < 1 || dia > 31){
+        throw new InvalidArgumentException("Dia inválido!");
+    }
+    if(mes < 1 || mes > 12){
+        throw new InvalidArgumentException("Mês inválido!");
+    }
+    if(ano < 1753){
+        throw new InvalidArgumentException("Ano inválido");
+    }	
 }
 
 /**
@@ -144,7 +144,7 @@ function validaData(dia, mes, ano){
  * @throws {InvalidArgumentException} Caso valor de ano seja menor que 1753.
  */
 function diaDaSemana(dia, mes, ano) {
-	validaData(dia, mes, ano);
+    validaData(dia, mes, ano);
 	
     if (mes == 1 || mes == 2) {
         mes += 12;
@@ -210,7 +210,7 @@ function mod(dividendo, divisor) {
  */
 function somaNaturais(n) {
     validaArgumentoNumericoObrigatorio(n);
-    validaInteiro(n)
+    validaInteiro(n);
     if (n < 1) {
         throw new RangeError("Número Inválido!");
     }
