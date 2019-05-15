@@ -68,10 +68,10 @@ function propriedade3025(n) {
 
 /**
  * Verifica se o argumento fornecido é um número que possui a propriedade
- * 153, ou seja, a soma do quadrado de seus dígitos é igual a ele próprio.
+ * 153, ou seja, a soma do cubo de seus dígitos é igual a ele próprio.
  * @param {number} cdu Número inteiro à ser verificado.
  *
- * @returns {boolean} Verdadeiro, caso o número possua a propriedade 3025, ou
+ * @returns {boolean} Verdadeiro, caso o número possua a propriedade 153, ou
  * falso, caso contrário.
  *
  * @throws {InvalidArgumentException} Caso o argumento seja nulo.
