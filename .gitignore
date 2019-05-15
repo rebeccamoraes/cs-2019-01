@@ -1,1 +1,3 @@
-aula-01/js/node_modules/
+node_modules/
+bin/
+*.class
