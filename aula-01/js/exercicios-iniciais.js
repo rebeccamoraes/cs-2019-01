@@ -112,17 +112,23 @@ function validaData(dia, mes, ano){
     if(dia == null || mes == null || ano == null){
         throw new InvalidArgumentException("Data inválida. Valor(es) nulo(s).");
     }
+
     if(isNaN(dia) || isNaN(mes) || isNaN(ano)){
         throw new TypeError("Data inválida. Valor(es) não numérico(s).");
     }
+
+    validaInteiro(dia);
+    validaInteiro(mes);
+    validaInteiro(ano);
+
     if(dia < 1 || dia > 31){
-        throw new InvalidArgumentException("Dia inválido!");
+        throw new RangeError("Dia inválido!");
     }
     if(mes < 1 || mes > 12){
-        throw new InvalidArgumentException("Mês inválido!");
+        throw new RangeError("Mês inválido!");
     }
     if(ano < 1753){
-        throw new InvalidArgumentException("Ano inválido");
+        throw new RangeError("Ano inválido");
     }	
 }
 

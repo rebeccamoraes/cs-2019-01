@@ -1,36 +1,36 @@
 const funcao = require("../exercicios-iniciais").diaDaSemana;
 
 test("01/01/2019 retorna 1 (caso clássico)", () => {
-    expect(funcao(01,01,2019)).toBe(1);
+    expect( funcao(1,1,2019)).toBe(1);
 });
 
 test("02/01/2019 retorna 2 (caso clássico)", () => {
-    expect(funcao(02,01,2019)).toBe(2);
+    expect( funcao(2,1,2019)).toBe(2);
 });
 
 test("03/01/2019 retorna 3 (caso clássico)", () => {
-    expect(funcao(02,01,2019)).toBe(3);
+    expect( funcao(3,1,2019)).toBe(3);
 });
 
 test("04/01/2019 retorna 4 (caso clássico)", () => {
-    expect(funcao(03,01,2019)).toBe(4);
+    expect( funcao(4,1,2019)).toBe(4);
 });
 
 test("05/01/2019 retorna 5 (caso clássico)", () => {
-    expect(funcao(04,01,2019)).toBe(5);
+    expect( funcao(5,1,2019)).toBe(5);
 });
 
 test("06/01/2019 retorna 6 (caso clássico)", () => {
-    expect(funcao(05,01,2019)).toBe(6);
+    expect( funcao(6,1,2019)).toBe(6);
 });
 
 test("07/01/2019 retorna 0 (caso clássico)", () => {
-    expect(funcao(06,01,2019)).toBe(7);
+    expect( funcao(7,1,2019)).toBe(0);
 });
 
 
 test("argumentos null/undefined", () => {
-    expect(() => {funcao(); }).toThrow();
+    expect( () => {funcao(); }).toThrow();
 });
 
 test("ano null/undefined", () => {
