@@ -35,7 +35,7 @@ function validaArgumentoNumericoObrigatorio(numero){
  * @throws {TypeError} Caso o número não seja inteiro.
  */
 function validaInteiro(numero) {
-    if(numero%1 !== 0){
+    if(!Number.isInteger(numero)){
         throw new TypeError("Número não inteiro.");
     }
 }
@@ -191,7 +191,9 @@ function exibeNomeDiaDaSemana(s) {
 function mod(dividendo, divisor) {
     validaArgumentoNumericoObrigatorio(dividendo);
     validaArgumentoNumericoObrigatorio(divisor);
-	
+    validaInteiro(dividendo);
+    validaInteiro(divisor);
+
     if (dividendo < 0 || divisor <= 0 ) {
         throw new InvalidArgumentException("Argumentos inválidos.");
     }
