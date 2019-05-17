@@ -665,4 +665,26 @@ function cpf2(d) {
     return (j == d[9]) && (k == d[10]);
 }
 
-module.exports = { propriedade3025 : propriedade3025 };
+module.exports = {
+    propriedade3025 : propriedade3025,
+    propriedade153 : propriedade153,
+    diaDaSemana : diaDaSemana,
+    mod : mod,
+    produto : produto,
+    potencia : potencia,
+    pi : pi,
+    somaNaturais : somaNaturais,
+    fatorial : fatorial,
+    primo : primo,
+    logaritmoNatural : logaritmoNatural,
+    razaoAurea : razaoAurea,
+    quadradoPerfeito : quadradoPerfeito,
+    raizQuadrada : raizQuadrada,
+    crivoEratostenes : crivoEratostenes,
+    mdc : mdc,
+    mdc2 : mdc2,
+    fibonacci : fibonacci,
+    horner : horner,
+    cpf : cpf,
+    cpf2 : cpf2
+};
