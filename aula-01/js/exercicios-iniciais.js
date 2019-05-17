@@ -82,6 +82,7 @@ function propriedade3025(n) {
  */
 function propriedade153(cdu) {
     validaArgumentoNumericoObrigatorio(cdu);
+    validaInteiro(cdu);
     if (cdu < 100 || cdu > 999) {
         throw new RangeError("Número Inválido!");
     }
