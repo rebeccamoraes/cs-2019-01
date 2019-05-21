@@ -35,7 +35,7 @@ function validaArgumentoNumericoObrigatorio(numero){
  * @throws {TypeError} Caso o número não seja inteiro.
  */
 function validaInteiro(numero) {
-    if(numero%1 !== 0){
+    if(!Number.isInteger(numero)){
         throw new TypeError("Número não inteiro.");
     }
 }
@@ -82,6 +82,7 @@ function propriedade3025(n) {
  */
 function propriedade153(cdu) {
     validaArgumentoNumericoObrigatorio(cdu);
+    validaInteiro(cdu);
     if (cdu < 100 || cdu > 999) {
         throw new RangeError("Número Inválido!");
     }
@@ -111,17 +112,23 @@ function validaData(dia, mes, ano){
     if(dia == null || mes == null || ano == null){
         throw new InvalidArgumentException("Data inválida. Valor(es) nulo(s).");
     }
+
     if(isNaN(dia) || isNaN(mes) || isNaN(ano)){
         throw new TypeError("Data inválida. Valor(es) não numérico(s).");
     }
+
+    validaInteiro(dia);
+    validaInteiro(mes);
+    validaInteiro(ano);
+
     if(dia < 1 || dia > 31){
-        throw new InvalidArgumentException("Dia inválido!");
+        throw new RangeError("Dia inválido!");
     }
     if(mes < 1 || mes > 12){
-        throw new InvalidArgumentException("Mês inválido!");
+        throw new RangeError("Mês inválido!");
     }
     if(ano < 1753){
-        throw new InvalidArgumentException("Ano inválido");
+        throw new RangeError("Ano inválido");
     }	
 }
 
@@ -184,7 +191,9 @@ function exibeNomeDiaDaSemana(s) {
 function mod(dividendo, divisor) {
     validaArgumentoNumericoObrigatorio(dividendo);
     validaArgumentoNumericoObrigatorio(divisor);
-	
+    validaInteiro(dividendo);
+    validaInteiro(divisor);
+
     if (dividendo < 0 || divisor <= 0 ) {
         throw new InvalidArgumentException("Argumentos inválidos.");
     }
@@ -665,4 +674,26 @@ function cpf2(d) {
     return (j == d[9]) && (k == d[10]);
 }
 
-module.exports = { propriedade3025 : propriedade3025 };
+module.exports = {
+    propriedade3025 : propriedade3025,
+    propriedade153 : propriedade153,
+    diaDaSemana : diaDaSemana,
+    mod : mod,
+    produto : produto,
+    potencia : potencia,
+    pi : pi,
+    somaNaturais : somaNaturais,
+    fatorial : fatorial,
+    primo : primo,
+    logaritmoNatural : logaritmoNatural,
+    razaoAurea : razaoAurea,
+    quadradoPerfeito : quadradoPerfeito,
+    raizQuadrada : raizQuadrada,
+    crivoEratostenes : crivoEratostenes,
+    mdc : mdc,
+    mdc2 : mdc2,
+    fibonacci : fibonacci,
+    horner : horner,
+    cpf : cpf,
+    cpf2 : cpf2
+};
