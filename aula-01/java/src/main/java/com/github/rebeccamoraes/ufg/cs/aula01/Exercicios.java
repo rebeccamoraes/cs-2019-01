@@ -33,7 +33,6 @@ public class Exercicios {
         return ((i + j) * (i + j)) == n;
     }
 
-    //Algoritmo 2 - Propriedade 153
     public static boolean propriedade153(int cdu) {
         if ((cdu < 100) || (cdu > 999)) {
             throw new IllegalArgumentException("Número Inválido!");
@@ -49,6 +48,14 @@ public class Exercicios {
     // TODO nao seria melhor ano em vez de a?
     // TODO nao seria melhor mes em vez de m?
     // TODO não seria melhor dia em vez de d?
+
+    /**
+     * Produz o dia da semana para uma data fornecida.
+     * @param d a
+     * @param m a
+     * @param a sdfg
+     * @return sfdsdg
+     */
     public static int diaDaSemana(int d, int m, int a) {
         if ((d < 1) || (d > 31)) {
             throw new IllegalArgumentException("Dia inválido.");
