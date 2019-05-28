@@ -1,5 +1,7 @@
 package com.github.rebeccamoraes.ufg.cs.aula01;
 
+import com.sun.tools.javac.comp.Todo;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -7,21 +9,20 @@ import java.util.Arrays;
 public class Exercicios {
 
     public static void main(String[] args) {
-        System.out.println("Isso NAO É um teste!");
-        System.out.println("Propriedade 3025 do número 3025 :" + propriedade3025(3025));
-        //System.out.println("Propriedade 3025 do número 10000 :" + propriedade3025(10000));
-        System.out.println("Propriedade 153 do número 153 :" + propriedade153(153));
-        System.out.println("Dia da semana: " + diaDaSemana(26, 4, 2019));
-        System.out.println("Resto 10/6: " + mod(10, 6));
-        System.out.println("Soma dos 13 primeiros numeros naturais: " + somaNaturais(13));
-        System.out.println("Fatorial de 6: " + fatorial(6));
-        System.out.println("Produto de 7 e 9: " + produto(7, 9));
-        System.out.println("Potencia 2 ^ 10: " + potencia(2, 10));
-        System.out.println("Valor de pi(10): " + pi(10));
+ 
     }
 
-
-    //Algoritmo 1 - Propriedade 3025
+    /**
+     * Verifica se o argumento fornecido é um número que possui a propriedade 3025.
+     *
+     * @param n Número inteiro à ser verificado.
+     *
+     * @return Verdadeiro, caso o número possua a propriedade 3025, ou
+     * falso, caso contrário.
+     *
+     * @throws IllegalArgumentException Lança exceção caso o valor do parâmetro seja menor
+     * que 0 ou maior que 9999.
+     */
     public static boolean propriedade3025(int n) {
         if (n < 0 || n > 9999) {
             throw new IllegalArgumentException("Número Inválido!");
@@ -50,11 +51,20 @@ public class Exercicios {
     // TODO não seria melhor dia em vez de d?
 
     /**
-     * Produz o dia da semana para uma data fornecida.
-     * @param d a
-     * @param m a
-     * @param a sdfg
-     * @return sfdsdg
+     * Define o dia da semana para uma data
+     *
+     * @param dia Número inteiro referente ao dia
+     * @param mes Número inteiro referente ao mês
+     * @param ano Número inteiro referente ao ano
+     *
+     * @return Número inteiro referente ao dia da semana correspondente
+     * à data fornecida.
+     *
+     * @throws  IllegalArgumentException Caso valor de dia seja menor que 1 ou
+     * maior que 31.
+     * @throws IllegalArgumentException Caso valor de mes seja menor que 1 ou
+     * maior que 12.
+     * @throws IllegalArgumentException Caso valor de ano seja menor que 1753.
      */
     public static int diaDaSemana(int d, int m, int a) {
         if ((d < 1) || (d > 31)) {
@@ -80,7 +90,17 @@ public class Exercicios {
         return s % 7;
     }
 
-    //Algoritmo 4 - Resto da Divisão Inteira
+    /**
+     * Calcula o resto da divisão do "dividendo" pelo "divisor" informados.
+     *
+     * @param dividendo número a ser dividido.
+     * @param divisor número pelo qual o dividendo será dividido.
+     *
+     * @return Resto inteiro da divisão do divisor pelo dividendo.
+     *
+     * @throws IllegalArgumentException Caso o valor do dividendo menor ou
+     * igual a 0 ou o divisor não seja menor que zero.
+     */
     public static int mod(int x, int y) {
         if (y < 0 || x <= 0) {
             throw new IllegalArgumentException("Argumentos inválidos.");
@@ -93,7 +113,15 @@ public class Exercicios {
         return s;
     }
 
-    //Algoritmo 5 - Soma dos primeiros naturais
+    /**
+     * Calcula a soma dos N primeiros números naturais
+     *
+     * @param n quantidade de números à serem somados.
+     *
+     * @return Número correspondente à soma dos n primeiros números naturais.
+     *
+     * @throws IllegalArgumentException Caso n seja menor que 1.
+     */
     public static int somaNaturais(int n) {
         if (n < 1) {
             throw new IllegalArgumentException("Número Inválido!");
@@ -107,7 +135,14 @@ public class Exercicios {
         return s;
     }
 
-    //Algoritmo 6 - Fatorial
+    /**
+     * Calcula o fatorial de um numero n
+     * @param n número inteiro sobre o qual deseja-se obter o fatorial.
+     *
+     * @return Número inteiro correspondente ao fatorial do número n.
+     *
+     * @throws IllegalArgumentException Caso o valor de n seja menor que 1.
+     */
     public static int fatorial(int n) {
         if (n < 1) {
             throw new IllegalArgumentException("Número inválido.");
@@ -121,7 +156,18 @@ public class Exercicios {
         return f;
     }
 
-    //Algoritmo 7 - Produto de Inteiros Usando Somas
+    /**
+     * Calcula o produto de dois números inteiros usando somas
+     *
+     * @param a primeiro número inteiro à ser multiplicado.
+     * @param b segundo número inteiro à ser multiplicado.
+     *
+     * @return Número inteiro correspondente ao produto dos dois inteiros
+     * fornecidos.
+     *
+     * @throws IllegalArgumentException Caso o valor de a ou de b seja menor
+     * que zero.
+     */
     public static int produto(int a, int b) {
         if (a < 0 || b < 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
@@ -141,7 +187,18 @@ public class Exercicios {
         return s;
     }
 
-    //Algoritmo 8 - Potência Usando Somas
+    //TODO renomear x e y como base e expoente
+    /**
+     * Calcula potencia utilizando somas
+     *
+     * @param x número inteiro usado como base da potência.
+     * @param y número inteiro usado como expoente da potência.
+     *
+     * @return Resultado da base  elevada ao expoente.
+     *
+     * @throws IllegalArgumentException Caso o valor da base ou do expoente
+     * seja(m) menor(es) que zero.
+     */
     public static int potencia(int x, int y) {
         if (x < 0 || y < 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
@@ -155,7 +212,17 @@ public class Exercicios {
         return potencia;
     }
 
-    //Algoritmo 9 -Valor de PI
+    //TODO renomear n para precisão
+    /**
+     * Calcula o valor de PI de acordo com a precisão fornecida
+     *
+     * @param n número de precisão de PI.
+     *
+     * @return Valor de PI, com a precisão fornecida.
+     *
+     * @throws IllegalArgumentException Caso o valor de precisão seja menor
+     * que 1.
+     */
     public static double pi(int n) {
         if (n < 1) {
             throw new IllegalArgumentException("Número inválido.");
@@ -174,7 +241,18 @@ public class Exercicios {
         return p;
     }
 
-    //Algoritmo 10 - Logaritmo Natural
+    /**
+     * Calcula o valor do logaritmo natural, dados n e k
+     *
+     * @param n expoente natural positivo
+     * @param k número inteiro que define a quantidade de termos empregados
+     *         pelo somatório (precisão).
+     *
+     * @return Logaritmo natural (e^n).
+     *
+     * @throws IllegalArgumentException Caso os argumentos não atendam as
+     * seguintes exigências: 1 <= n e 2 <= k.
+     */
     public static double logaritmoNatural(int n, int k) {
         if (n < 1 || k < 2) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
@@ -190,7 +268,19 @@ public class Exercicios {
         return e;
     }
 
-    //Algoritmo 11 - Razão Áurea
+    /**
+     * Calcula a Razão Áurea da sequência iniciada por X e y e finalizada no
+     * k-ésimo número.
+     *
+     * @param x primeiro número da sequência
+     * @param y segundo número da sequência
+     * @param k posição do último número da sequência
+     *
+     * @return Razão entre o o k-ésimo e o (k-1)-ésimo número da sequência.
+     *
+     * @throws IllegalArgumentException Caso os argumentos não atendam os
+     * sequintes requisitos 0 <= x, x < y e 0 < k
+     */
     public static double razaoAurea(int x, int y, int k) {
         if (x < 0 || x > y || k <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
@@ -205,7 +295,16 @@ public class Exercicios {
         return c / a;
     }
 
-    //Algoritmo 12 - Quadrado Perfeito
+    /**
+     * Verifica se o número fornecido satisfaz a equação que define um quadrado
+     * perfeito.
+     *
+     * @param n número a ser verificado
+     *
+     * @return True, caso o número satisfaça a equação, ou False, caso contrário.
+     *
+     * @throws IllegalArgumentException Caso o número seja menor que 1.
+     */
     public static boolean quadradoPerfeito(int n) {
         if (n < 1) {
             throw new IllegalArgumentException("Número inválido.");
@@ -218,7 +317,18 @@ public class Exercicios {
         return s == n;
     }
 
-    //Algoritmo 13 - Raiz Quadrada
+    //TODO renomear i para precisao
+    /**
+     * Calcula a raiz quadrada de um número n, com precisão fornecida de
+     * acordo com o Método Babilônico.
+     *
+     * @param n número para cálculo da raiz quadrada
+     * @param i precisão
+     *
+     * @return Raiz quadrada do número n com precisão i.
+     *
+     * @throws IllegalArgumentException Caso n seja menor ou igual a 0.
+     */
     public static double raiz(int n, int i) {
         if (n <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
@@ -231,7 +341,15 @@ public class Exercicios {
         return r;
     }
 
-    //Algoritmo 14 - Número Primo
+    /**
+     * Verifica se o número fornecido é primo.
+     *
+     * @param n número a ser verificado.
+     *
+     * @return True caso o número seja primo, ou false, caso contrário.
+     *
+     * @throws IllegalArgumentException Caso n seja menor ou igual a 1.
+     */
     public static boolean primo(int n) {
         if (n <= 1) {
             throw new IllegalArgumentException("Número inválido.");
@@ -245,8 +363,19 @@ public class Exercicios {
         }
         return true;
     }
-
-    //Algoritmo 15 - Crivo de Eratóstenes
+    // TODO renomear n para tamanho
+    // TODO renomear a para vetor
+    /**
+     * Identifica os índices primos de um array até a n-ésima posição
+     * fornecida, através do método de determinação de números primos
+     * conhecido por Crivo de Eratostenes.
+     *
+     * @param a vetor cujos índices serão verificados.
+     * @param n tamanho do vetor.
+     *
+     * @throws IllegalArgumentException Caso o temanho do vetor seja menor
+     * ou igual a 1.
+     */
     public static void crivoEratostenes(int a[], int n) {
         if (n <= 1) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
@@ -267,7 +396,17 @@ public class Exercicios {
         }
     }
 
-    //Algoritmo 16 - Maior Divisor Comum
+    /**
+     * Calcula o Maior divisor comum entre dois inteiros fornecidos.
+     *
+     * @param a primeiro número inteiro.
+     * @param b segundo número inteiro.
+     *
+     * @return Maior divisor comum entre os valores de a e b.
+     *
+     * @throws IllegalArgumentException  Caso os argumentos não atendam os
+     * sequintes requisitos: b <= a e 0 < b.
+     */
     public static int mdc(int a, int b) {
         if (b > a || b <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválidos!");
@@ -281,7 +420,18 @@ public class Exercicios {
         return a;
     }
 
-    //Algoritmo 17 - Maior Divisor Comum
+    /**
+     * Calcula o Maior divisor comum entre dois inteiros fornecidos.
+     * (Implementação alternativa)
+     *
+     * @param a primeiro número inteiro.
+     * @param b segundo número inteiro.
+     *
+     * @return Maior divisor comum entre os valores de a e b.
+     *
+     * @throws IllegalArgumentException  Caso os argumentos não atendam os
+     * sequintes requisitos: b <= a e 0 < b.
+     */
     public static int mdc2(int a, int b) {
         if (b > a || b <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválidos!");
@@ -296,7 +446,20 @@ public class Exercicios {
         return a;
     }
 
-    //Algoritmo 18 - Regra de Horner para avaliação de polinômio
+    //TODO alterar nome do método para AvaliacaoPolinomialHorner
+    //TODO renomear g para grau
+    /**
+     * Avalia um polinômio de acordo com a Regra de Horner.
+     *
+     * @param x valor da incógnita para avaliação do polinômio.
+     * @param g grau do polinômio
+     * @param a vetor com os coeficientes do polinômio.
+     *
+     * @return Resultado da somatória dos produtos e potências do polinômio.
+     *
+     * @throws IllegalArgumentException Caso o grau do polinômio seja menor
+     * que 1.
+     */
     public static int horner(int x, int g, int a[]) {
         if (g < 1) {
             throw new IllegalArgumentException("Número inválido!");
@@ -310,7 +473,15 @@ public class Exercicios {
         return p;
     }
 
-    //algoritmo 19 - Fibonacci
+    /**
+     * Calcula o n-ésimo termo da sequência de Fibonacci.
+     *
+     * @param n posição do termo a ser obtido.
+     *
+     * @return n-ésimo termo da sequência de Fibonacci.
+     *
+     * @throws IllegalArgumentException Caso n seja menor que 0.
+     */
     public static int fibonacci(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Número inválido!");
@@ -330,7 +501,13 @@ public class Exercicios {
         return c;
     }
 
-    //algoritmo 20 - Cadastro de Pessoas Físicas (CPF)
+    /**
+     * Valida CPF (Cadastro de Pessoas Físicas)
+     *
+     * @param d vetor contendo os dígitos do CPF a ser verificado.
+     *
+     * @return True caso o cpf informado seja válido, ou false, caso contrário.
+     */
     public static boolean cpf(int d[]) {
         int j = d[0] + 2 * d[1] + 3 * d[2] + 4 * d[3] + 5 * d[4] + 6 * d[5] + 7 * d[6]
                 + 8 * d[7] + 9 * d[8];
@@ -341,7 +518,13 @@ public class Exercicios {
         return (dj == d[9] && dk == d[10]);
     }
 
-    //algoritmo 21 - Cadastro de Pessoas Físicas (CPF)
+    /**
+     * Valida CPF (Cadastro de Pessoas Físicas) - Versão Alternativa
+     *
+     * @param d vetor contendo os dígitos do CPF a ser verificado.
+     *
+     * @return True caso o cpf informado seja válido, ou false, caso contrário.
+     */
     public static boolean cpf2(int d[]) {
         int c = 7, p = d[8], s = d[8];
         while (0 <= c) {
