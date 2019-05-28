@@ -21,7 +21,7 @@ public class Exercicios {
      * @throws IllegalArgumentException Lança exceção caso o valor do parâmetro seja menor
      * que 0 ou maior que 9999.
      */
-    public static boolean propriedade3025(int n) {
+    public static boolean propriedade3025(final int n) {
         if (n < 0 || n > 9999) {
             throw new IllegalArgumentException("Número Inválido!");
         }
@@ -32,7 +32,7 @@ public class Exercicios {
         return ((i + j) * (i + j)) == n;
     }
 
-    public static boolean propriedade153(int cdu) {
+    public static boolean propriedade153(final int cdu) {
         if ((cdu < 100) || (cdu > 999)) {
             throw new IllegalArgumentException("Número Inválido!");
         }
@@ -60,7 +60,7 @@ public class Exercicios {
      * maior que 12.
      * @throws IllegalArgumentException Caso valor de ano seja menor que 1753.
      */
-    public static int diaDaSemana(int dia, int mes, int ano) {
+    public static int diaDaSemana(final int dia, final int mes, final int ano) {
         if ((dia < 1) || (dia > 31)) {
             throw new IllegalArgumentException("Dia inválido.");
         } else if ((mes < 1) || (mes > 12)) {
@@ -69,18 +69,20 @@ public class Exercicios {
             throw new IllegalArgumentException("Ano inválido.");
         }
 
-        // TODO faça o equivalente no código em JS
         try {
             LocalDate.of(ano, mes, dia);
         } catch (DateTimeException excecao) {
             throw new IllegalArgumentException("data inválida", excecao);
         }
-
-        if (m == 1 || m == 2) {
-            m += 12;
-            a += 1;
+        int mesAuxiliar = mes;
+        int anoAuxiliar = ano;
+        if (mes == 1 || mes == 2) {
+            mesAuxiliar += 12;
+            anoAuxiliar += 1;
         }
-        int s = d + 2 * m + (3 * (m + 1)) / 5 + a + a / 4 - a / 100 + a / 400;
+        int s = dia + 2 * mesAuxiliar + (3 * (mesAuxiliar + 1)) / 5
+                + anoAuxiliar + anoAuxiliar / 4 - anoAuxiliar / 100
+                + anoAuxiliar / 400;
         return s % 7;
     }
 
@@ -95,7 +97,7 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso o valor do dividendo menor ou
      * igual a 0 ou o divisor não seja menor que zero.
      */
-    public static int mod(int dividendo, int divisor) {
+    public static int mod(final int dividendo, final int divisor) {
         if (divisor < 0 || dividendo <= 0) {
             throw new IllegalArgumentException("Argumentos inválidos.");
         }
@@ -116,7 +118,7 @@ public class Exercicios {
      *
      * @throws IllegalArgumentException Caso n seja menor que 1.
      */
-    public static int somaNaturais(int n) {
+    public static int somaNaturais(final int n) {
         if (n < 1) {
             throw new IllegalArgumentException("Número Inválido!");
         }
@@ -137,7 +139,7 @@ public class Exercicios {
      *
      * @throws IllegalArgumentException Caso o valor de n seja menor que 1.
      */
-    public static int fatorial(int n) {
+    public static int fatorial(final int n) {
         if (n < 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
@@ -153,16 +155,16 @@ public class Exercicios {
     /**
      * Calcula o produto de dois números inteiros usando somas
      *
-     * @param a primeiro número inteiro à ser multiplicado.
-     * @param b segundo número inteiro à ser multiplicado.
+     * @param fator1 primeiro número inteiro à ser multiplicado.
+     * @param fator2 segundo número inteiro à ser multiplicado.
      *
      * @return Número inteiro correspondente ao produto dos dois inteiros
      * fornecidos.
      *
-     * @throws IllegalArgumentException Caso o valor de a ou de b seja menor
-     * que zero.
+     * @throws IllegalArgumentException Caso o valor de fator1 ou de fator2
+     * seja(m) menor(e) que zero.
      */
-    public static int produto(int fator1, int fator2) {
+    public static int produto(final int fator1, final int fator2) {
         if (fator1 < 0 || fator2 < 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -192,7 +194,7 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso o valor da base ou do expoente
      * seja(m) menor(es) que zero.
      */
-    public static int potencia(int base, int expoente) {
+    public static int potencia(final int base, final int expoente) {
         if (base < 0 || expoente < 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -216,7 +218,7 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso o valor de precisão seja menor
      * que 1.
      */
-    public static double pi(int n) {
+    public static double pi(final int n) {
         if (n < 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
@@ -246,7 +248,7 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso os argumentos não atendam as
      * seguintes exigências: 1 <= n e 2 <= k.
      */
-    public static double logaritmoNatural(int expoente, int precisao) {
+    public static double logaritmoNatural(final int expoente, final int precisao) {
         if (expoente < 1 || precisao < 2) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -274,7 +276,7 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso os argumentos não atendam os
      * sequintes requisitos 0 <= x, x < y e 0 < k
      */
-    public static double razaoAurea(int x, int y, int k) {
+    public static double razaoAurea(final int x, final int y, final int k) {
         if (x < 0 || x > y || k <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -298,7 +300,7 @@ public class Exercicios {
      *
      * @throws IllegalArgumentException Caso o número seja menor que 1.
      */
-    public static boolean quadradoPerfeito(int n) {
+    public static boolean quadradoPerfeito(final int n) {
         if (n < 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
@@ -321,14 +323,15 @@ public class Exercicios {
      *
      * @throws IllegalArgumentException Caso n seja menor ou igual a 0.
      */
-    public static double raizQuadrada(int n, int precisao) {
+    public static double raizQuadrada(final int n, final int precisao) {
         if (n <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
         int r = 1;
-        while (0 <= precisao) {
+        int precisaoAuxiliar = precisao;
+        while (0 <= precisaoAuxiliar) {
             r = (r + n / r) / 2;
-            precisao++;
+            precisaoAuxiliar--;
         }
         return r;
     }
@@ -342,7 +345,7 @@ public class Exercicios {
      *
      * @throws IllegalArgumentException Caso n seja menor ou igual a 1.
      */
-    public static boolean primo(int n) {
+    public static boolean primo(final int n) {
         if (n <= 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
@@ -367,7 +370,7 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso o temanho do vetor seja menor
      * ou igual a 1.
      */
-    public static void crivoEratostenes(int[] vetor, int tamanho) {
+    public static void crivoEratostenes(final int[] vetor, final int tamanho) {
         if (tamanho <= 1) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -398,17 +401,19 @@ public class Exercicios {
      * @throws IllegalArgumentException  Caso os argumentos não atendam os
      * sequintes requisitos: segundoNumero <= primeiroNumero e 0 < segundoNumero.
      */
-    public static int mdc(int primeiroNumero, int segundoNumero) {
+    public static int mdc(final int primeiroNumero, final int segundoNumero) {
         if (segundoNumero > primeiroNumero || segundoNumero <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválidos!");
         }
         int m;
-        while (segundoNumero != 0) {
+        int aux1 = primeiroNumero;
+        int aux2 = segundoNumero;
+        while (aux2 != 0) {
             m = primeiroNumero % segundoNumero;
-            primeiroNumero = segundoNumero;
-            segundoNumero = m;
+            aux1 = aux2;
+            aux2 = m;
         }
-        return primeiroNumero;
+        return aux1;
     }
 
     /**
@@ -423,18 +428,22 @@ public class Exercicios {
      * @throws IllegalArgumentException  Caso os argumentos não atendam os
      *      * sequintes requisitos: segundoNumero <= primeiroNumero e 0 < segundoNumero.
      */
-    public static int mdc2(int primeiroNumero, int segundoNumero) {
+    public static int mdc2(final int primeiroNumero, final int segundoNumero) {
         if (segundoNumero > primeiroNumero || segundoNumero <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválidos!");
         }
-        while (primeiroNumero != segundoNumero) {
-            if (primeiroNumero > segundoNumero) {
-                primeiroNumero -= segundoNumero;
+
+        int aux1 = primeiroNumero;
+        int aux2 = segundoNumero;
+
+        while (aux1 != aux2) {
+            if (aux1 > aux2) {
+                aux1 -= aux2;
             } else {
-                segundoNumero -= primeiroNumero;
+                aux2 -= aux1;
             }
         }
-        return primeiroNumero;
+        return aux1;
     }
 
     /**
@@ -449,16 +458,19 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso o grau do polinômio seja menor
      * que 1.
      */
-    public static int AvaliacaoPolinomialHorner(int x, int grau, int[] coeficientes) {
+    public static int AvaliacaoPolinomialHorner(final int x, final int grau, final int[] coeficientes) {
         if (grau < 1) {
             throw new IllegalArgumentException("Número inválido!");
         }
+
         int p = coeficientes[grau];
         int i = grau - 1;
+
         while (0 <= i) {
             p = p * x + coeficientes[i];
             i--;
         }
+
         return p;
     }
 
@@ -471,22 +483,27 @@ public class Exercicios {
      *
      * @throws IllegalArgumentException Caso n seja menor que 0.
      */
-    public static int fibonacci(int n) {
+    public static int fibonacci(final int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Número inválido!");
         }
+
         int a = 0;
         int c = 1;
+
         if (n == 0 || n == 1) {
             return n;
         }
+
         int i = 2;
+
         while (i <= n) {
             int t = c;
             c += a;
             a = t;
             i++;
         }
+
         return c;
     }
 
@@ -497,7 +514,7 @@ public class Exercicios {
      *
      * @return True caso o cpf informado seja válido, ou false, caso contrário.
      */
-    public static boolean validaCPF(int[] cpf) {
+    public static boolean validaCPF(final int[] cpf) {
         int j = cpf[0] + 2 * cpf[1] + 3 * cpf[2] + 4 * cpf[3] + 5 * cpf[4] + 6 * cpf[5] + 7 * cpf[6]
                 + 8 * cpf[7] + 9 * cpf[8];
         int k = cpf[1] + 2 * cpf[2] + 3 * cpf[3] + 4 * cpf[4] + 5 * cpf[5] + 6 * cpf[6] + 7 * cpf[7]
@@ -514,7 +531,7 @@ public class Exercicios {
      *
      * @return True caso o cpf informado seja válido, ou false, caso contrário.
      */
-    public static boolean validaCPF2(int[] cpf) {
+    public static boolean validaCPF2(final int[] cpf) {
         int c = 7, p = cpf[8], s = cpf[8];
         while (0 <= c) {
             p += cpf[c];
