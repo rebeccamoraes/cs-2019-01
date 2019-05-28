@@ -458,7 +458,7 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso o grau do polinômio seja menor
      * que 1.
      */
-    public static int AvaliacaoPolinomialHorner(finaç int x, final int grau, final int[] coeficientes) {
+    public static int AvaliacaoPolinomialHorner(final int x, final int grau, final int[] coeficientes) {
         if (grau < 1) {
             throw new IllegalArgumentException("Número inválido!");
         }
