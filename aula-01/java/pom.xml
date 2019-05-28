@@ -220,7 +220,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <show>public</show>
+                    <show>public</show>]
                 </configuration>
             </plugin>
 
@@ -833,9 +833,6 @@
                         <version>3.0.1</version>
                         <configuration>
                             <show>public</show>
-                            <additionalOptions>
-                                <additionalOption>-html5</additionalOption>
-                            </additionalOptions>
                         </configuration>
                         <executions>
                             <execution>
