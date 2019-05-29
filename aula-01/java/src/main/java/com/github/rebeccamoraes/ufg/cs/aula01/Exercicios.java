@@ -4,44 +4,60 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-public class Exercicios {
+/**
+ *
+ * @author Rebecca Moraes
+ */
+public final class Exercicios {
 
-    public static void main(String[] args) {
-
-    }
+    private Exercicios(){}
 
     /**
-     * Verifica se o argumento fornecido é um número que possui a propriedade 3025.
+     * Verifica se o argumento fornecido é um número que possui a propriedade
+     * 3025.
      *
-     * @param n Número inteiro à ser verificado.
+     * @param numero Número inteiro à ser verificado.
      *
      * @return Verdadeiro, caso o número possua a propriedade 3025, ou
      * falso, caso contrário.
      *
-     * @throws IllegalArgumentException Lança exceção caso o valor do parâmetro seja menor
-     * que 0 ou maior que 9999.
+     * @throws IllegalArgumentException Lança exceção caso o valor do parâmetro
+     * seja menor que 0 ou maior que 9999.
      */
-    public static boolean propriedade3025(final int n) {
-        if (n < 0 || n > 9999) {
+    public static boolean propriedade3025(final int numero) {
+        if (numero < 0 || numero > 9999) {
             throw new IllegalArgumentException("Número Inválido!");
         }
 
-        final int i = n / 100;
-        final int j = n % 100;
+        final int doisPrimeirosDigitos = numero / 100;
+        final int doisUltimosDigitos = numero % 100;
 
-        return ((i + j) * (i + j)) == n;
+        return ((doisPrimeirosDigitos + doisUltimosDigitos) * (doisPrimeirosDigitos + doisUltimosDigitos)) == numero;
     }
 
-    public static boolean propriedade153(final int cdu) {
-        if ((cdu < 100) || (cdu > 999)) {
+    /**
+     * Verifica se o argumento fornecido é um número que possui a propriedade
+     * 153.
+     *
+     * @param numero Número inteiro à ser verificado.
+     *
+     * @return Verdadeiro, caso o número possua a propriedade 153, ou
+     * falso, caso contrário.
+     *
+     * @throws IllegalArgumentException Lança exceção caso o valor do parâmetro
+     * seja menor que 100 ou maior que 9999.
+     */
+    public static boolean propriedade153(final int numero) {
+        if (numero < 100 || numero > 999) {
             throw new IllegalArgumentException("Número Inválido!");
         }
-        int c = cdu / 100;
-        int du = cdu % 100;
-        int d = du / 10;
-        int u = du % 10;
 
-        return (Math.pow(c, 3) + Math.pow(d, 3) + Math.pow(u, 3)) == cdu;
+        final int centena = numero / 100;
+        final int dezenaUnidade = numero % 100;
+        final int dezena = dezenaUnidade / 10;
+        final int unidade = dezenaUnidade % 10;
+
+        return (Math.pow(centena, 3) + Math.pow(dezena, 3) + Math.pow(unidade, 3)) == numero;
     }
 
     /**
@@ -61,7 +77,7 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso valor de ano seja menor que 1753.
      */
     public static int diaDaSemana(final int dia, final int mes, final int ano) {
-        if ((dia < 1) || (dia > 31)) {
+        if (dia < 1 || dia > 31) {
             throw new IllegalArgumentException("Dia inválido.");
         } else if ((mes < 1) || (mes > 12)) {
             throw new IllegalArgumentException("Mês inválido.");
@@ -80,10 +96,10 @@ public class Exercicios {
             mesAuxiliar += 12;
             anoAuxiliar += 1;
         }
-        int s = dia + 2 * mesAuxiliar + (3 * (mesAuxiliar + 1)) / 5
+        final int indiceDoDia = dia + 2 * mesAuxiliar + (3 * (mesAuxiliar + 1)) / 5
                 + anoAuxiliar + anoAuxiliar / 4 - anoAuxiliar / 100
                 + anoAuxiliar / 400;
-        return s % 7;
+        return indiceDoDia % 7;
     }
 
     /**
@@ -112,44 +128,44 @@ public class Exercicios {
     /**
      * Calcula a soma dos N primeiros números naturais
      *
-     * @param n quantidade de números à serem somados.
+     * @param numero quantidade de números à serem somados.
      *
      * @return Número correspondente à soma dos n primeiros números naturais.
      *
      * @throws IllegalArgumentException Caso n seja menor que 1.
      */
-    public static int somaNaturais(final int n) {
-        if (n < 1) {
+    public static int somaNaturais(final int numero) {
+        if (numero < 1) {
             throw new IllegalArgumentException("Número Inválido!");
         }
-        int i = 2;
+        int parcela = 2;
         int soma = 1;
-        while (i <= n) {
-            soma += i;
-            i++;
+        while (parcela <= numero) {
+            soma += parcela;
+            parcela++;
         }
         return soma;
     }
 
     /**
      * Calcula o fatorial de um numero n
-     * @param n número inteiro sobre o qual deseja-se obter o fatorial.
+     * @param numero número inteiro sobre o qual deseja-se obter o fatorial.
      *
      * @return Número inteiro correspondente ao fatorial do número n.
      *
      * @throws IllegalArgumentException Caso o valor de n seja menor que 1.
      */
-    public static int fatorial(final int n) {
-        if (n < 1) {
+    public static int fatorial(final int numero) {
+        if (numero < 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
-        int i = 2;
-        int f = 1;
-        while (i <= n) {
-            f *= i;
-            i++;
+        int fator = 2;
+        int fatorialParcial = 1;
+        while (fator <= numero) {
+            fatorialParcial *= fator;
+            fator++;
         }
-        return f;
+        return fatorialParcial;
     }
 
     /**
@@ -168,18 +184,23 @@ public class Exercicios {
         if (fator1 < 0 || fator2 < 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
+
         int totalParcelas = fator1;
         int parcela = fator2;
+
         if (fator2 < fator1) {
             totalParcelas = fator2;
             parcela = fator1;
         }
-        int i = 1;
+
+        int indice = 1;
         int soma = 0;
-        while (i <= totalParcelas) {
+
+        while (indice <= totalParcelas) {
             soma += parcela;
-            i++;
+            indice++;
         }
+
         return soma;
     }
     
@@ -194,46 +215,49 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso o valor da base ou do expoente
      * seja(m) menor(es) que zero.
      */
-    public static int potencia(final int base, final int expoente) {
+    public static int potenciaUtilizandoSomas(final int base, final int expoente) {
         if (base < 0 || expoente < 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
+
         int potencia = 1;
-        int i = 1;
-        while (i <= expoente) {
+        int indice = 1;
+
+        while (indice <= expoente) {
             potencia = produto(potencia, base);
-            i++;
+            indice++;
         }
+
         return potencia;
     }
 
-    //TODO renomear n para precisão
     /**
      * Calcula o valor de PI de acordo com a precisão fornecida
      *
-     * @param n número de precisão de PI.
+     * @param precisao número de precisão de PI.
      *
      * @return Valor de PI, com a precisão fornecida.
      *
      * @throws IllegalArgumentException Caso o valor de precisão seja menor
      * que 1.
      */
-    public static double pi(final int n) {
-        if (n < 1) {
+    public static double calculaPi(final int precisao) {
+        if (precisao < 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
-        double i, s, d, p;
-        i = 1;
-        s = -1;
-        d = -1;
-        p = 0;
-        while (i <= n) {
+
+        double contador = 1;
+        double s = -1;
+        double d = -1;
+        double piParcial = 0;
+
+        while (contador <= precisao) {
             d += 2;
             s *= -1;
-            p = p + 4 * s / d;
-            i++;
+            piParcial = piParcial + 4 * s / d;
+            contador++;
         }
-        return p;
+        return piParcial;
     }
 
     /**
@@ -252,110 +276,129 @@ public class Exercicios {
         if (expoente < 1 || precisao < 2) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
-        double e = 1 + expoente;
-        int i = 2, numerador = expoente, denominador = 1;
-        while (i <= precisao) {
+
+        double logaritmo = 1 + expoente;
+        int precisaoParcial = 2;
+        int numerador = expoente;
+        int denominador = 1;
+
+        while (precisaoParcial <= precisao) {
             numerador *= numerador;
-            denominador *= i;
-            e = e + numerador / denominador;
-            i++;
+            denominador *= precisaoParcial;
+            logaritmo = logaritmo + numerador / denominador;
+            precisaoParcial++;
         }
-        return e;
+        return logaritmo;
     }
 
     /**
      * Calcula a Razão Áurea da sequência iniciada por X e y e finalizada no
      * k-ésimo número.
      *
-     * @param x primeiro número da sequência
-     * @param y segundo número da sequência
-     * @param k posição do último número da sequência
+     * @param primeiroNumero primeiro número da sequência
+     * @param segundoNumero segundo número da sequência
+     * @param tamanhoSequencia posição do último número da sequência
      *
      * @return Razão entre o o k-ésimo e o (k-1)-ésimo número da sequência.
      *
      * @throws IllegalArgumentException Caso os argumentos não atendam os
      * sequintes requisitos 0 <= x, x < y e 0 < k
      */
-    public static double razaoAurea(final int x, final int y, final int k) {
-        if (x < 0 || x > y || k <= 0) {
+    public static double razaoAurea(final int primeiroNumero, final int segundoNumero, final int tamanhoSequencia) {
+        if (primeiroNumero < 0 || primeiroNumero > segundoNumero || tamanhoSequencia <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
-        int t, c = y, a = x, i = 1;
-        while (i <= k) {
-            t = c;
-            c += a;
-            a = t;
-            i++;
+
+        int auxiliar;
+        int ultimoNumero = segundoNumero;
+        int penultimoNumero = primeiroNumero;
+        int contador = 1;
+
+        while (contador <= tamanhoSequencia) {
+            auxiliar = ultimoNumero;
+            ultimoNumero += penultimoNumero;
+            penultimoNumero = auxiliar;
+            contador++;
         }
-        return c / a;
+        return ultimoNumero / penultimoNumero;
     }
 
     /**
      * Verifica se o número fornecido satisfaz a equação que define um quadrado
      * perfeito.
      *
-     * @param n número a ser verificado
+     * @param numero número a ser verificado
      *
      * @return True, caso o número satisfaça a equação, ou False, caso contrário.
      *
      * @throws IllegalArgumentException Caso o número seja menor que 1.
      */
-    public static boolean quadradoPerfeito(final int n) {
-        if (n < 1) {
+    public static boolean quadradoPerfeito(final int numero) {
+        if (numero < 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
-        int i = 1, s = 1;
-        while (s < n) {
+
+        int i = 1;
+        int s = 1;
+
+        while (s < numero) {
             i += 2;
             s += i;
         }
-        return s == n;
+
+        return s == numero;
     }
 
     /**
      * Calcula a raiz quadrada de um número n, com precisão fornecida de
      * acordo com o Método Babilônico.
      *
-     * @param n número para cálculo da raiz quadrada
+     * @param numero número para cálculo da raiz quadrada
      * @param precisao numero inteiro
      *
      * @return Raiz quadrada do número n com precisão i.
      *
      * @throws IllegalArgumentException Caso n seja menor ou igual a 0.
      */
-    public static double raizQuadrada(final int n, final int precisao) {
-        if (n <= 0) {
+    public static double raizQuadrada(final int numero, final int precisao) {
+        if (numero <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
-        int r = 1;
+
+        int raiz = 1;
         int precisaoAuxiliar = precisao;
+
         while (0 <= precisaoAuxiliar) {
-            r = (r + n / r) / 2;
+            raiz = (raiz + numero / raiz) / 2;
             precisaoAuxiliar--;
         }
-        return r;
+
+        return raiz;
     }
 
     /**
      * Verifica se o número fornecido é primo.
      *
-     * @param n número a ser verificado.
+     * @param numero número a ser verificado.
      *
      * @return True caso o número seja primo, ou false, caso contrário.
      *
      * @throws IllegalArgumentException Caso n seja menor ou igual a 1.
      */
-    public static boolean primo(final int n) {
-        if (n <= 1) {
+    public static boolean primo(final int numero) {
+        if (numero <= 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
-        int i = 2;
-        while (i < n) {
-            if (n % i == 0) {
+
+        int divisor = 2;
+
+        while (divisor < numero) {
+            if (numero % divisor == 0) {
                 return false;
             }
-            i++;
+            divisor++;
         }
+
         return true;
     }
 
@@ -374,19 +417,22 @@ public class Exercicios {
         if (tamanho <= 1) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
+
         Arrays.fill(vetor, 2, tamanho - 1, 0);
 
-        int i = tamanho, multiplo;
-        double limite = Math.sqrt(tamanho);
-        while (i <= limite) {
-            if (vetor[i] == 0) {
-                multiplo = i + i;
+        int indice = tamanho;
+        int multiplo;
+        final double limite = Math.sqrt(tamanho);
+
+        while (indice <= limite) {
+            if (vetor[indice] == 0) {
+                multiplo = indice + indice;
                 while (multiplo <= tamanho) {
                     vetor[multiplo] = 1;
-                    multiplo = multiplo + i;
+                    multiplo = multiplo + indice;
                 }
             }
-            i++;
+            indice++;
         }
     }
 
@@ -399,20 +445,24 @@ public class Exercicios {
      * @return Maior divisor comum entre os dois inteiros fornecidos.
      *
      * @throws IllegalArgumentException  Caso os argumentos não atendam os
-     * sequintes requisitos: segundoNumero <= primeiroNumero e 0 < segundoNumero.
+     * sequintes requisitos: segundoNumero <= primeiroNumero e
+     * 0 < segundoNumero.
      */
     public static int mdc(final int primeiroNumero, final int segundoNumero) {
         if (segundoNumero > primeiroNumero || segundoNumero <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválidos!");
         }
-        int m;
+
+        int resto;
         int aux1 = primeiroNumero;
         int aux2 = segundoNumero;
+
         while (aux2 != 0) {
-            m = primeiroNumero % segundoNumero;
+            resto = aux1 % aux2;
             aux1 = aux2;
-            aux2 = m;
+            aux2 = resto;
         }
+
         return aux1;
     }
 
@@ -426,7 +476,8 @@ public class Exercicios {
      * @return Maior divisor comum entre os valores de a e b.
      *
      * @throws IllegalArgumentException  Caso os argumentos não atendam os
-     *      * sequintes requisitos: segundoNumero <= primeiroNumero e 0 < segundoNumero.
+     * sequintes requisitos: segundoNumero <= primeiroNumero
+     * e 0 < segundoNumero.
      */
     public static int mdc2(final int primeiroNumero, final int segundoNumero) {
         if (segundoNumero > primeiroNumero || segundoNumero <= 0) {
@@ -443,13 +494,14 @@ public class Exercicios {
                 aux2 -= aux1;
             }
         }
+
         return aux1;
     }
 
     /**
      * Avalia um polinômio de acordo com a Regra de Horner.
      *
-     * @param x valor da incógnita para avaliação do polinômio.
+     * @param incognita valor da incógnita para avaliação do polinômio.
      * @param grau grau do polinômio
      * @param coeficientes vetor com os coeficientes do polinômio.
      *
@@ -458,20 +510,20 @@ public class Exercicios {
      * @throws IllegalArgumentException Caso o grau do polinômio seja menor
      * que 1.
      */
-    public static int AvaliacaoPolinomialHorner(final int x, final int grau, final int[] coeficientes) {
+    public static int avaliacaoPolinomialHorner(final int incognita, final int grau, final int[] coeficientes) {
         if (grau < 1) {
             throw new IllegalArgumentException("Número inválido!");
         }
 
-        int p = coeficientes[grau];
-        int i = grau - 1;
+        int parcelaAcumulada = coeficientes[grau];
+        int indice = grau - 1;
 
-        while (0 <= i) {
-            p = p * x + coeficientes[i];
-            i--;
+        while (0 <= indice) {
+            parcelaAcumulada = parcelaAcumulada * incognita + coeficientes[indice];
+            indice--;
         }
 
-        return p;
+        return parcelaAcumulada;
     }
 
     /**
@@ -493,18 +545,19 @@ public class Exercicios {
 
         if (n == 0 || n == 1) {
             return n;
+        } else {
+
+            int i = 2;
+
+            while (i <= n) {
+                final int t = c;
+                c += a;
+                a = t;
+                i++;
+            }
+
+            return c;
         }
-
-        int i = 2;
-
-        while (i <= n) {
-            int t = c;
-            c += a;
-            a = t;
-            i++;
-        }
-
-        return c;
     }
 
     /**
@@ -515,13 +568,13 @@ public class Exercicios {
      * @return True caso o cpf informado seja válido, ou false, caso contrário.
      */
     public static boolean validaCPF(final int[] cpf) {
-        int j = cpf[0] + 2 * cpf[1] + 3 * cpf[2] + 4 * cpf[3] + 5 * cpf[4] + 6 * cpf[5] + 7 * cpf[6]
+        final int j = cpf[0] + 2 * cpf[1] + 3 * cpf[2] + 4 * cpf[3] + 5 * cpf[4] + 6 * cpf[5] + 7 * cpf[6]
                 + 8 * cpf[7] + 9 * cpf[8];
-        int k = cpf[1] + 2 * cpf[2] + 3 * cpf[3] + 4 * cpf[4] + 5 * cpf[5] + 6 * cpf[6] + 7 * cpf[7]
+        final int k = cpf[1] + 2 * cpf[2] + 3 * cpf[3] + 4 * cpf[4] + 5 * cpf[5] + 6 * cpf[6] + 7 * cpf[7]
                 + 8 * cpf[8] + 9 * cpf[9];
-        int dj = (j % 11) % 10;
-        int dk = (k % 11) % 10;
-        return (dj == cpf[9] && dk == cpf[10]);
+        final int digitoVerificador1 = (j % 11) % 10;
+        final int digitoVerificador2 = (k % 11) % 10;
+        return digitoVerificador1 == cpf[9] && digitoVerificador2 == cpf[10];
     }
 
     /**
@@ -532,14 +585,17 @@ public class Exercicios {
      * @return True caso o cpf informado seja válido, ou false, caso contrário.
      */
     public static boolean validaCPF2(final int[] cpf) {
-        int c = 7, p = cpf[8], s = cpf[8];
-        while (0 <= c) {
-            p += cpf[c];
+        int indiceDigito = 7;
+        int p = cpf[8];
+        int s = cpf[8];
+
+        while (0 <= indiceDigito) {
+            p += cpf[indiceDigito];
             s += p;
-            c--;
+            indiceDigito--;
         }
-        int j = (s % 11) % 10;
-        int k = ((s - p + 9 * cpf[9]) % 11) % 10;
-        return (j == cpf[9]) && (k == cpf[10]);
+        final int digitoVerificador1 = (s % 11) % 10;
+        final int digitoVerificador2 = ((s - p + 9 * cpf[9]) % 11) % 10;
+        return (digitoVerificador1 == cpf[9]) && (digitoVerificador2 == cpf[10]);
     }
 }
