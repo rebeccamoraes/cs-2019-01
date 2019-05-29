@@ -117,7 +117,7 @@ public final class Exercicios {
      * igual a 0 ou o divisor não seja menor que zero.
      */
     public static int mod(final int dividendo, final int divisor) {
-        if (divisor < 0 || dividendo <= 0) {
+        if (divisor <= 0 || dividendo < 0) {
             throw new IllegalArgumentException("Argumentos inválidos.");
         }
         int resto = dividendo;
@@ -571,12 +571,19 @@ public final class Exercicios {
      * @return True caso o cpf informado seja válido, ou false, caso contrário.
      */
     public static boolean validaCPF(final int[] cpf) {
+        if(cpf.length<11){
+            throw new IllegalArgumentException("CPF inválido. O CPF precisa" +
+                    " ter 11 dígitos.");
+        }
+
         final int j = cpf[0] + 2 * cpf[1] + 3 * cpf[2] + 4 * cpf[3] + 5 * cpf[4] + 6 * cpf[5] + 7 * cpf[6]
                 + 8 * cpf[7] + 9 * cpf[8];
         final int k = cpf[1] + 2 * cpf[2] + 3 * cpf[3] + 4 * cpf[4] + 5 * cpf[5] + 6 * cpf[6] + 7 * cpf[7]
                 + 8 * cpf[8] + 9 * cpf[9];
+
         final int digitoVerificador1 = (j % 11) % 10;
         final int digitoVerificador2 = (k % 11) % 10;
+
         return digitoVerificador1 == cpf[9] && digitoVerificador2 == cpf[10];
     }
 
@@ -588,6 +595,11 @@ public final class Exercicios {
      * @return True caso o cpf informado seja válido, ou false, caso contrário.
      */
     public static boolean validaCPF2(final int[] cpf) {
+        if(cpf.length<11){
+            throw new IllegalArgumentException("CPF inválido. O CPF precisa" +
+                    " ter 11 dígitos.");
+        }
+
         int indiceDigito = 7;
         int p = cpf[8];
         int s = cpf[8];
@@ -597,8 +609,10 @@ public final class Exercicios {
             s += p;
             indiceDigito--;
         }
+
         final int digitoVerificador1 = (s % 11) % 10;
         final int digitoVerificador2 = ((s - p + 9 * cpf[9]) % 11) % 10;
+
         return (digitoVerificador1 == cpf[9]) && (digitoVerificador2 == cpf[10]);
     }
 }
