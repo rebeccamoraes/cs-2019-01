@@ -90,12 +90,15 @@ public final class Exercicios {
         } catch (DateTimeException excecao) {
             throw new IllegalArgumentException("data inválida", excecao);
         }
+
         int mesAuxiliar = mes;
         int anoAuxiliar = ano;
+
         if (mes == 1 || mes == 2) {
             mesAuxiliar += 12;
-            anoAuxiliar += 1;
+            anoAuxiliar -= 1;
         }
+
         final int indiceDoDia = dia + 2 * mesAuxiliar + (3 * (mesAuxiliar + 1)) / 5
                 + anoAuxiliar + anoAuxiliar / 4 - anoAuxiliar / 100
                 + anoAuxiliar / 400;
