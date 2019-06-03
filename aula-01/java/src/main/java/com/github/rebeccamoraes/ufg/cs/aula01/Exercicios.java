@@ -416,14 +416,14 @@ public final class Exercicios {
      * @throws IllegalArgumentException Caso o temanho do vetor seja menor
      * ou igual a 1.
      */
-    public static int[] crivoEratostenes(final int[] vetor, final int tamanho) {
+    public static void crivoEratostenes(final int[] vetor, final int tamanho) {
         if (tamanho <= 1) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
 
         Arrays.fill(vetor, 2, tamanho - 1, 0);
 
-        int indice = 2;
+        int indice = tamanho;
         int multiplo;
         final double limite = Math.sqrt(tamanho);
 
@@ -437,7 +437,6 @@ public final class Exercicios {
             }
             indice++;
         }
-        return vetor;
     }
 
     /**
