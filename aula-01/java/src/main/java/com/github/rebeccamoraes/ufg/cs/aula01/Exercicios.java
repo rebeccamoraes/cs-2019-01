@@ -423,7 +423,7 @@ public final class Exercicios {
 
         Arrays.fill(vetor, 2, tamanho - 1, 0);
 
-        int indice = tamanho;
+        int indice = 2;
         int multiplo;
         final double limite = Math.sqrt(tamanho);
 
