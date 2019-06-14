@@ -21,7 +21,7 @@ public final class ProgramaInteiro {
 
         try {
 
-            String resultado = AnalisadorArquivo.prefixoHexadecimal2("teste.txt");
+            final String resultado = AnalisadorArquivo.prefixoHexadecimal(args[0]);
             System.out.println(resultado);
 
         }catch (Exception e){
