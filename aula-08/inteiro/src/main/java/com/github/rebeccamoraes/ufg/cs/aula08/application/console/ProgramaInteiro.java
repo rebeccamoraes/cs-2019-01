@@ -1,16 +1,32 @@
 package com.github.rebeccamoraes.ufg.cs.aula08.application.console;
 import com.github.rebeccamoraes.ufg.cs.aula08.domain.AnalisadorArquivo;
-public class ProgramaInteiro {
-    public static void main(String[] args){
-        System.out.println("teste");
+
+/**
+ * Programa que retorna os 4 primeiros do informado arquivo bytes em
+ * hexadecimal
+ *
+ */
+public final class ProgramaInteiro {
+
+    private ProgramaInteiro(){
+        //evita criação de instância.
+    }
+
+    /**
+     * Executa o analizador de arquivo e imprime o resultado.
+     *
+     * @param args [1] nome do arquivo a ser analizado.
+     */
+    public static void main(final String[] args){
+
         try {
-            //Scanner leitor = new Scanner(System.in);
-            //String nomeArquivo = leitor.nextLine();
-            String resultado = AnalisadorArquivo.prefixoHexadecimal2("Teste.class");
-            System.out.print(resultado);
+
+            final String resultado = AnalisadorArquivo.prefixoHexadecimal(args[0]);
+            System.out.println(resultado);
+
         }catch (Exception e){
-            System.out.print("excecao");
             System.out.println(e.getMessage());
         }
+
     }
 }

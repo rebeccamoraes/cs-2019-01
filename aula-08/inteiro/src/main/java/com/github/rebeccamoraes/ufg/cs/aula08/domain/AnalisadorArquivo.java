@@ -9,22 +9,6 @@ public class AnalisadorArquivo {
             throws FileNotFoundException, UnsupportedEncodingException, IOException {
 
         FileInputStream fis = new FileInputStream(nomeArquivo);
-        InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
-        BufferedReader br = new BufferedReader(isr);
-
-        String linha;
-
-        while((linha = br.readLine()) != null){
-            System.out.println(linha);
-        }
-
-        return nomeArquivo;
-    }
-
-    public static String prefixoHexadecimal2(final String nomeArquivo)
-            throws FileNotFoundException, UnsupportedEncodingException, IOException {
-
-        FileInputStream fis = new FileInputStream(nomeArquivo);
         DataInputStream lerArquivo = new DataInputStream(fis);
         byte[] bytes = new byte[4];
 
@@ -33,8 +17,13 @@ public class AnalisadorArquivo {
         }
 
 
+        StringBuilder sb = new StringBuilder();
 
-        String prefixo="teste";
+        for(byte b : bytes){
+            sb.append(String.format("%02x", b));
+        }
+
+        String prefixo = sb.toString();
 
         return prefixo;
     }
