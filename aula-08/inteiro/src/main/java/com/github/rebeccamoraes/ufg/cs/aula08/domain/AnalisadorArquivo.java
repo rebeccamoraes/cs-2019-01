@@ -33,8 +33,13 @@ public class AnalisadorArquivo {
         }
 
 
+        StringBuilder sb = new StringBuilder();
 
-        String prefixo="teste";
+        for(byte b : bytes){
+            sb.append(String.format("%02x", b));
+        }
+
+        String prefixo = sb.toString();
 
         return prefixo;
     }
