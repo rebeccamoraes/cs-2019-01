@@ -189,7 +189,9 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <configLocation>src/test/java/com/github/rebeccamoraes/ufg/cs/aula01/resources/checkstyle.xml</configLocation>
+                    <configLocation>tools/checkstyle.xml</configLocation>
+                    <suppressionsLocation>tools/checkstyle-suppressions.xml</suppressionsLocation>
+                    <maxAllowedViolations>0</maxAllowedViolations>
                 </configuration>
             </plugin>
 
