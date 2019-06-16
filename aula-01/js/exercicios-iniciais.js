@@ -326,7 +326,7 @@ function potencia(x, y) {
  * @throws {InvalidArgumentException} Caso o valor do argumento n não seja
  * numérico.
  */
-function pi(n) {
+function calculaPi(n) {
     validaArgumentoNumericoObrigatorio(n);
 	
     if (n < 1) {
@@ -681,7 +681,7 @@ module.exports = {
     mod : mod,
     produto : produto,
     potencia : potencia,
-    pi : pi,
+    calculaPi : calculaPi,
     somaNaturais : somaNaturais,
     fatorial : fatorial,
     primo : primo,
