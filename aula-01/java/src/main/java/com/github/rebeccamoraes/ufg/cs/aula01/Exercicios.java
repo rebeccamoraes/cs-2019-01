@@ -9,8 +9,31 @@ import java.util.Arrays;
  * @author Rebecca Moraes
  */
 public final class Exercicios {
+    /**
+     * Maior valor possível para dia.
+     */
+    public static final int MAIOR_DIA = 31;
 
-    private Exercicios(){}
+    /**
+     * Menor valor possível para dia.
+     */
+    public static final int MENOR_DIA = 1;
+
+    /**
+     * Maior valor possível para mês.
+     */
+    public static final int MAIOR_MES = 12;
+
+
+    /**
+     * Menor valor possível para dia.
+     */
+    public static final int MENOR_MES = 1;
+
+    /**
+     * Não é permitido instanciar a classe.
+     */
+    private Exercicios() { }
 
     /**
      * Verifica se o argumento fornecido é um número que possui a propriedade
@@ -61,7 +84,7 @@ public final class Exercicios {
     }
 
     /**
-     * Define o dia da semana para uma data
+     * Define o dia da semana para uma data.
      *
      * @param dia Número inteiro referente ao dia
      * @param mes Número inteiro referente ao mês
@@ -77,9 +100,9 @@ public final class Exercicios {
      * @throws IllegalArgumentException Caso valor de ano seja menor que 1753.
      */
     public static int diaDaSemana(final int dia, final int mes, final int ano) {
-        if (dia < 1 || dia > 31) {
+        if (dia < MENOR_DIA || dia > MAIOR_DIA) {
             throw new IllegalArgumentException("Dia inválido.");
-        } else if ((mes < 1) || (mes > 12)) {
+        } else if ((MENOR_MES < 1) || (mes > MAIOR_MES)) {
             throw new IllegalArgumentException("Mês inválido.");
         } else if (ano < 1753) {
             throw new IllegalArgumentException("Ano inválido.");
@@ -129,7 +152,7 @@ public final class Exercicios {
     }
 
     /**
-     * Calcula a soma dos N primeiros números naturais
+     * Calcula a soma dos N primeiros números naturais.
      *
      * @param numero quantidade de números à serem somados.
      *
@@ -151,7 +174,8 @@ public final class Exercicios {
     }
 
     /**
-     * Calcula o fatorial de um numero n
+     * Calcula o fatorial de um numero n.
+     *
      * @param numero número inteiro sobre o qual deseja-se obter o fatorial.
      *
      * @return Número inteiro correspondente ao fatorial do número n.
@@ -172,7 +196,7 @@ public final class Exercicios {
     }
 
     /**
-     * Calcula o produto de dois números inteiros usando somas
+     * Calcula o produto de dois números inteiros usando somas.
      *
      * @param fator1 primeiro número inteiro à ser multiplicado.
      * @param fator2 segundo número inteiro à ser multiplicado.
@@ -206,9 +230,9 @@ public final class Exercicios {
 
         return soma;
     }
-    
+
     /**
-     * Calcula potencia utilizando somas
+     * Calcula potencia utilizando somas.
      *
      * @param base número inteiro usado como base da potência.
      * @param expoente número inteiro usado como expoente da potência.
@@ -235,7 +259,7 @@ public final class Exercicios {
     }
 
     /**
-     * Calcula o valor de PI de acordo com a precisão fornecida
+     * Calcula o valor de PI de acordo com a precisão fornecida.
      *
      * @param precisao número de precisão de PI.
      *
@@ -264,9 +288,9 @@ public final class Exercicios {
     }
 
     /**
-     * Calcula o valor do logaritmo natural, dados n e k
+     * Calcula o valor do logaritmo natural, dados n e k.
      *
-     * @param expoente número natural positivo
+     * @param expoente número natural positivo.
      * @param precisao número inteiro que define a quantidade de termos empregados
      *         pelo somatório (precisão).
      *
@@ -298,14 +322,14 @@ public final class Exercicios {
      * Calcula a Razão Áurea da sequência iniciada por X e y e finalizada no
      * k-ésimo número.
      *
-     * @param primeiroNumero primeiro número da sequência
-     * @param segundoNumero segundo número da sequência
-     * @param tamanhoSequencia posição do último número da sequência
+     * @param primeiroNumero primeiro número da sequência.
+     * @param segundoNumero segundo número da sequência.
+     * @param tamanhoSequencia posição do último número da sequência.
      *
      * @return Razão entre o o k-ésimo e o (k-1)-ésimo número da sequência.
      *
      * @throws IllegalArgumentException Caso os argumentos não atendam os
-     * sequintes requisitos 0 <= x, x < y e 0 < k
+     * sequintes requisitos 0 <= x, x < y e 0 < k.
      */
     public static double razaoAurea(final int primeiroNumero, final int segundoNumero, final int tamanhoSequencia) {
         if (primeiroNumero < 0 || primeiroNumero > segundoNumero || tamanhoSequencia <= 0) {
@@ -330,7 +354,7 @@ public final class Exercicios {
      * Verifica se o número fornecido satisfaz a equação que define um quadrado
      * perfeito.
      *
-     * @param numero número a ser verificado
+     * @param numero número a ser verificado.
      *
      * @return True, caso o número satisfaça a equação, ou False, caso contrário.
      *
@@ -356,8 +380,8 @@ public final class Exercicios {
      * Calcula a raiz quadrada de um número n, com precisão fornecida de
      * acordo com o Método Babilônico.
      *
-     * @param numero número para cálculo da raiz quadrada
-     * @param precisao numero inteiro
+     * @param numero número para cálculo da raiz quadrada.
+     * @param precisao numero inteiro.
      *
      * @return Raiz quadrada do número n com precisão i.
      *
@@ -413,6 +437,8 @@ public final class Exercicios {
      * @param vetor vetor cujos índices serão verificados.
      * @param tamanho tamanho do vetor.
      *
+     * @return vetor cujos valores das posições cos índices primos são igual a 0.
+     *
      * @throws IllegalArgumentException Caso o temanho do vetor seja menor
      * ou igual a 1.
      */
@@ -420,7 +446,7 @@ public final class Exercicios {
         if (tamanho <= 1) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
-    
+
         Arrays.fill(vetor, 2, tamanho - 1, 0);
 
         int indice = 2;
@@ -473,7 +499,7 @@ public final class Exercicios {
 
     /**
      * Calcula o Maior divisor comum entre dois inteiros fornecidos.
-     * (Implementação alternativa)
+     * (Implementação alternativa).
      *
      * @param primeiroNumero primeiro número inteiro.
      * @param segundoNumero segundo número inteiro.
@@ -566,16 +592,16 @@ public final class Exercicios {
     }
 
     /**
-     * Valida CPF (Cadastro de Pessoas Físicas)
+     * Valida CPF (Cadastro de Pessoas Físicas).
      *
      * @param cpf vetor contendo os dígitos do CPF a ser verificado.
      *
      * @return True caso o cpf informado seja válido, ou false, caso contrário.
      */
     public static boolean validaCPF(final int[] cpf) {
-        if(cpf.length<11){
-            throw new IllegalArgumentException("CPF inválido. O CPF precisa" +
-                    " ter 11 dígitos.");
+        if (cpf.length < 11) {
+            throw new IllegalArgumentException("CPF inválido. O CPF precisa"
+                    + " ter 11 dígitos.");
         }
 
         final int j = cpf[0] + 2 * cpf[1] + 3 * cpf[2] + 4 * cpf[3] + 5 * cpf[4] + 6 * cpf[5] + 7 * cpf[6]
@@ -590,16 +616,16 @@ public final class Exercicios {
     }
 
     /**
-     * Valida CPF (Cadastro de Pessoas Físicas) - Versão Alternativa
+     * Valida CPF (Cadastro de Pessoas Físicas) - Versão Alternativa.
      *
      * @param cpf vetor contendo os dígitos do CPF a ser verificado.
      *
      * @return True caso o cpf informado seja válido, ou false, caso contrário.
      */
     public static boolean validaCPF2(final int[] cpf) {
-        if(cpf.length<11){
-            throw new IllegalArgumentException("CPF inválido. O CPF precisa" +
-                    " ter 11 dígitos.");
+        if (cpf.length < 11) {
+            throw new IllegalArgumentException("CPF inválido. O CPF precisa"
+                    + " ter 11 dígitos.");
         }
 
         int indiceDigito = 7;
