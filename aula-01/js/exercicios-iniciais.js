@@ -454,7 +454,7 @@ function raizQuadrada(n, i) {
         throw new RangeError("Número(s) inválido(s).");
     }
     let r = 1;
-    while (i > 0) {
+    while (i >= 0) {
         r = (r + n / r) / 2;
         i--;
     }
