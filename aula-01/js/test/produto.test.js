@@ -9,9 +9,9 @@ test("Produto de 7 e 5 = 35", () => {
 });
 
 test("Fator 1 menor qe 0 gera exceção", () =>{
-    expect( () => { funcao(-1, 5); } );
+    expect( () => { funcao(-1, 5); } ).toThrow(RangeError);
 });
 
 test("Fator 2 menor qe 0 gera exceção", () =>{
-    expect( () => { funcao(5, -1); } );
+    expect( () => { funcao(5, -1); } ).toThrow(RangeError);
 });
