@@ -7,8 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ObtemDiaDaSemanaTest{
 
+    final int[] argsTeste = {1, 1, 1};
     @Test
-    void testeInicial(){
-        assertEquals(10, DiaDaSemana.obtemDiaDaSemana(1,1,1,1));
+    void quantidadeDeArgumentosInsuficienteRetornaMenos1(){
+        assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(argsTeste));
     }
 }

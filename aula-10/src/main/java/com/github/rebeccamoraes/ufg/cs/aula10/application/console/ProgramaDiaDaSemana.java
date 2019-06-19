@@ -1,4 +1,5 @@
 package com.github.rebeccamoraes.ufg.cs.aula10.application.console;
+import com.github.rebeccamoraes.ufg.cs.aula10.domain.ConversorDeVetores;
 import com.github.rebeccamoraes.ufg.cs.aula10.domain.DiaDaSemana;
 
 /**
@@ -10,12 +11,18 @@ import com.github.rebeccamoraes.ufg.cs.aula10.domain.DiaDaSemana;
  * @author Rebecca Moraes
  */
 public class ProgramaDiaDaSemana{
+
     public static void main(final String[] args){
+
         try {
-            final int resultado = DiaDaSemana.obtemDiaDaSemana(1,1,1,1);
+
+            int[] argsToInt = ConversorDeVetores.converteStringsEmInteiros(args);
+            final int resultado = DiaDaSemana.obtemDiaDaSemana(argsToInt);
             System.out.println(resultado);
+
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
     }
+
 }
