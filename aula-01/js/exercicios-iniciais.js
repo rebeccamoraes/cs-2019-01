@@ -225,7 +225,7 @@ function somaNaturais(n) {
     }
     let i = 2;
     let soma = 1;
-    while (i < n) {
+    while (i <= n) {
         soma += i;
         i++;
     }
