@@ -326,7 +326,7 @@ function potencia(x, y) {
  * @throws {InvalidArgumentException} Caso o valor do argumento n não seja
  * numérico.
  */
-function pi(n) {
+function calculaPi(n) {
     validaArgumentoNumericoObrigatorio(n);
 	
     if (n < 1) {
@@ -454,7 +454,7 @@ function raizQuadrada(n, i) {
         throw new RangeError("Número(s) inválido(s).");
     }
     let r = 1;
-    while (i > 0) {
+    while (i >= 0) {
         r = (r + n / r) / 2;
         i--;
     }
@@ -681,7 +681,7 @@ module.exports = {
     mod : mod,
     produto : produto,
     potencia : potencia,
-    pi : pi,
+    calculaPi : calculaPi,
     somaNaturais : somaNaturais,
     fatorial : fatorial,
     primo : primo,
