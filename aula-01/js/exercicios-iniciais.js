@@ -165,17 +165,6 @@ function diaDaSemana(dia, mes, ano) {
 }
 
 /**
- * Exibe o nome do dia da semana de acordo com a posição informada.
- */
-
-function exibeNomeDiaDaSemana(s) {
-    const nomes = [ "Segunda-feira", "Terça-feira", "Quarta-feira",
-        "Quinta-feira", "Sexta-feira", "Sábado", "Domingo" ];
-
-    console.log(nomes[s % 7]);
-}
-
-/**
  * Calcula o resto da divisão do "dividendo" pelo "divisor" informados.
  *
  * @param {number} dividendo número a ser dividido.
