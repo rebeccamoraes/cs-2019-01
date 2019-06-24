@@ -326,7 +326,7 @@ function potencia(x, y) {
  * @throws {InvalidArgumentException} Caso o valor do argumento n não seja
  * numérico.
  */
-function pi(n) {
+function calculaPi(n) {
     validaArgumentoNumericoObrigatorio(n);
 	
     if (n < 1) {
@@ -454,7 +454,7 @@ function raizQuadrada(n, i) {
         throw new RangeError("Número(s) inválido(s).");
     }
     let r = 1;
-    while (i > 0) {
+    while (i >= 0) {
         r = (r + n / r) / 2;
         i--;
     }
@@ -644,6 +644,13 @@ function fibonacci(n) {
  * @return {boolean} Verdadeiro, caso o cpf informado seja válido, ou falso, caso contrário.
  */
 function cpf(d) {
+    validaArgumentoObrigatorio(d);
+
+    if(d.length != 11){
+        throw new InvalidArgumentException("Tamanho de CPF não pode ser " +
+            "diferente de 11.");
+    }
+
     let j = d[0] + 2 * d[1] + 3 * d[2] + 4 * d[3] + 5 * d[4] + 6 * d[5] + 7 * d[6]
         + 8 * d[7] + 9 * d[8];
     let k = d[1] + 2 * d[2] + 3 * d[3] + 4 * d[4] + 5 * d[5] + 6 * d[6] + 7 * d[7]
@@ -661,6 +668,13 @@ function cpf(d) {
  * @return {boolean} Verdadeiro, caso o cpf informado seja válido, ou falso, caso contrário.
  */
 function cpf2(d) {
+    validaArgumentoObrigatorio(d);
+
+    if(d.length != 11){
+        throw new InvalidArgumentException("Tamanho de CPF não pode ser " +
+            "diferente de 11.");
+    }
+
     let c = 7;
     let p = d[8];
     let s = d[8];
@@ -681,7 +695,7 @@ module.exports = {
     mod : mod,
     produto : produto,
     potencia : potencia,
-    pi : pi,
+    calculaPi : calculaPi,
     somaNaturais : somaNaturais,
     fatorial : fatorial,
     primo : primo,
