@@ -43,11 +43,13 @@ public final class Exercicios {
      *
      * @return Verdadeiro, caso o número possua a propriedade 3025, ou
      * falso, caso contrário.
-     *
-     * @throws IllegalArgumentException Lança exceção caso o valor do parâmetro
-     * seja menor que 0 ou maior que 9999.
+     * // TODO veja como ficou a documentação abaixo
+     * @throws IllegalArgumentException Se o argumento fornecido estiver
+     * fora da faixa, desde 0 até 9999, inclusive.
      */
     public static boolean propriedade3025(final int numero) {
+        // FIXME este limite superior é, de fato, um número mágico melhor seria usar a constante abaixo
+        // final int limiteSuperior = 9999
         if (numero < 0 || numero > 9999) {
             throw new IllegalArgumentException("Número Inválido!");
         }
@@ -71,16 +73,22 @@ public final class Exercicios {
      * seja menor que 100 ou maior que 9999.
      */
     public static boolean propriedade153(final int numero) {
-        if (numero < 100 || numero > 999) {
-            throw new IllegalArgumentException("Número Inválido!");
-        }
-
+        verificaNumeroTresDigitos(numero);
+        
         final int centena = numero / 100;
         final int dezenaUnidade = numero % 100;
         final int dezena = dezenaUnidade / 10;
         final int unidade = dezenaUnidade % 10;
 
+        // FIXME cubo para constante que representa o 3
         return (Math.pow(centena, 3) + Math.pow(dezena, 3) + Math.pow(unidade, 3)) == numero;
+    }
+    
+    private static verificaNumeroTresDigitos(final int numero) {
+        // FIXME estes são números mágicos, você deve substituir
+        if (numero < 100 || numero > 999) {
+            throw new IllegalArgumentException("Número Inválido!");
+        }
     }
 
     /**
@@ -114,14 +122,15 @@ public final class Exercicios {
             throw new IllegalArgumentException("data inválida", excecao);
         }
 
-        int mesAuxiliar = mes;
-        int anoAuxiliar = ano;
-
-        if (mes == 1 || mes == 2) {
-            mesAuxiliar += 12;
-            anoAuxiliar -= 1;
-        }
-
+        final boolean janeiroOuFevereiro = mes == 1 || mes == 2;
+        final int mesAuxiliar = janeiroOuFevereiro
+            ? mes + 12
+            : mes;
+        
+        final int anoAuxiliar = janeiroOuFevereiro
+            ? ano - 1
+            : ano;
+        
         final int indiceDoDia = dia + 2 * mesAuxiliar + (3 * (mesAuxiliar + 1)) / 5
                 + anoAuxiliar + anoAuxiliar / 4 - anoAuxiliar / 100
                 + anoAuxiliar / 400;
@@ -212,6 +221,7 @@ public final class Exercicios {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
 
+        // FIXME evite anomalia apontada pelo PMD, variável redefinida sem uso. 
         int totalParcelas = fator1;
         int parcela = fator2;
 
@@ -247,6 +257,8 @@ public final class Exercicios {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
 
+        // FIXME por legibilidade, não seria melhor
+        // for (int indice = 1; indice <= expoente; indice++) { ...} 
         int potencia = 1;
         int indice = 1;
 
@@ -332,6 +344,7 @@ public final class Exercicios {
      * sequintes requisitos 0 <= x, x < y e 0 < k.
      */
     public static double razaoAurea(final int primeiroNumero, final int segundoNumero, final int tamanhoSequencia) {
+        // FIXME substituir condição por método
         if (primeiroNumero < 0 || primeiroNumero > segundoNumero || tamanhoSequencia <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
