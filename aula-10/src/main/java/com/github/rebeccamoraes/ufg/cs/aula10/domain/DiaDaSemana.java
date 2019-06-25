@@ -20,17 +20,23 @@ public class DiaDaSemana{
      *
      * @return dia da semana correspondente à data de interesse
      */
-    public static int obtemDiaDaSemana(final int[] args){
+    public static int obtemDiaDaSemana(final String[] args){
         final int QUANTIDADE_ARGS = 4;
+        int[] argsToInt;
 
         if(args.length != QUANTIDADE_ARGS){
             return ERRO;
         }
+        try {
+            argsToInt = ConversorDeVetores.converteStringsEmInteiros(args);
+        }catch (NumberFormatException excecao){
+            return ERRO;
+        }
 
-        final int dataInteresse = args[0];
-        final int anoBissexto = args[1];
-        final int dataReferencia = args[2];;
-        final int diaDaSemanaReferencia = args[3];
+        final int dataInteresse = argsToInt[0];
+        final int anoBissexto = argsToInt[1];
+        final int dataReferencia = argsToInt[2];;
+        final int diaDaSemanaReferencia = argsToInt[3];
 
 
 

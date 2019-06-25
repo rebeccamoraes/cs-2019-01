@@ -13,16 +13,8 @@ import com.github.rebeccamoraes.ufg.cs.aula10.domain.DiaDaSemana;
 public class ProgramaDiaDaSemana{
 
     public static void main(final String[] args){
-
-        try {
-
-            int[] argsToInt = ConversorDeVetores.converteStringsEmInteiros(args);
-            final int resultado = DiaDaSemana.obtemDiaDaSemana(argsToInt);
-            System.out.println(resultado);
-
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        final int resultado = DiaDaSemana.obtemDiaDaSemana(args);
+        System.out.println(resultado);
     }
 
 }
