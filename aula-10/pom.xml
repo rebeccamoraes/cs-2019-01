@@ -15,7 +15,7 @@
         Programa para identificar o dia da semana de uma data.
     </description>
 
-    <url>https://github.com/rebeccamoraes/cs-2019-01/aula-10</url>
+    <url>https://github.com/rebeccamoraes/cs-2019-01</url>
 
     <organization>
         <name>Instituto de Informática (UFG)</name>
@@ -28,9 +28,7 @@
         <license>
             <name>Creative Commons Attribution 4.0 International (CC BY 4.0)
             </name>
-            <comments>A atribuição deve conter, explicitamente, a seguinte
-                linha:
-                Copyright (c) 2019. Instituto de Informática (UFG)
+            <comments>
             </comments>
             <url>https://creativecommons.org/licenses/by/4.0/</url>
         </license>
@@ -40,7 +38,7 @@
         <developer>
             <id>rebeccamoraes</id>
             <name>Rebecca Moraes</name>
-            <email>rebecca@ufg.br</email>
+            <email>rebeccaufg@gmail.com</email>
             <organization>Instituto de Informática (UFG)</organization>
             <organizationUrl>http://www.inf.ufg.br</organizationUrl>
         </developer>
@@ -57,7 +55,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.5.RELEASE</version>
+        <version>2.1.4.RELEASE</version>
     </parent>
 
     <properties>
@@ -68,12 +66,6 @@
         <project.mainClass>
             com.github.rebeccamoraes.ufg.cs.aula10.application.console.ProgramaDiaDaSemana
         </project.mainClass>
-
-        <tools.dir>${project.basedir}/tools</tools.dir>
-        <pmd.plugin>3.12.0</pmd.plugin>
-        <pmd.version>6.15.0</pmd.version>
-        <checkstyle.plugin>3.1.0</checkstyle.plugin>
-        <checkstyle.version>8.21</checkstyle.version>
     </properties>
 
     <dependencies>
@@ -118,45 +110,6 @@
 
     <build>
 
-        <pluginManagement>
-            <plugins>
-
-                <!-- PMD plugin pode usar versão mais recente do PMD -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.11.0</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-core</artifactId>
-                            <version>${pmd.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-java</artifactId>
-                            <version>${pmd.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-
-                <!-- Configuracao para usar versao especifica checkstyle -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.1.0</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>${checkstyle.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-
-            </plugins>
-        </pluginManagement>
-
         <!-- Define o nome do arquivo a ser gerado (.jar é acrescentada) -->
         <finalName>dia-da-semana</finalName>
 
@@ -170,7 +123,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>3.1.12</version>
+                <version>3.1.11</version>
             </plugin>
 
             <plugin>
@@ -234,11 +187,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.plugin}</version>
+                <version>3.0.0</version>
                 <configuration>
-                    <configLocation>${tools.dir}/checkstyle.xml</configLocation>
-                    <suppressionsLocation>${tools.dir}/checkstyle-suppressions.xml</suppressionsLocation>
-                    <maxAllowedViolations>0</maxAllowedViolations>
+                    <configLocation>src/test/java/com/github/rebeccamoraes/ufg/cs/aula01/resources/checkstyle.xml</configLocation>
                 </configuration>
             </plugin>
 
@@ -269,10 +220,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <show>public</show>
-                    <additionalOptions>
-                        <additionalOption>-html5</additionalOption>
-                    </additionalOptions>
+                    <show>public</show>]
                 </configuration>
             </plugin>
 
@@ -302,50 +250,37 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                    <compilerArgs>
-                        <arg>-XDcompilePolicy=simple</arg>
-                        <arg>-Xplugin:ErrorProne</arg>
-                    </compilerArgs>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>com.google.errorprone</groupId>
-                            <artifactId>error_prone_core</artifactId>
-                            <version>2.3.3</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
             </plugin>
 
-             <!-- PMD                  -->
-            <!-- mvn pmd:pmd          -->
-            <!-- mvn pmd:check        -->
-            <!-- target/site/pmd.html -->
+            <!-- PMD -->
+            <!-- mvn pmd:pmd -->
+            <!-- mvn pmd:check -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>${pmd.plugin}</version>
+                <version>3.12.0</version>
                 <configuration>
+                    <targetJdk>9</targetJdk>
                     <linkXRef>true</linkXRef>
                     <sourceEncoding>utf-8</sourceEncoding>
                     <minimumTokens>10</minimumTokens>
-                    <targetJdk>1.8</targetJdk>
                     <excludes>
                         <exclude>**/*Bean.java</exclude>
                         <exclude>**/generated/*.java</exclude>
-                        <exclude>**/*Application.java</exclude>
                     </excludes>
                     <excludeRoots>
                         <excludeRoot>target/generated-sources/stubs
                         </excludeRoot>
                     </excludeRoots>
                     <rulesets>
-                        <ruleset>category/java/multithreading.xml</ruleset>
-                        <ruleset>category/java/performance.xml</ruleset>
-                        <ruleset>category/java/security.xml</ruleset>
-                        <ruleset>${tools.dir}/pmd.xml</ruleset>
+                        <ruleset>/category/java/bestpractices.xml</ruleset>
+                        <ruleset>/category/java/codestyle.xml</ruleset>
+                        <ruleset>/category/java/design.xml</ruleset>
+                        <ruleset>/category/java/documentation.xml</ruleset>
+                        <ruleset>/category/java/errorprone.xml</ruleset>
+                        <ruleset>/category/java/multithreading.xml</ruleset>
+                        <ruleset>/category/java/performance.xml</ruleset>
+                        <ruleset>/category/java/security.xml</ruleset>
                     </rulesets>
                 </configuration>
             </plugin>
@@ -366,24 +301,6 @@
                 </configuration>
             </plugin>
 
-            <!-- mvn org.pitest:pitest-maven:mutationCoverage -->
-            <!-- Relatório gerado em target\pit-reports\DATAHORA -->
-            <plugin>
-                <groupId>org.pitest</groupId>
-                <artifactId>pitest-maven</artifactId>
-                <version>1.4.8</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.pitest</groupId>
-                        <artifactId>pitest-junit5-plugin</artifactId>
-                        <version>0.7</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <coverageThreshold>95</coverageThreshold>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
 
@@ -397,7 +314,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>5.0.0</version>
+                <version>4.0.2</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -456,8 +373,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>${pmd.plugin}</version>
+                <version>3.12.0</version>
                 <configuration>
+                    <targetJdk>9</targetJdk>
                     <linkXref>true</linkXref>
                     <sourceEncoding>utf-8</sourceEncoding>
                     <minimumTokens>100</minimumTokens>
@@ -499,7 +417,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.plugin}</version>
+                <version>3.0.0</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -513,7 +431,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>3.1.12</version>
+                <version>3.1.11</version>
             </plugin>
 
             <!-- Jacoco -->
@@ -558,22 +476,22 @@
                     <plugin>
                         <groupId>org.pitest</groupId>
                         <artifactId>pitest</artifactId>
-                        <version>1.4.8</version>
+                        <version>1.4.7</version>
                         <dependencies>
                             <dependency>
                                 <groupId>org.pitest</groupId>
                                 <artifactId>pitest-junit5-plugin</artifactId>
-                                <version>0.9</version>
+                                <version>0.8</version>
                             </dependency>
                         </dependencies>
                         <configuration>
                             <targetClasses>
                                 <param>
-                                    com.github.rebeccamoraes.ufg.cs.aula10.domain.DiaDaSemana
+                                    com.github.kyriosdata.exemplo.domain.Calendario
                                 </param>
                             </targetClasses>
                             <targetTests>
-                                <param>com.github.rebeccamoraes.ufg.cs.aula10.*</param>
+                                <param>com.github.kyriosdata.exemplo.*</param>
                             </targetTests>
                         </configuration>
                     </plugin>
@@ -623,7 +541,7 @@
                     <plugin>
                         <groupId>org.owasp</groupId>
                         <artifactId>dependency-check-maven</artifactId>
-                        <version>5.0.0</version>
+                        <version>4.0.2</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -645,18 +563,22 @@
                     <plugin>
                         <groupId>com.github.spotbugs</groupId>
                         <artifactId>spotbugs-maven-plugin</artifactId>
-                        <version>3.1.12</version>
+                        <version>3.1.11</version>
                         <configuration>
-                            <excludeFilterFile>${tools.dir}/spotbugs.xml
-                            </excludeFilterFile>
                             <effort>Max</effort>
                             <threshold>Low</threshold>
                             <failOnError>true</failOnError>
+                            <includeFilterFile>
+                                ${project.basedir}/spotbugs-security-include.xml
+                            </includeFilterFile>
+                            <excludeFilterFile>
+                                ${project.basedir}/spotbugs-security-exclude.xml
+                            </excludeFilterFile>
                             <plugins>
                                 <plugin>
                                     <groupId>com.h3xstream.findsecbugs</groupId>
                                     <artifactId>findsecbugs-plugin</artifactId>
-                                    <version>1.8.0</version>
+                                    <version>1.9.0</version>
                                 </plugin>
                             </plugins>
                         </configuration>
@@ -688,7 +610,7 @@
                         <configuration>
                             <apiToken>${snyk.token}</apiToken>
                             <failOnSeverity>low</failOnSeverity>
-                            <org>rebeccamoraes</org>
+                            <org>kyriosdata</org>
                         </configuration>
                     </plugin>
 
@@ -865,7 +787,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.1.0</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>package-sources</id>
@@ -911,9 +833,6 @@
                         <version>3.0.1</version>
                         <configuration>
                             <show>public</show>
-                            <additionalOptions>
-                                <additionalOption>-html5</additionalOption>
-                            </additionalOptions>
                         </configuration>
                         <executions>
                             <execution>
@@ -930,7 +849,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.1.0</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>package-sources</id>
