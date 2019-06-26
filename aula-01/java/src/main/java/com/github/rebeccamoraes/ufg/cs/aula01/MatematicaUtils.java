@@ -22,13 +22,13 @@ public final class MatematicaUtils {
     /**
      * Maior valor possível para mês.
      */
-    public static final int MAIOR_MES = 12;
+    public static final int DEZEMBRO = 12;
 
 
     /**
-     * Menor valor possível para dia.
+     * Menor valor possível para mês.
      */
-    public static final int MENOR_MES = 1;
+    public static final int JANEIRO = 1;
 
     /**
      * Não é permitido instanciar a classe.
@@ -102,7 +102,7 @@ public final class MatematicaUtils {
     public static int diaDaSemana(final int dia, final int mes, final int ano) {
         if (dia < MENOR_DIA || dia > MAIOR_DIA) {
             throw new IllegalArgumentException("Dia inválido.");
-        } else if ((MENOR_MES < 1) || (mes > MAIOR_MES)) {
+        } else if ((mes < JANEIRO) || (mes > DEZEMBRO)) {
             throw new IllegalArgumentException("Mês inválido.");
         } else if (ano < 1753) {
             throw new IllegalArgumentException("Ano inválido.");
