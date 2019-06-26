@@ -25,6 +25,8 @@ public class ObtemDiaDaSemanaTest{
 
     final String[] diaDeReferenciaMaiorQue6 = {"2019012019", "2019", "20190101", "7"};
 
+    final String[] anoBissextoMenorQue1 = {"2019012019", "0", "20190101", "1"};
+
     //R7
     @Test
     void quantidadeDeArgumentosInsuficienteRetornaMenos1(){
@@ -58,5 +60,11 @@ public class ObtemDiaDaSemanaTest{
     @Test
     void diaDaSemanaDeReferenciaMaiorQue6RetornaMenos1(){
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(diaDeReferenciaMaiorQue6));
+    }
+
+    //R11
+    @Test
+    void anoBissextoMenorQue1RetornaMenos1(){
+        assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(anoBissextoMenorQue1));
     }
 }
