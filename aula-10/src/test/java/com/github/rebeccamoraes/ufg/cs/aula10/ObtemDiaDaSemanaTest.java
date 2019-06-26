@@ -114,23 +114,23 @@ public class ObtemDiaDaSemanaTest{
         final String[] casoDeTeste8 = {"20190101", "-1", "23450101", "1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(casoDeTeste8));
 
-        final String[] casoDeTeste9 = {"", "", "", ""};
+        final String[] casoDeTeste9 = {"20190101", "2019", "20180229", "1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(casoDeTeste9));
 
-        final String[] casoDeTeste10 = {"", "", "", ""};
+        final String[] casoDeTeste10 = {"20190101", "2019", "23450101", "-3"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(casoDeTeste10));
 
-        final String[] casoDeTeste11 = {"", "", "", ""};
+        final String[] casoDeTeste11 = {"20171231", "2001", "23450101", "8"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(casoDeTeste11));
 
-        final String[] casoDeTeste12 = {"", "", "", ""};
-        assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(casoDeTeste12));
+        final String[] casoDeTeste12 = {"20160928", "2016", "20160928", "2"};
+        assertEquals(2, DiaDaSemana.obtemDiaDaSemana(casoDeTeste12));
 
-        final String[] casoDeTeste13 = {"", "", "", ""};
-        assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(casoDeTeste13));
+        final String[] casoDeTeste13 = {"20160301", "2016", "20160228", "6"};
+        assertEquals(1, DiaDaSemana.obtemDiaDaSemana(casoDeTeste13));
 
-        final String[] casoDeTeste14 = {"", "", "", ""};
-        assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(casoDeTeste14));
+        final String[] casoDeTeste14 = {"20030101", "2020", "20030101", "5"};
+        assertEquals(5, DiaDaSemana.obtemDiaDaSemana(casoDeTeste14));
 
 
 
