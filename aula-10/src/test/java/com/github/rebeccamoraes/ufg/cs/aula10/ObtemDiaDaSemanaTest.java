@@ -7,64 +7,70 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ObtemDiaDaSemanaTest{
 
-    final String[] tresArgs = {"20160928", "2016", "20160928"};
-    final String[] doisArgs = {"20160928", "2016"};
-    final String[] umArg = {"20160928"};
-
-    final String[] primeiroArgNaoInteiro = {"a", "2019", "20190101", "0"};
-    final String[] segundoArgNaoInteiro = {"20190101", "a", "20190101", "0"};
-    final String[] terceiroArgNaoInteiro = {"20190101", "2019", "a", "0"};
-    final String[] quartoArgNaoInteiro = {"20190101", "2019", "20190101", "a"};
-    final String[] nenhumArgInteiro = {"1.1", "a", "b", "c"};
-
-    final String[] primeiroArgNegativo = {"-1", "2019", "20190101", "0"};
-    final String[] segundoArgNegativo = {"20190101", "-1", "20190101", "0"};
-    final String[] terceiroArgNegativo = {"20190101", "2019", "-1", "0"};
-    final String[] quartoArgNegativo = {"20190101", "2019", "20190101", "-1"};
-    final String[] todosArgsNegativos = {"-1", "-1", "-1", "-1"};
-
-    final String[] diaDeReferenciaMaiorQue6 = {"2019012019", "2019", "20190101", "7"};
-
-    final String[] anoBissextoMenorQue1 = {"2019012019", "0", "20190101", "1"};
-
     //R7
     @Test
     void quantidadeDeArgumentosInsuficienteRetornaMenos1(){
         //assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(null));
+
+        final String[] umArg = {"20160928"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(umArg));
+
+        final String[] doisArgs = {"20160928", "2016"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(doisArgs));
+
+        final String[] tresArgs = {"20160928", "2016", "20160928"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(tresArgs));
     }
 
     //R8
     @Test
     void umOuMaisArgumentosNaoInteirosRetornaMenos1(){
+        final String[] primeiroArgNaoInteiro = {"a", "2019", "20190101", "0"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(primeiroArgNaoInteiro));
+
+        final String[] segundoArgNaoInteiro = {"20190101", "a", "20190101", "0"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(segundoArgNaoInteiro));
+
+        final String[] terceiroArgNaoInteiro = {"20190101", "2019", "a", "0"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(terceiroArgNaoInteiro));
+
+        final String[] quartoArgNaoInteiro = {"20190101", "2019", "20190101", "a"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(quartoArgNaoInteiro));
+
+        final String[] nenhumArgInteiro = {"1.1", "a", "b", "c"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(nenhumArgInteiro));
     }
 
     //R9
     @Test
     void umOuMaisArgumentosNegativosRetornaMenos1(){
+        final String[] primeiroArgNegativo = {"-1", "2019", "20190101", "0"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(primeiroArgNegativo));
+
+        final String[] segundoArgNegativo = {"20190101", "-1", "20190101", "0"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(segundoArgNegativo));
+
+        final String[] terceiroArgNegativo = {"20190101", "2019", "-1", "0"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(terceiroArgNegativo));
+
+        final String[] quartoArgNegativo = {"20190101", "2019", "20190101", "-1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(quartoArgNegativo));
+
+        final String[] todosArgsNegativos = {"-1", "-1", "-1", "-1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(todosArgsNegativos));
     }
 
     //R10
     @Test
     void diaDaSemanaDeReferenciaMaiorQue6RetornaMenos1(){
+        final String[] diaDeReferenciaMaiorQue6 = {"2019012019", "2019", "20190101", "7"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(diaDeReferenciaMaiorQue6));
     }
 
     //R11
     @Test
     void anoBissextoMenorQue1RetornaMenos1(){
+        final String[] anoBissextoMenorQue1 = {"2019012019", "0", "20190101", "1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(anoBissextoMenorQue1));
     }
 
@@ -72,11 +78,12 @@ public class ObtemDiaDaSemanaTest{
     @Test
     void datasInvalidasRetornaMenos1(){
         final String[] dataReferenciaInvalida = {"20190101", "2019", "20191131", "1"};
-        final String[] dataInteresseInvalida = {"20190231", "2019", "20190101", "1"};
-        final String[] datasReferenciaEInteresseInvalidas = {"20190231", "2019", "20191131", "1"};
-
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(dataReferenciaInvalida));
+
+        final String[] dataInteresseInvalida = {"20190231", "2019", "20190101", "1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(dataInteresseInvalida));
+
+        final String[] datasReferenciaEInteresseInvalidas = {"20190231", "2019", "20191131", "1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(datasReferenciaEInteresseInvalidas));
     }
 
