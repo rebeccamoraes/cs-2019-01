@@ -67,4 +67,16 @@ public class ObtemDiaDaSemanaTest{
     void anoBissextoMenorQue1RetornaMenos1(){
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(anoBissextoMenorQue1));
     }
+
+    //R12
+    @Test
+    void datasInvalidasRetornaMenos1(){
+        final String[] dataReferenciaInvalida = {"20190101", "2019", "20191131", "1"};
+        final String[] dataInteresseInvalida = {"20190231", "2019", "20190101", "1"};
+        final String[] datasReferenciaEInteresseInvalidas = {"20190231", "2019", "20191131", "1"};
+
+        assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(dataReferenciaInvalida));
+        assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(dataInteresseInvalida));
+        assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(datasReferenciaEInteresseInvalidas));
+    }
 }
