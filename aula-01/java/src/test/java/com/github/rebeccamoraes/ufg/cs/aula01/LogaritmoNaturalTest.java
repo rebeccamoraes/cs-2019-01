@@ -10,17 +10,17 @@ public class LogaritmoNaturalTest {
     @Test
     void expoenteMenorQue1GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.logaritmoNatural(0, 3));
+                () -> MatematicaUtils.logaritmoNatural(0, 3));
     }
 
     @Test
     void precisaoMenorQue2GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.logaritmoNatural(1, 1));
+                () -> MatematicaUtils.logaritmoNatural(1, 1));
     }
 
     @Test
     void logaritmoNaturalDe2(){
-        assertEquals(5, Exercicios.logaritmoNatural(2, 2));
+        assertEquals(5, MatematicaUtils.logaritmoNatural(2, 2));
     }
 }

@@ -8,7 +8,7 @@ import java.util.Arrays;
  *
  * @author Rebecca Moraes
  */
-public final class Exercicios {
+public final class MatematicaUtils {
     /**
      * Maior valor possível para dia.
      */
@@ -33,7 +33,7 @@ public final class Exercicios {
     /**
      * Não é permitido instanciar a classe.
      */
-    private Exercicios() { }
+    private MatematicaUtils() { }
 
     /**
      * Verifica se o argumento fornecido é um número que possui a propriedade

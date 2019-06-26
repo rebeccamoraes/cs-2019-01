@@ -12,11 +12,11 @@ public class CrivoEratostenesTest {
     @Test
     void tamanhoMenorQue1GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.crivoEratostenes(vetorInferior,1));
+                () -> MatematicaUtils.crivoEratostenes(vetorInferior,1));
     }
 
     @Test
     void testeVetorTamanho5(){
-        assertArrayEquals(vetor5Experado, Exercicios.crivoEratostenes(vetor5Zerado, 5));
+        assertArrayEquals(vetor5Experado, MatematicaUtils.crivoEratostenes(vetor5Zerado, 5));
     }
 }
