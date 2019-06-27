@@ -9,6 +9,13 @@ public class CrivoEratostenesTest {
     final int[] vetorInferior = {0};
     final int[] vetor5Zerado = {0,0,0,0,0,0};
     final int[] vetor5Experado = {0,0,0,0,1,0};
+
+    @Test
+    void argumentoNuloGeraExcecao(){
+        assertThrows(IllegalArgumentException.class,
+                () -> MatematicaUtils.crivoEratostenes(null, 1));
+    }
+
     @Test
     void tamanhoMenorQue1GeraExcecao(){
         assertThrows(IllegalArgumentException.class,

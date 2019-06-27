@@ -11,6 +11,12 @@ class ValidaCPFTest {
     final int[] cpfMenor = {1, 2, 3, 4};
 
     @Test
+    void argumentoNuloGeraExcecao(){
+        assertThrows(IllegalArgumentException.class,
+                () -> MatematicaUtils.validaCPF(null));
+    }
+
+    @Test
     void cpfValidoRetornaTrue() {
         assertEquals(true, MatematicaUtils.validaCPF(cpfValido));
     }

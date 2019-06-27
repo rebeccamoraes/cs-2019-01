@@ -10,6 +10,12 @@ public class AvaliacaoPolinomialHornerTest {
     final int[] coeficientes = {1, 2};
 
     @Test
+    void argumentoNuloGeraExcecao(){
+        assertThrows(IllegalArgumentException.class,
+                () -> MatematicaUtils.avaliacaoPolinomialHorner(1, 1, null));
+    }
+
+    @Test
     void grauMenorQue1GeraExecao(){
         assertThrows(IllegalArgumentException.class,
                 () -> MatematicaUtils.avaliacaoPolinomialHorner(1, 0, coeficientes));
