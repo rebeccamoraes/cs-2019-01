@@ -5,7 +5,7 @@ import com.github.rebeccamoraes.ufg.cs.aula10.domain.DiaDaSemana;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ObtemDiaDaSemanaTest {aju
+public class ObtemDiaDaSemanaTest {
 
     //R7
     @Test
