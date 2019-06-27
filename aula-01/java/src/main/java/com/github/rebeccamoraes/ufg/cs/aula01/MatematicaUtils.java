@@ -275,14 +275,8 @@ public final class MatematicaUtils {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
 
-        //FIXME evite anomalia apontada pelo PMD, variável redefinida sem uso.
-        int totalParcelas = fator1;
-        int parcela = fator2;
-
-        if (fator2 < fator1) {
-            totalParcelas = fator2;
-            parcela = fator1;
-        }
+        int totalParcelas = fator1 > fator2 ? fator1 : fator2;
+        int parcela = fator1 > fator2 ? fator2 : fator1;
 
         int indice = 1;
         int soma = 0;
@@ -392,6 +386,31 @@ public final class MatematicaUtils {
     }
 
     /**
+     * Valida os argumentos da função Razão Áurea.
+     *
+     * @param primeiroNumero primeiro número da sequência.
+     * @param segundoNumero segundo número da sequência.
+     * @param tamanhoSequencia posição do último número da sequência.
+     *
+     * @throws IllegalArgumentException Caso os argumentos não atendam os
+     *      * sequintes requisitos 0 <= x, x < y e 0 < k.
+     *      * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
+     */
+    private static void validaArgumentosRazaoAurea(final int primeiroNumero,
+                                            final int segundoNumero,
+                                            final int tamanhoSequencia) {
+
+        validaArgumentoObrigatorio(primeiroNumero);
+        validaArgumentoObrigatorio(segundoNumero);
+        validaArgumentoObrigatorio(tamanhoSequencia);
+
+        if (primeiroNumero < 0 || primeiroNumero > segundoNumero || tamanhoSequencia <= 0) {
+            throw new IllegalArgumentException("Argumento(s) inválido(s).");
+        }
+
+    }
+
+    /**
      * Calcula a Razão Áurea da sequência iniciada por X e y e finalizada no
      * k-ésimo número.
      *
@@ -405,15 +424,11 @@ public final class MatematicaUtils {
      * sequintes requisitos 0 <= x, x < y e 0 < k.
      * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      */
-    public static double razaoAurea(final int primeiroNumero, final int segundoNumero, final int tamanhoSequencia) {
-        validaArgumentoObrigatorio(primeiroNumero);
-        validaArgumentoObrigatorio(segundoNumero);
-        validaArgumentoObrigatorio(tamanhoSequencia);
-
-        // FIXME substituir condição por método
-        if (primeiroNumero < 0 || primeiroNumero > segundoNumero || tamanhoSequencia <= 0) {
-            throw new IllegalArgumentException("Argumento(s) inválido(s).");
-        }
+    public static double razaoAurea(final int primeiroNumero,
+                                    final int segundoNumero,
+                                    final int tamanhoSequencia) {
+        validaArgumentosRazaoAurea(primeiroNumero, segundoNumero,
+                tamanhoSequencia);
 
         int auxiliar;
         int ultimoNumero = segundoNumero;
