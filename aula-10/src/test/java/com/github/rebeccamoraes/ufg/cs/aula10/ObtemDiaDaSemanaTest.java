@@ -5,11 +5,11 @@ import com.github.rebeccamoraes.ufg.cs.aula10.domain.DiaDaSemana;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ObtemDiaDaSemanaTest{
+public class ObtemDiaDaSemanaTest {aju
 
     //R7
     @Test
-    void quantidadeDeArgumentosInsuficienteRetornaMenos1(){
+    void quantidadeDeArgumentosInsuficienteRetornaMenos1() {
         //assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(null));
 
         final String[] umArg = {"20160928"};
@@ -24,7 +24,7 @@ public class ObtemDiaDaSemanaTest{
 
     //R8
     @Test
-    void umOuMaisArgumentosNaoInteirosRetornaMenos1(){
+    void umOuMaisArgumentosNaoInteirosRetornaMenos1() {
         final String[] primeiroArgNaoInteiro = {"a", "2019", "20190101", "0"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(primeiroArgNaoInteiro));
 
@@ -43,7 +43,7 @@ public class ObtemDiaDaSemanaTest{
 
     //R9
     @Test
-    void umOuMaisArgumentosNegativosRetornaMenos1(){
+    void umOuMaisArgumentosNegativosRetornaMenos1() {
         final String[] primeiroArgNegativo = {"-1", "2019", "20190101", "0"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(primeiroArgNegativo));
 
@@ -62,21 +62,21 @@ public class ObtemDiaDaSemanaTest{
 
     //R10
     @Test
-    void diaDaSemanaDeReferenciaMaiorQue6RetornaMenos1(){
+    void diaDaSemanaDeReferenciaMaiorQue6RetornaMenos1() {
         final String[] diaDeReferenciaMaiorQue6 = {"2019012019", "2019", "20190101", "7"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(diaDeReferenciaMaiorQue6));
     }
 
     //R11
     @Test
-    void anoBissextoMenorQue1RetornaMenos1(){
+    void anoBissextoMenorQue1RetornaMenos1() {
         final String[] anoBissextoMenorQue1 = {"2019012019", "0", "20190101", "1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(anoBissextoMenorQue1));
     }
 
     //R12
     @Test
-    void datasInvalidasRetornaMenos1(){
+    void datasInvalidasRetornaMenos1() {
         final String[] dataReferenciaInvalida = {"20190101", "2019", "20191131", "1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(dataReferenciaInvalida));
 
@@ -89,7 +89,7 @@ public class ObtemDiaDaSemanaTest{
 
     //R22
     @Test
-    void casosDeTestesR22(){
+    void casosDeTestesR22() {
         final String[] casoDeTeste1 = {"2010101", "1", "23450101", "1"};
         assertEquals(-1, DiaDaSemana.obtemDiaDaSemana(casoDeTeste1));
 
@@ -131,8 +131,5 @@ public class ObtemDiaDaSemanaTest{
 
         final String[] casoDeTeste14 = {"20030101", "2020", "20030101", "5"};
         assertEquals(5, DiaDaSemana.obtemDiaDaSemana(casoDeTeste14));
-
-
-
     }
 }
