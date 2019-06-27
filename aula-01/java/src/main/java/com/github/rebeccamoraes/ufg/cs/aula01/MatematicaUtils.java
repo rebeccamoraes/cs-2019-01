@@ -275,14 +275,8 @@ public final class MatematicaUtils {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
 
-        //FIXME evite anomalia apontada pelo PMD, variável redefinida sem uso.
-        int totalParcelas = fator1;
-        int parcela = fator2;
-
-        if (fator2 < fator1) {
-            totalParcelas = fator2;
-            parcela = fator1;
-        }
+        int totalParcelas = fator1 > fator2 ? fator1 : fator2 ;
+        int parcela = fator1 > fator2 ? fator2 : fator1;
 
         int indice = 1;
         int soma = 0;
