@@ -9,12 +9,12 @@ public class SomaNaturaisTest {
 
     @Test
     void soma5PrimeirosNumerosNaturaisRetorna15(){
-        assertEquals(15, Exercicios.somaNaturais(5));
+        assertEquals(15, MatematicaUtils.somaNaturais(5));
     }
 
     @Test
     void numeroMenorQue1GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.somaNaturais(0));
+                () -> MatematicaUtils.somaNaturais(0));
     }
 }

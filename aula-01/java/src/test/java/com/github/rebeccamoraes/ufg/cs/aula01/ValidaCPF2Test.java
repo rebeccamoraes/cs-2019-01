@@ -11,23 +11,29 @@ class ValidaCPF2Test {
     final int[] cpfMenor = {1, 2, 3, 4};
 
     @Test
+    void argumentoNuloGeraExcecao(){
+        assertThrows(IllegalArgumentException.class,
+                () -> MatematicaUtils.validaCPF2(null));
+    }
+
+    @Test
     void cpfValidoRetornaTrue() {
-        assertEquals(true, Exercicios.validaCPF2(cpfValido));
+        assertEquals(true, MatematicaUtils.validaCPF2(cpfValido));
     }
 
     @Test
     void cpfComUltimoDigitoInvalidoRetornaFalse() {
-        assertEquals(false, Exercicios.validaCPF(cpfInvalido1));
+        assertEquals(false, MatematicaUtils.validaCPF(cpfInvalido1));
     }
 
     @Test
     void cpfComPenultimoDigitoInvalidoRetornaFalse() {
-        assertEquals(false, Exercicios.validaCPF(cpfInvalido2));
+        assertEquals(false, MatematicaUtils.validaCPF(cpfInvalido2));
     }
 
     @Test
     void cpfMenorGeraExcecao() {
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.validaCPF2(cpfMenor));
+                () -> MatematicaUtils.validaCPF2(cpfMenor));
     }
 }

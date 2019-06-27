@@ -9,21 +9,21 @@ public class RaizQuadradaTest {
 
     @Test
     void casosClassicosRaizQuadrada(){
-        assertEquals(1, Exercicios.raizQuadrada(1,10));
-        assertEquals(2, Exercicios.raizQuadrada(4,10));
-        assertEquals(3, Exercicios.raizQuadrada(9,10));
-        assertEquals(4, Exercicios.raizQuadrada(16,10));
-        assertEquals(5, Exercicios.raizQuadrada(25,10));
-        assertEquals(6, Exercicios.raizQuadrada(36,10));
-        assertEquals(7, Exercicios.raizQuadrada(49,10));
-        assertEquals(8, Exercicios.raizQuadrada(64,10));
-        assertEquals(9, Exercicios.raizQuadrada(81,10));
-        assertEquals(10, Exercicios.raizQuadrada(100,10));
+        assertEquals(1, MatematicaUtils.raizQuadrada(1,10));
+        assertEquals(2, MatematicaUtils.raizQuadrada(4,10));
+        assertEquals(3, MatematicaUtils.raizQuadrada(9,10));
+        assertEquals(4, MatematicaUtils.raizQuadrada(16,10));
+        assertEquals(5, MatematicaUtils.raizQuadrada(25,10));
+        assertEquals(6, MatematicaUtils.raizQuadrada(36,10));
+        assertEquals(7, MatematicaUtils.raizQuadrada(49,10));
+        assertEquals(8, MatematicaUtils.raizQuadrada(64,10));
+        assertEquals(9, MatematicaUtils.raizQuadrada(81,10));
+        assertEquals(10, MatematicaUtils.raizQuadrada(100,10));
     }
 
     @Test
     void numeroIgualAZeroGeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.raizQuadrada(0, 10));
+                () -> MatematicaUtils.raizQuadrada(0, 10));
     }
 }

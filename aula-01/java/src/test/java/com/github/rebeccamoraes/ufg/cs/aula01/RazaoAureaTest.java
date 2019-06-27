@@ -10,29 +10,29 @@ public class RazaoAureaTest {
     @Test
     void primeiroNumeroMenorQue0GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.razaoAurea(-1, 1, 2));
+                () -> MatematicaUtils.razaoAurea(-1, 1, 2));
     }
 
     @Test
     void segundoNumeroMenorQuePrimeiroGeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.razaoAurea(2, 1, 2));
+                () -> MatematicaUtils.razaoAurea(2, 1, 2));
     }
 
     @Test
     void tamanhoSequenciaIgualA0GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.razaoAurea(1, 2, 0));
+                () -> MatematicaUtils.razaoAurea(1, 2, 0));
     }
 
     @Test
     void tamanhoSequenciaMenorQue0GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.razaoAurea(1, 2, -1));
+                () -> MatematicaUtils.razaoAurea(1, 2, -1));
     }
 
     @Test
     void casoClassicoRazaoAurea1e2Tamanho1IgualA1(){
-        assertEquals(1, Exercicios.razaoAurea(1, 2, 1));
+        assertEquals(1, MatematicaUtils.razaoAurea(1, 2, 1));
     }
 }

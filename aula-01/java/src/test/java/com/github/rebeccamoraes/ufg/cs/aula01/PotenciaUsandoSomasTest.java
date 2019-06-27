@@ -9,18 +9,18 @@ public class PotenciaUsandoSomasTest {
 
     @Test
     void potenciaDe5A2IgualA25(){
-        assertEquals(25, Exercicios.potenciaUtilizandoSomas(5,2));
+        assertEquals(25, MatematicaUtils.potenciaUtilizandoSomas(5,2));
     }
 
     @Test
     void baseMenorQue0GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.potenciaUtilizandoSomas(-1,1));
+                () -> MatematicaUtils.potenciaUtilizandoSomas(-1,1));
     }
 
     @Test
     void expoenteMenorQue0GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.potenciaUtilizandoSomas(1,-1));
+                () -> MatematicaUtils.potenciaUtilizandoSomas(1,-1));
     }
 }
