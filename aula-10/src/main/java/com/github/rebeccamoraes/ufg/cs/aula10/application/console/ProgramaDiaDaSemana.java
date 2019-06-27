@@ -1,5 +1,4 @@
 package com.github.rebeccamoraes.ufg.cs.aula10.application.console;
-import com.github.rebeccamoraes.ufg.cs.aula10.domain.ConversorDeVetores;
 import com.github.rebeccamoraes.ufg.cs.aula10.domain.DiaDaSemana;
 
 /**
@@ -10,9 +9,20 @@ import com.github.rebeccamoraes.ufg.cs.aula10.domain.DiaDaSemana;
  *
  * @author Rebecca Moraes
  */
-public class ProgramaDiaDaSemana{
+public final class ProgramaDiaDaSemana {
 
-    public static void main(final String[] args){
+    /**
+     * Evita instancialização.
+     */
+    private ProgramaDiaDaSemana() { }
+
+    /**
+     * Executa a função que obtém o dia da semana e exibe seu resultado.
+     * @param args valores devem conter data de interesse, ano bissexto de
+     *             referência, data de refetencia e dia da semana em que a data
+     *             de referência ocorre, nesta ordem.
+     */
+    public static void main(final String[] args) {
         final int resultado = DiaDaSemana.obtemDiaDaSemana(args);
         System.out.println(resultado);
     }

@@ -1,6 +1,14 @@
 package com.github.rebeccamoraes.ufg.cs.aula10.domain;
 
-public class ConversorDeVetores {
+/**
+ * Biblioteca para conversão de vetores.
+ */
+public final class ConversorDeVetores {
+
+    /**
+     * Construtor privado para evitar a instanciação da classe utilitária.
+     */
+    private ConversorDeVetores() { }
 
     /**
      * Converte vetor de strings em vetor de inteiros.
@@ -9,10 +17,10 @@ public class ConversorDeVetores {
      *
      * @return  vetor args convertido em inteiros.
      */
-    public static int[] converteStringsEmInteiros(final String[] args){
+    public static int[] converteStringsEmInteiros(final String[] args) {
         int[] inteiros = new int[args.length];
 
-        for(int i = 0; i < args.length; i++){
+        for (int i = 0; i < args.length; i++) {
             inteiros[i] = Integer.parseInt(args[i]);
         }
 
