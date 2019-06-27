@@ -37,8 +37,13 @@ public final class MatematicaUtils {
      */
     private MatematicaUtils() { }
 
-    private static void validaArgumentoObrigatorio(Object arg){
-        if(arg == null){
+    /**
+     * Validação de argumentos nulos.
+     * @param arg argumento fornecido.
+     * @throws IllegalArgumentException Se o argumento for nulo.
+     */
+    private static void validaArgumentoObrigatorio(final Object arg) {
+        if (arg == null) {
             throw new IllegalArgumentException("Parâmetro(s) nulo(s).");
         }
     }
@@ -60,9 +65,10 @@ public final class MatematicaUtils {
     public static boolean propriedade3025(final int numero) {
         validaArgumentoObrigatorio(numero);
 
-        // FIXME este limite superior é, de fato, um número mágico melhor seria usar a constante abaixo
-        // final int limiteSuperior = 9999
-        if (numero < 0 || numero > 9999) {
+        final int limiteSuperior = 9999;
+        final int limiteInferior = 0;
+
+        if (numero < limiteInferior || numero > limiteSuperior) {
             throw new IllegalArgumentException("Número Inválido!");
         }
 
@@ -89,19 +95,29 @@ public final class MatematicaUtils {
     public static boolean propriedade153(final int numero) {
         validaArgumentoObrigatorio(numero);
         verificaNumeroTresDigitos(numero);
-        
+
         final int centena = numero / 100;
         final int dezenaUnidade = numero % 100;
         final int dezena = dezenaUnidade / 10;
         final int unidade = dezenaUnidade % 10;
 
-        // FIXME cubo para constante que representa o 3
-        return (Math.pow(centena, 3) + Math.pow(dezena, 3) + Math.pow(unidade, 3)) == numero;
+        final int cubo = 3;
+        return (Math.pow(centena, cubo) + Math.pow(dezena, cubo)
+                + Math.pow(unidade, cubo)) == numero;
     }
-    
+
+    /**
+     * Verifica se o numero fornecido possui três digitos.
+     *
+     * @param numero numero a ser verificado.
+     *
+     * @throws IllegalArgumentException Se o número não possuir três digitos.
+     */
     private static void verificaNumeroTresDigitos(final int numero) {
-        // FIXME estes são números mágicos, você deve substituir
-        if (numero < 100 || numero > 999) {
+        final int limiteInferior = 100;
+        final int limiteSuperior = 999;
+
+        if (numero < limiteInferior || numero > limiteSuperior) {
             throw new IllegalArgumentException("Número Inválido!");
         }
     }
@@ -128,11 +144,13 @@ public final class MatematicaUtils {
         validaArgumentoObrigatorio(mes);
         validaArgumentoObrigatorio(ano);
 
+        final int menorAnoAceito = 1753;
+
         if (dia < MENOR_DIA || dia > MAIOR_DIA) {
             throw new IllegalArgumentException("Dia inválido.");
         } else if ((mes < JANEIRO) || (mes > DEZEMBRO)) {
             throw new IllegalArgumentException("Mês inválido.");
-        } else if (ano < 1753) {
+        } else if (ano < menorAnoAceito) {
             throw new IllegalArgumentException("Ano inválido.");
         }
 
@@ -142,19 +160,21 @@ public final class MatematicaUtils {
             throw new IllegalArgumentException("data inválida", excecao);
         }
 
+        final int anoEmMeses = 12;
         final boolean janeiroOuFevereiro = mes == 1 || mes == 2;
         final int mesAuxiliar = janeiroOuFevereiro
-            ? mes + 12
+            ? mes + anoEmMeses
             : mes;
-        
+
         final int anoAuxiliar = janeiroOuFevereiro
             ? ano - 1
             : ano;
-        
+
         final int indiceDoDia = dia + 2 * mesAuxiliar + (3 * (mesAuxiliar + 1)) / 5
                 + anoAuxiliar + anoAuxiliar / 4 - anoAuxiliar / 100
                 + anoAuxiliar / 400;
-        return indiceDoDia % 7;
+        final int qtdDiasDaSemana = 7;
+        return indiceDoDia % qtdDiasDaSemana;
     }
 
     /**
@@ -255,7 +275,7 @@ public final class MatematicaUtils {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
 
-        // FIXME evite anomalia apontada pelo PMD, variável redefinida sem uso. 
+        //FIXME evite anomalia apontada pelo PMD, variável redefinida sem uso.
         int totalParcelas = fator1;
         int parcela = fator2;
 
@@ -294,15 +314,10 @@ public final class MatematicaUtils {
         if (base < 0 || expoente < 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
-
-        // FIXME por legibilidade, não seria melhor
-        // for (int indice = 1; indice <= expoente; indice++) { ...} 
         int potencia = 1;
-        int indice = 1;
 
-        while (indice <= expoente) {
+        for (int indice = 1; indice <= expoente; indice++) {
             potencia = produto(potencia, base);
-            indice++;
         }
 
         return potencia;
@@ -331,10 +346,11 @@ public final class MatematicaUtils {
         double d = -1;
         double piParcial = 0;
 
+        final int quatro = 4;
         while (contador <= precisao) {
             d += 2;
             s *= -1;
-            piParcial = piParcial + 4 * s / d;
+            piParcial = piParcial + quatro * s / d;
             contador++;
         }
         return piParcial;
@@ -700,20 +716,39 @@ public final class MatematicaUtils {
     public static boolean validaCPF(final int[] cpf) {
         validaArgumentoObrigatorio(cpf);
 
-        if (cpf.length != 11) {
+        final int posicaoDigitoVerificador1 = 9;
+        final int posicaoDigitoVerificador2 = 10;
+        final int ultimoDigitoComum = 8;
+
+        final int tamanhoCPF = 11;
+        if (cpf.length != tamanhoCPF) {
             throw new IllegalArgumentException("CPF inválido. O CPF precisa"
                     + " ter 11 dígitos.");
         }
 
+        int verificacao1 = 0;
+        int verificacao2 = 0;
+
+        for (int i = 0; i <= ultimoDigitoComum; i++) {
+            verificacao1 = verificacao1 + cpf[i] * (i + 1);
+        }
+
+        for (int i = 1; i <= posicaoDigitoVerificador1; i++) {
+            verificacao2 = verificacao2 + cpf[i] * i;
+        }
+
+        /*
         final int j = cpf[0] + 2 * cpf[1] + 3 * cpf[2] + 4 * cpf[3] + 5 * cpf[4] + 6 * cpf[5] + 7 * cpf[6]
                 + 8 * cpf[7] + 9 * cpf[8];
         final int k = cpf[1] + 2 * cpf[2] + 3 * cpf[3] + 4 * cpf[4] + 5 * cpf[5] + 6 * cpf[6] + 7 * cpf[7]
                 + 8 * cpf[8] + 9 * cpf[9];
+        */
 
-        final int digitoVerificador1 = (j % 11) % 10;
-        final int digitoVerificador2 = (k % 11) % 10;
+        final int digitoVerificador1 = (verificacao1 % tamanhoCPF) % posicaoDigitoVerificador2;
+        final int digitoVerificador2 = (verificacao2 % tamanhoCPF) % posicaoDigitoVerificador2;
 
-        return digitoVerificador1 == cpf[9] && digitoVerificador2 == cpf[10];
+        return digitoVerificador1 == cpf[posicaoDigitoVerificador1]
+                && digitoVerificador2 == cpf[posicaoDigitoVerificador2];
     }
 
     /**
@@ -730,14 +765,20 @@ public final class MatematicaUtils {
     public static boolean validaCPF2(final int[] cpf) {
         validaArgumentoObrigatorio(cpf);
 
-        if (cpf.length != 11) {
+        final int tamanhoCPF = 11;
+        final int posicaoDigitoVerificador1 = 9;
+        final int posicaoDigitoVerificador2 = 10;
+        final int posicaoDigito8 = 7;
+        final int posicaoDigito9 = 8;
+
+        if (cpf.length != tamanhoCPF) {
             throw new IllegalArgumentException("CPF inválido. O CPF precisa"
                     + " ter 11 dígitos.");
         }
 
-        int indiceDigito = 7;
-        int p = cpf[8];
-        int s = cpf[8];
+        int indiceDigito = posicaoDigito8;
+        int p = cpf[posicaoDigito9];
+        int s = cpf[posicaoDigito9];
 
         while (0 <= indiceDigito) {
             p += cpf[indiceDigito];
@@ -745,9 +786,12 @@ public final class MatematicaUtils {
             indiceDigito--;
         }
 
-        final int digitoVerificador1 = (s % 11) % 10;
-        final int digitoVerificador2 = ((s - p + 9 * cpf[9]) % 11) % 10;
+        final int digitoVerificador1 = (s % tamanhoCPF) % posicaoDigitoVerificador2;
+        final int digitoVerificador2 = ((s - p + posicaoDigitoVerificador1
+                * cpf[posicaoDigitoVerificador1]) % tamanhoCPF)
+                % posicaoDigitoVerificador2;
 
-        return (digitoVerificador1 == cpf[9]) && (digitoVerificador2 == cpf[10]);
+        return (digitoVerificador1 == cpf[posicaoDigitoVerificador1])
+                && (digitoVerificador2 == cpf[posicaoDigitoVerificador2]);
     }
 }
