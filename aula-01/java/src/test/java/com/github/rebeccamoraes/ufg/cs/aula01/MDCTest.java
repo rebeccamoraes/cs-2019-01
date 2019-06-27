@@ -9,31 +9,31 @@ public class MDCTest {
 
     @Test
     void mdcEntre10E5IgualA5(){
-        assertEquals(5, Exercicios.mdc(10,5));
+        assertEquals(5, MatematicaUtils.mdc(10,5));
     }
 
 
     @Test
     void mdcEntre11E5IgualA1(){
-        assertEquals(1, Exercicios.mdc(11,5));
+        assertEquals(1, MatematicaUtils.mdc(11,5));
     }
 
     @Test
     void segundoNumeroIgualA0GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.mdc(10, 0));
+                () -> MatematicaUtils.mdc(10, 0));
     }
 
     @Test
     void segundoNumeroMenorQue0GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.mdc(10, -1));
+                () -> MatematicaUtils.mdc(10, -1));
     }
 
     @Test
     void segundoNumeroMaiorQuePrimeiroGeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.mdc(5, 10));
+                () -> MatematicaUtils.mdc(5, 10));
     }
 
 

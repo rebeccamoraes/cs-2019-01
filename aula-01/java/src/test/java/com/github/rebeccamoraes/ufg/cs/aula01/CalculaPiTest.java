@@ -10,11 +10,11 @@ public class CalculaPiTest {
     @Test
     void precisaoMenorQue1GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.calculaPi(0));
+                () -> MatematicaUtils.calculaPi(0));
     }
 
     @Test
     void casoClassico(){
-        assertEquals(3.14, Exercicios.calculaPi(100), 0.1);
+        assertEquals(3.14, MatematicaUtils.calculaPi(100), 0.1);
     }
 }

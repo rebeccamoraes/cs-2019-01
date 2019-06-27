@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class FatorialTest {
     @Test
     void fatorialde5Retorna120(){
-        assertEquals(120, Exercicios.fatorial(5));
+        assertEquals(120, MatematicaUtils.fatorial(5));
     }
 
     @Test
     void numeroMenorQue1GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.fatorial(0));
+                () -> MatematicaUtils.fatorial(0));
     }
 }

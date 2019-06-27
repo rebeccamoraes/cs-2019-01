@@ -8,24 +8,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ProdutoTest {
     @Test
     void produtoDe5E7Retorna35(){
-        assertEquals(35, Exercicios.produto(5, 7));
+        assertEquals(35, MatematicaUtils.produto(5, 7));
     }
 
     @Test
     void produtoDe7E5Retorna35(){
-        assertEquals(35, Exercicios.produto(7, 5));
+        assertEquals(35, MatematicaUtils.produto(7, 5));
     }
 
     @Test
     void fator1MenorQue0GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.produto(-1, 5));
+                () -> MatematicaUtils.produto(-1, 5));
     }
 
     @Test
     void fator2MenorQue0GeraExcecao(){
         assertThrows(IllegalArgumentException.class,
-                () -> Exercicios.produto(0, -1));
+                () -> MatematicaUtils.produto(0, -1));
     }
 
 }
