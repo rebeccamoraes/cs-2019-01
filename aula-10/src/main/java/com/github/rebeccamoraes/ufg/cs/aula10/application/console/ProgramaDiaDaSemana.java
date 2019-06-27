@@ -10,9 +10,9 @@ import com.github.rebeccamoraes.ufg.cs.aula10.domain.DiaDaSemana;
  *
  * @author Rebecca Moraes
  */
-public class ProgramaDiaDaSemana{
+public class ProgramaDiaDaSemana {
 
-    public static void main(final String[] args){
+    public static void main(final String[] args) {
         final int resultado = DiaDaSemana.obtemDiaDaSemana(args);
         System.out.println(resultado);
     }
