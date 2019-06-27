@@ -8,7 +8,9 @@ import java.util.Arrays;
  *
  * @author Rebecca Moraes
  */
+
 public final class MatematicaUtils {
+
     /**
      * Maior valor possível para dia.
      */
@@ -44,10 +46,12 @@ public final class MatematicaUtils {
      * @return Verdadeiro, caso o número possua a propriedade 3025, ou
      * falso, caso contrário.
      *
-     * @throws IllegalArgumentException Lança exceção caso o valor do parâmetro
-     * seja menor que 0 ou maior que 9999.
+     * @throws IllegalArgumentException Se o argumento fornecido estiver
+     * fora da faixa, desde 0 até 9999, inclusive.
      */
     public static boolean propriedade3025(final int numero) {
+        // FIXME este limite superior é, de fato, um número mágico melhor seria usar a constante abaixo
+        // final int limiteSuperior = 9999
         if (numero < 0 || numero > 9999) {
             throw new IllegalArgumentException("Número Inválido!");
         }
@@ -67,20 +71,26 @@ public final class MatematicaUtils {
      * @return Verdadeiro, caso o número possua a propriedade 153, ou
      * falso, caso contrário.
      *
-     * @throws IllegalArgumentException Lança exceção caso o valor do parâmetro
-     * seja menor que 100 ou maior que 9999.
+     * @throws IllegalArgumentException Se o valor do parâmetro for menor que
+     * 100 ou maior que 9999.
      */
     public static boolean propriedade153(final int numero) {
-        if (numero < 100 || numero > 999) {
-            throw new IllegalArgumentException("Número Inválido!");
-        }
-
+        verificaNumeroTresDigitos(numero);
+        
         final int centena = numero / 100;
         final int dezenaUnidade = numero % 100;
         final int dezena = dezenaUnidade / 10;
         final int unidade = dezenaUnidade % 10;
 
+        // FIXME cubo para constante que representa o 3
         return (Math.pow(centena, 3) + Math.pow(dezena, 3) + Math.pow(unidade, 3)) == numero;
+    }
+    
+    private static void verificaNumeroTresDigitos(final int numero) {
+        // FIXME estes são números mágicos, você deve substituir
+        if (numero < 100 || numero > 999) {
+            throw new IllegalArgumentException("Número Inválido!");
+        }
     }
 
     /**
@@ -114,14 +124,15 @@ public final class MatematicaUtils {
             throw new IllegalArgumentException("data inválida", excecao);
         }
 
-        int mesAuxiliar = mes;
-        int anoAuxiliar = ano;
-
-        if (mes == 1 || mes == 2) {
-            mesAuxiliar += 12;
-            anoAuxiliar -= 1;
-        }
-
+        final boolean janeiroOuFevereiro = mes == 1 || mes == 2;
+        final int mesAuxiliar = janeiroOuFevereiro
+            ? mes + 12
+            : mes;
+        
+        final int anoAuxiliar = janeiroOuFevereiro
+            ? ano - 1
+            : ano;
+        
         final int indiceDoDia = dia + 2 * mesAuxiliar + (3 * (mesAuxiliar + 1)) / 5
                 + anoAuxiliar + anoAuxiliar / 4 - anoAuxiliar / 100
                 + anoAuxiliar / 400;
@@ -136,7 +147,7 @@ public final class MatematicaUtils {
      *
      * @return Resto inteiro da divisão do divisor pelo dividendo.
      *
-     * @throws IllegalArgumentException Caso o valor do dividendo menor ou
+     * @throws IllegalArgumentException Caso o valor do dividendo for menor ou
      * igual a 0 ou o divisor não seja menor que zero.
      */
     public static int mod(final int dividendo, final int divisor) {
@@ -212,6 +223,7 @@ public final class MatematicaUtils {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
 
+        // FIXME evite anomalia apontada pelo PMD, variável redefinida sem uso. 
         int totalParcelas = fator1;
         int parcela = fator2;
 
@@ -247,6 +259,8 @@ public final class MatematicaUtils {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
 
+        // FIXME por legibilidade, não seria melhor
+        // for (int indice = 1; indice <= expoente; indice++) { ...} 
         int potencia = 1;
         int indice = 1;
 
@@ -332,6 +346,7 @@ public final class MatematicaUtils {
      * sequintes requisitos 0 <= x, x < y e 0 < k.
      */
     public static double razaoAurea(final int primeiroNumero, final int segundoNumero, final int tamanhoSequencia) {
+        // FIXME substituir condição por método
         if (primeiroNumero < 0 || primeiroNumero > segundoNumero || tamanhoSequencia <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -356,7 +371,7 @@ public final class MatematicaUtils {
      *
      * @param numero número a ser verificado.
      *
-     * @return True, caso o número satisfaça a equação, ou False, caso contrário.
+     * @return {@code true}, caso o número satisfaça a equação, ou {@code false}, caso contrário.
      *
      * @throws IllegalArgumentException Caso o número seja menor que 1.
      */
@@ -377,13 +392,13 @@ public final class MatematicaUtils {
     }
 
     /**
-     * Calcula a raiz quadrada de um número n, com precisão fornecida de
+     * Calcula a raiz quadrada de um número, com precisão fornecida de
      * acordo com o Método Babilônico.
      *
      * @param numero número para cálculo da raiz quadrada.
      * @param precisao numero inteiro.
      *
-     * @return Raiz quadrada do número n com precisão i.
+     * @return Raiz quadrada do número com precisão fornecida.
      *
      * @throws IllegalArgumentException Caso n seja menor ou igual a 0.
      */
@@ -408,9 +423,10 @@ public final class MatematicaUtils {
      *
      * @param numero número a ser verificado.
      *
-     * @return True caso o número seja primo, ou false, caso contrário.
+     * @return {@code true} caso o número seja primo, ou {@code false}, caso
+     * contrário.
      *
-     * @throws IllegalArgumentException Caso n seja menor ou igual a 1.
+     * @throws IllegalArgumentException Caso o número seja menor ou igual a 1.
      */
     public static boolean primo(final int numero) {
         if (numero <= 1) {
@@ -437,7 +453,8 @@ public final class MatematicaUtils {
      * @param vetor vetor cujos índices serão verificados.
      * @param tamanho tamanho do vetor.
      *
-     * @return vetor cujos valores das posições cos índices primos são igual a 0.
+     * @return vetor cujos valores das posições cos índices primos são igual
+     * a 0.
      *
      * @throws IllegalArgumentException Caso o temanho do vetor seja menor
      * ou igual a 1.
@@ -596,7 +613,8 @@ public final class MatematicaUtils {
      *
      * @param cpf vetor contendo os dígitos do CPF a ser verificado.
      *
-     * @return True caso o cpf informado seja válido, ou false, caso contrário.
+     * @return {@code true} caso o cpf informado seja válido, ou {@code false},
+     * caso contrário.
      */
     public static boolean validaCPF(final int[] cpf) {
         if (cpf.length < 11) {
@@ -620,7 +638,8 @@ public final class MatematicaUtils {
      *
      * @param cpf vetor contendo os dígitos do CPF a ser verificado.
      *
-     * @return True caso o cpf informado seja válido, ou false, caso contrário.
+     * @return {@code true} caso o CPF informado seja válido, ou {@code false},
+     * caso contrário.
      */
     public static boolean validaCPF2(final int[] cpf) {
         if (cpf.length < 11) {
