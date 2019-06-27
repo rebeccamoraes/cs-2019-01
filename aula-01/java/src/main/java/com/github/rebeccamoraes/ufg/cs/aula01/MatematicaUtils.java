@@ -37,6 +37,12 @@ public final class MatematicaUtils {
      */
     private MatematicaUtils() { }
 
+    private static void validaArgumentoObrigatorio(Object arg){
+        if(arg == null){
+            throw new IllegalArgumentException("Parâmetro(s) nulo(s).");
+        }
+    }
+
     /**
      * Verifica se o argumento fornecido é um número que possui a propriedade
      * 3025.
@@ -48,8 +54,12 @@ public final class MatematicaUtils {
      *
      * @throws IllegalArgumentException Se o argumento fornecido estiver
      * fora da faixa, desde 0 até 9999, inclusive.
+     *
+     * @throws IllegalArgumentException Se o argumento for nulo.
      */
     public static boolean propriedade3025(final int numero) {
+        validaArgumentoObrigatorio(numero);
+
         // FIXME este limite superior é, de fato, um número mágico melhor seria usar a constante abaixo
         // final int limiteSuperior = 9999
         if (numero < 0 || numero > 9999) {
@@ -73,8 +83,11 @@ public final class MatematicaUtils {
      *
      * @throws IllegalArgumentException Se o valor do parâmetro for menor que
      * 100 ou maior que 9999.
+     *
+     *  @throws IllegalArgumentException Se o argumento for nulo.
      */
     public static boolean propriedade153(final int numero) {
+        validaArgumentoObrigatorio(numero);
         verificaNumeroTresDigitos(numero);
         
         final int centena = numero / 100;
@@ -108,8 +121,13 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Caso valor de mes seja menor que 1 ou
      * maior que 12.
      * @throws IllegalArgumentException Caso valor de ano seja menor que 1753.
+     * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      */
     public static int diaDaSemana(final int dia, final int mes, final int ano) {
+        validaArgumentoObrigatorio(dia);
+        validaArgumentoObrigatorio(mes);
+        validaArgumentoObrigatorio(ano);
+
         if (dia < MENOR_DIA || dia > MAIOR_DIA) {
             throw new IllegalArgumentException("Dia inválido.");
         } else if ((mes < JANEIRO) || (mes > DEZEMBRO)) {
@@ -149,8 +167,12 @@ public final class MatematicaUtils {
      *
      * @throws IllegalArgumentException Caso o valor do dividendo for menor ou
      * igual a 0 ou o divisor não seja menor que zero.
+     * @throws IllegalArgumentException Se um ou mais argumentos forem nulos.
      */
     public static int mod(final int dividendo, final int divisor) {
+        validaArgumentoObrigatorio(dividendo);
+        validaArgumentoObrigatorio(divisor);
+
         if (divisor <= 0 || dividendo < 0) {
             throw new IllegalArgumentException("Argumentos inválidos.");
         }
@@ -170,8 +192,11 @@ public final class MatematicaUtils {
      * @return Número correspondente à soma dos n primeiros números naturais.
      *
      * @throws IllegalArgumentException Caso n seja menor que 1.
+     * @throws IllegalArgumentException Se o argumento for nulo.
      */
     public static int somaNaturais(final int numero) {
+        validaArgumentoObrigatorio(numero);
+
         if (numero < 1) {
             throw new IllegalArgumentException("Número Inválido!");
         }
@@ -192,8 +217,11 @@ public final class MatematicaUtils {
      * @return Número inteiro correspondente ao fatorial do número n.
      *
      * @throws IllegalArgumentException Caso o valor de n seja menor que 1.
+     * @throws IllegalArgumentException Se o argumento for nulo.
      */
     public static int fatorial(final int numero) {
+        validaArgumentoObrigatorio(numero);
+
         if (numero < 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
@@ -217,8 +245,12 @@ public final class MatematicaUtils {
      *
      * @throws IllegalArgumentException Caso o valor de fator1 ou de fator2
      * seja(m) menor(e) que zero.
+     * @throws IllegalArgumentException Se o argumento(s) for(em) nulo(s).
      */
     public static int produto(final int fator1, final int fator2) {
+        validaArgumentoObrigatorio(fator1);
+        validaArgumentoObrigatorio(fator2);
+
         if (fator1 < 0 || fator2 < 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -253,8 +285,12 @@ public final class MatematicaUtils {
      *
      * @throws IllegalArgumentException Caso o valor da base ou do expoente
      * seja(m) menor(es) que zero.
+     * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      */
     public static int potenciaUtilizandoSomas(final int base, final int expoente) {
+        validaArgumentoObrigatorio(base);
+        validaArgumentoObrigatorio(expoente);
+
         if (base < 0 || expoente < 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -281,8 +317,11 @@ public final class MatematicaUtils {
      *
      * @throws IllegalArgumentException Caso o valor de precisão seja menor
      * que 1.
+     * @throws IllegalArgumentException Se o argumento for nulo.
      */
     public static double calculaPi(final int precisao) {
+        validaArgumentoObrigatorio(precisao);
+
         if (precisao < 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
@@ -312,8 +351,12 @@ public final class MatematicaUtils {
      *
      * @throws IllegalArgumentException Caso os argumentos não atendam as
      * seguintes exigências: 1 <= n e 2 <= k.
+     * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      */
     public static double logaritmoNatural(final int expoente, final int precisao) {
+        validaArgumentoObrigatorio(expoente);
+        validaArgumentoObrigatorio(precisao);
+
         if (expoente < 1 || precisao < 2) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -344,8 +387,13 @@ public final class MatematicaUtils {
      *
      * @throws IllegalArgumentException Caso os argumentos não atendam os
      * sequintes requisitos 0 <= x, x < y e 0 < k.
+     * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      */
     public static double razaoAurea(final int primeiroNumero, final int segundoNumero, final int tamanhoSequencia) {
+        validaArgumentoObrigatorio(primeiroNumero);
+        validaArgumentoObrigatorio(segundoNumero);
+        validaArgumentoObrigatorio(tamanhoSequencia);
+
         // FIXME substituir condição por método
         if (primeiroNumero < 0 || primeiroNumero > segundoNumero || tamanhoSequencia <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
@@ -373,9 +421,12 @@ public final class MatematicaUtils {
      *
      * @return {@code true}, caso o número satisfaça a equação, ou {@code false}, caso contrário.
      *
+     * @throws IllegalArgumentException Se o argumento for nulo.
      * @throws IllegalArgumentException Caso o número seja menor que 1.
      */
     public static boolean quadradoPerfeito(final int numero) {
+        validaArgumentoObrigatorio(numero);
+
         if (numero < 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
@@ -400,9 +451,13 @@ public final class MatematicaUtils {
      *
      * @return Raiz quadrada do número com precisão fornecida.
      *
+     * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      * @throws IllegalArgumentException Caso n seja menor ou igual a 0.
      */
     public static double raizQuadrada(final int numero, final int precisao) {
+        validaArgumentoObrigatorio(numero);
+        validaArgumentoObrigatorio(precisao);
+
         if (numero <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -426,9 +481,12 @@ public final class MatematicaUtils {
      * @return {@code true} caso o número seja primo, ou {@code false}, caso
      * contrário.
      *
+     * @throws IllegalArgumentException Se o argumento for nulo.
      * @throws IllegalArgumentException Caso o número seja menor ou igual a 1.
      */
     public static boolean primo(final int numero) {
+        validaArgumentoObrigatorio(numero);
+
         if (numero <= 1) {
             throw new IllegalArgumentException("Número inválido.");
         }
@@ -456,10 +514,14 @@ public final class MatematicaUtils {
      * @return vetor cujos valores das posições cos índices primos são igual
      * a 0.
      *
+     * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      * @throws IllegalArgumentException Caso o temanho do vetor seja menor
      * ou igual a 1.
      */
     public static int[] crivoEratostenes(final int[] vetor, final int tamanho) {
+        validaArgumentoObrigatorio(vetor);
+        validaArgumentoObrigatorio(tamanho);
+
         if (tamanho <= 1) {
             throw new IllegalArgumentException("Argumento(s) inválido(s).");
         }
@@ -492,11 +554,15 @@ public final class MatematicaUtils {
      *
      * @return Maior divisor comum entre os dois inteiros fornecidos.
      *
+     * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      * @throws IllegalArgumentException  Caso os argumentos não atendam os
      * sequintes requisitos: segundoNumero <= primeiroNumero e
      * 0 < segundoNumero.
      */
     public static int mdc(final int primeiroNumero, final int segundoNumero) {
+        validaArgumentoObrigatorio(primeiroNumero);
+        validaArgumentoObrigatorio(segundoNumero);
+
         if (segundoNumero > primeiroNumero || segundoNumero <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválidos!");
         }
@@ -523,11 +589,15 @@ public final class MatematicaUtils {
      *
      * @return Maior divisor comum entre os valores de a e b.
      *
+     * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      * @throws IllegalArgumentException  Caso os argumentos não atendam os
      * sequintes requisitos: segundoNumero <= primeiroNumero
      * e 0 < segundoNumero.
      */
     public static int mdc2(final int primeiroNumero, final int segundoNumero) {
+        validaArgumentoObrigatorio(primeiroNumero);
+        validaArgumentoObrigatorio(segundoNumero);
+
         if (segundoNumero > primeiroNumero || segundoNumero <= 0) {
             throw new IllegalArgumentException("Argumento(s) inválidos!");
         }
@@ -555,10 +625,15 @@ public final class MatematicaUtils {
      *
      * @return Resultado da somatória dos produtos e potências do polinômio.
      *
+     * @throws IllegalArgumentException Se o(s) argumento(s) for(em) nulo(s).
      * @throws IllegalArgumentException Caso o grau do polinômio seja menor
      * que 1.
      */
     public static int avaliacaoPolinomialHorner(final int incognita, final int grau, final int[] coeficientes) {
+        validaArgumentoObrigatorio(incognita);
+        validaArgumentoObrigatorio(grau);
+        validaArgumentoObrigatorio(coeficientes);
+
         if (grau < 1) {
             throw new IllegalArgumentException("Número inválido!");
         }
@@ -577,27 +652,30 @@ public final class MatematicaUtils {
     /**
      * Calcula o n-ésimo termo da sequência de Fibonacci.
      *
-     * @param n posição do termo a ser obtido.
+     * @param numero posição do termo a ser obtido.
      *
      * @return n-ésimo termo da sequência de Fibonacci.
      *
+     * @throws IllegalArgumentException Se o argumento for nulo.
      * @throws IllegalArgumentException Caso n seja menor que 0.
      */
-    public static int fibonacci(final int n) {
-        if (n < 0) {
+    public static int fibonacci(final int numero) {
+        validaArgumentoObrigatorio(numero);
+
+        if (numero < 0) {
             throw new IllegalArgumentException("Número inválido!");
         }
 
         int a = 0;
         int c = 1;
 
-        if (n == 0 || n == 1) {
-            return n;
+        if (numero == 0 || numero == 1) {
+            return numero;
         } else {
 
             int i = 2;
 
-            while (i <= n) {
+            while (i <= numero) {
                 final int t = c;
                 c += a;
                 a = t;
@@ -615,9 +693,14 @@ public final class MatematicaUtils {
      *
      * @return {@code true} caso o cpf informado seja válido, ou {@code false},
      * caso contrário.
+     *
+     * @throws IllegalArgumentException Se o argumento for nulo.
+     * @throws IllegalArgumentException Se o tamanho do CPF for diferente de 11.
      */
     public static boolean validaCPF(final int[] cpf) {
-        if (cpf.length < 11) {
+        validaArgumentoObrigatorio(cpf);
+
+        if (cpf.length != 11) {
             throw new IllegalArgumentException("CPF inválido. O CPF precisa"
                     + " ter 11 dígitos.");
         }
@@ -640,9 +723,14 @@ public final class MatematicaUtils {
      *
      * @return {@code true} caso o CPF informado seja válido, ou {@code false},
      * caso contrário.
+     *
+     * @throws IllegalArgumentException Se o argumento for nulo.
+     * @throws IllegalArgumentException Se o tamanho do CPF for diferente de 11.
      */
     public static boolean validaCPF2(final int[] cpf) {
-        if (cpf.length < 11) {
+        validaArgumentoObrigatorio(cpf);
+
+        if (cpf.length != 11) {
             throw new IllegalArgumentException("CPF inválido. O CPF precisa"
                     + " ter 11 dígitos.");
         }
