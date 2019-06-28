@@ -91,7 +91,7 @@ public class Data {
             final boolean anoEhMultiploDe400 = ano % 400 == 0;
 
             final boolean bissexto = difEhMultiploDe4 && !(anoEhMultiploDe100
-                    && anoEhMultiploDe400);
+                    && !anoEhMultiploDe400);
 
             return bissexto;
         }
