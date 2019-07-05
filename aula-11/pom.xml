@@ -4,21 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.kyriosdata</groupId>
-    <artifactId>exemplo</artifactId>
+    <groupId>com.github.rebeccamoraes.ufg.cs</groupId>
+    <artifactId>diferenca-datas</artifactId>
     <packaging>jar</packaging>
     <version>1.0.1</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
 
     <description>
-        Projeto de referência para desenvolvimento em Java.
-        A expectativa é que o presente projeto possa ser empregado como ponto
-        de partida e, a partir dele, ajustes realizados para se adequar às
-        necessidades específicas do projeto em questão.
+        Implementação da api que retorna a diferença entre duas datas.
     </description>
 
-    <url>https://github.com/kyriosdata/exemplo</url>
+    <url>https://github.com/rebeccamoraes/cs-2019-01</url>
 
     <organization>
         <name>Instituto de Informática (UFG) - Fábrica de Software</name>
@@ -42,20 +39,20 @@
 
     <developers>
         <developer>
-            <id>kyriosdata</id>
-            <name>Fábio Nogueira de Lucena</name>
-            <email>fabio@inf.ufg.br</email>
+            <id>rebeccamoraes</id>
+            <name>Rebecca Moraes</name>
+            <email>rebeccaufg@gmail.com</email>
             <organization>Instituto de Informática (UFG)</organization>
             <organizationUrl>http://www.inf.ufg.br</organizationUrl>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/kyriosdata/exemplo.git
+        <connection>scm:git:https://github.com/rebeccamoraes/cs-2019-01/aula-11.git
         </connection>
         <developerConnection>scm:git:https://github.com/kyriosdata/exemplo.git
         </developerConnection>
-        <url>https://github.com/kyriosdata/exemplo</url>
+        <url>https://github.com/rebeccamoraes/cs-2019-01/aula-11</url>
     </scm>
 
     <parent>
@@ -70,7 +67,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.mainClass>
-            com.github.kyriosdata.exemplo.application.console.ProgramaCalendario
+            com.github.rebeccamoraes.ufg.cs.aula11.application.api.console.ProgramaCalendario
         </project.mainClass>
 
         <tools.dir>${project.basedir}/tools</tools.dir>
@@ -162,7 +159,7 @@
         </pluginManagement>
 
         <!-- Define o nome do arquivo a ser gerado (.jar é acrescentada) -->
-        <finalName>exemplo</finalName>
+        <finalName>diferenca-datas</finalName>
 
         <plugins>            
 
@@ -566,11 +563,11 @@
                         <configuration>
                             <targetClasses>
                                 <param>
-                                    com.github.kyriosdata.exemplo.domain.Calendario
+                                    com.github.rebeccamoraes.ufg.cs.aula11.domain.Calendario
                                 </param>
                             </targetClasses>
                             <targetTests>
-                                <param>com.github.kyriosdata.exemplo.*</param>
+                                <param>com.github.rebeccamoraes.ufg.cs.aula11.*</param>
                             </targetTests>
                         </configuration>
                     </plugin>
