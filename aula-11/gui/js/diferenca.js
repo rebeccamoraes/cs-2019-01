@@ -1,5 +1,5 @@
 // Path para a requisição (URL)
-        const PATH = "http://localhost:9876/ds?inicio=";
+        const PATH = "http://localhost:1234/ds?dataInicial=";
 
         function atualizaDiferenca() {
             var xhttp = new XMLHttpRequest();
@@ -19,7 +19,7 @@
         }
 
         function montaURL(dataInicial, dataFinal) {
-            return PATH + dataInicial + "&final=" + dataFinal;
+            return PATH + dataInicial + "&dataFinal=" + dataFinal;
         }
 
         function dataCorrente() {
@@ -50,5 +50,5 @@
             let mes = formataDiaOuMes(m);
             let ano = formataAno(a);
 
-            return `${d}-${m}-${a}`;
+            return `${d}/${m}/${a}`;
         }

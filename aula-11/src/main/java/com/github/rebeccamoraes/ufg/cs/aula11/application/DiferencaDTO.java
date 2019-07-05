@@ -16,6 +16,10 @@ public class DiferencaDTO {
      */
     private int diferenca;
 
+    /**
+     * Armazena o valor da diferenca entre duas datas.
+     * @param diferenca
+     */
     public DiferencaDTO(final int diferenca) {
         this.diferenca = diferenca;
     }

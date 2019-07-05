@@ -34,8 +34,8 @@ public final class DiferencaDataController {
                     defaultValue = "não fornecida")
                     final String paramDataFinal) {
 
-        LocalDate dataInicial = localDateFromString(paramDataInicial);
-        LocalDate dataFinal = localDateFromString(paramDataFinal);
+        final LocalDate dataInicial = localDateFromString(paramDataInicial);
+        final LocalDate dataFinal = localDateFromString(paramDataFinal);
 
         final int ds = DataOperacoes.diferenca(dataInicial, dataFinal);
 
@@ -52,7 +52,7 @@ public final class DiferencaDataController {
      */
     public static LocalDate localDateFromString(final String data) {
         try {
-            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             return LocalDate.parse(data, fmt);
         } catch (Exception exp) {
             return null;

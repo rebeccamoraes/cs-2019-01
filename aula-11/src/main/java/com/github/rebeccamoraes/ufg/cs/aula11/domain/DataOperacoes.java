@@ -13,6 +13,12 @@ public final class DataOperacoes {
      */
     private DataOperacoes() { }
 
+    /**
+     * Calcula a diferenca em dias entre duas datas
+     * @param dataInicial Data inicial para cálculo.
+     * @param dataFinal Data final para cálculo.
+     * @return {@code int}
+     */
     public static int diferenca(final LocalDate dataInicial,
                                 final LocalDate dataFinal) {
         final Period periodo = Period.between(dataInicial, dataFinal);
