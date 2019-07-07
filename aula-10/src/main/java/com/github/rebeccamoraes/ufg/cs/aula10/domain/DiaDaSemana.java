@@ -13,7 +13,7 @@ public final class DiaDaSemana {
     /**
      * Valor padrão para casos de erro.
      */
-    static final int ERRO = -1;
+    private static final int ERRO = -1;
 
     /**
      * Construtor privado para evitar a instanciação da classe.
