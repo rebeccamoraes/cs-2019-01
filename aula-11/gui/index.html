@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Diferença entre datas em dias</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/diferenca.js"></script>
+</head>
+<body onload="dataCorrente()">
+    <h1>Diferença entre Datas</h1>
+    <label for="dataInicial">Mês/Dia/Ano</label><br>
+    <input type="date" id="dataInicial" onchange="atualizaDiferenca()">
+    <label for="dataFinal">Mês/Dia/Ano</label><br>
+    <input type="date" id="dataFinal" onchange="atualizaDiferenca()">
+    <button onclick="atualizaDiferenca();">Obtenha a diferença em dias</button><br>
+    <span style="color: blue; font-size: 20pt;" id="resultado"></span>
+</body>
+</html>
