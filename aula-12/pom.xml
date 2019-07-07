@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.rebeccamoraes.ufg.cs</groupId>
-    <artifactId>diferenca-datas</artifactId>
+    <artifactId>numero-por-extenso</artifactId>
     <packaging>jar</packaging>
     <version>1.0.1</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
 
     <description>
-        Implementação da api que retorna a diferença entre duas datas.
+        Implementação da api que retorna um número por extenso.
     </description>
 
     <url>https://github.com/rebeccamoraes/cs-2019-01</url>
@@ -48,11 +48,11 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/rebeccamoraes/cs-2019-01/aula-12.git
+        <connection>scm:git:https://github.com/rebeccamoraes/cs-2019-01.git
         </connection>
-        <developerConnection>scm:git:https://github.com/kyriosdata/exemplo.git
+        <developerConnection>scm:git:https://github.com/rebeccamoraes/cs-2019-01.git
         </developerConnection>
-        <url>https://github.com/rebeccamoraes/cs-2019-01/aula-12</url>
+        <url>https://github.com/rebeccamoraes/cs-2019-01</url>
     </scm>
 
     <parent>
@@ -67,7 +67,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.mainClass>
-            com.github.rebeccamoraes.ufg.cs.aula12.application.api.console.ProgramaCalendario
+            com.github.rebeccamoraes.ufg.cs.aula12.application.api.console.ProgramaNumero
         </project.mainClass>
 
         <tools.dir>${project.basedir}/tools</tools.dir>
@@ -159,7 +159,7 @@
         </pluginManagement>
 
         <!-- Define o nome do arquivo a ser gerado (.jar é acrescentada) -->
-        <finalName>diferenca-datas</finalName>
+        <finalName>numero-por-extenso</finalName>
 
         <plugins>            
 
