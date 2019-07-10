@@ -15,19 +15,25 @@ public class NumeroPorExtensoTest {
     @Test
     void casosClassicos1a20() {
         assertEquals("um", NumeroUtils.porExtenso(1));
-        assertEquals("dois", NumeroUtils.porExtenso(1));
-        assertEquals("três", NumeroUtils.porExtenso(1));
-        assertEquals("quatro", NumeroUtils.porExtenso(1));
-        assertEquals("cinco", NumeroUtils.porExtenso(1));
-        assertEquals("seis", NumeroUtils.porExtenso(1));
-        assertEquals("sete", NumeroUtils.porExtenso(1));
-        assertEquals("oito", NumeroUtils.porExtenso(1));
-        assertEquals("nove", NumeroUtils.porExtenso(1));
-        assertEquals("dez", NumeroUtils.porExtenso(1));
-        assertEquals("onze", NumeroUtils.porExtenso(1));
-        assertEquals("doze", NumeroUtils.porExtenso(1));
-        assertEquals("treze", NumeroUtils.porExtenso(1));
-        assertEquals("catorze", NumeroUtils.porExtenso(1));
+        assertEquals("dois", NumeroUtils.porExtenso(2));
+        assertEquals("três", NumeroUtils.porExtenso(3));
+        assertEquals("quatro", NumeroUtils.porExtenso(4));
+        assertEquals("cinco", NumeroUtils.porExtenso(5));
+        assertEquals("seis", NumeroUtils.porExtenso(6));
+        assertEquals("sete", NumeroUtils.porExtenso(7));
+        assertEquals("oito", NumeroUtils.porExtenso(8));
+        assertEquals("nove", NumeroUtils.porExtenso(9));
+        assertEquals("dez", NumeroUtils.porExtenso(10));
+        assertEquals("onze", NumeroUtils.porExtenso(11));
+        assertEquals("doze", NumeroUtils.porExtenso(12));
+        assertEquals("treze", NumeroUtils.porExtenso(13));
+        assertEquals("quatorze", NumeroUtils.porExtenso(14));
+        assertEquals("quinze", NumeroUtils.porExtenso(15));
+        assertEquals("dezesseis", NumeroUtils.porExtenso(16));
+        assertEquals("dezessete", NumeroUtils.porExtenso(17));
+        assertEquals("dezoito", NumeroUtils.porExtenso(18));
+        assertEquals("dezenove", NumeroUtils.porExtenso(19));
+        assertEquals("vinte", NumeroUtils.porExtenso(20));
     }
 
     @Test
