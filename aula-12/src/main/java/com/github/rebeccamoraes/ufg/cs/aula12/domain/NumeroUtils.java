@@ -33,7 +33,7 @@ public final class NumeroUtils {
             "quatorze",
             "quinze",
             "dezesseis",
-            "dezesete",
+            "dezessete",
             "dezoito",
             "dezenove"
     };
@@ -119,7 +119,9 @@ public final class NumeroUtils {
         }
 
         if (dezena > 0) {
-            numeroPorExtenso = numeroPorExtenso + " e ";
+            if (centena > 0 || milhar > 0) {
+                numeroPorExtenso = numeroPorExtenso + " e ";
+            }
 
             if (dezena == 1) {
                 numeroPorExtenso = numeroPorExtenso
@@ -132,7 +134,9 @@ public final class NumeroUtils {
         }
 
         if (unidade > 0) {
-            numeroPorExtenso = numeroPorExtenso + " e ";
+            if (dezena > 0 || centena > 0 || milhar > 0) {
+                numeroPorExtenso = numeroPorExtenso + " e ";
+            }
 
             numeroPorExtenso = numeroPorExtenso
                 + unidadesPorExtenso[unidade];
