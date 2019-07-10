@@ -67,7 +67,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.mainClass>
-            com.github.rebeccamoraes.ufg.cs.aula12.application.api.console.ProgramaNumero
+            com.github.rebeccamoraes.ufg.cs.aula12.application.api.console.ProgramaNumeral
         </project.mainClass>
 
         <tools.dir>${project.basedir}/tools</tools.dir>
