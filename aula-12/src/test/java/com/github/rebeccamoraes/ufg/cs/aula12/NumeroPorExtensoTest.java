@@ -78,4 +78,41 @@ public class NumeroPorExtensoTest {
         assertEquals("mil e dezoito",
                 NumeroUtils.porExtenso(1018));
     }
+
+    @Test
+    void teste1115retornaMilCentoEQuinze(){
+        assertEquals("mil, cento e quinze",
+                NumeroUtils.porExtenso(1115));
+    }
+
+    @Test
+    void teste3115retornaMilCentoEQuinze(){
+        assertEquals("três mil, cento e quinze",
+                NumeroUtils.porExtenso(3115));
+    }
+
+    @Test
+    void teste115retornaCentoEQuinze(){
+        assertEquals("cento e quinze",
+                NumeroUtils.porExtenso(115));
+    }
+
+    @Test
+    void teste105retornaCentoEQuinze(){
+        assertEquals("cento e cinco",
+                NumeroUtils.porExtenso(105));
+    }
+
+    @Test
+    void casosClassicosMultiplosde100(){
+        assertEquals("cem", NumeroUtils.porExtenso(100));
+        assertEquals("duzentos", NumeroUtils.porExtenso(200));
+        assertEquals("trezentos", NumeroUtils.porExtenso(300));
+        assertEquals("quatrocentos", NumeroUtils.porExtenso(400));
+        assertEquals("quinhentos", NumeroUtils.porExtenso(500));
+        assertEquals("seiscentos", NumeroUtils.porExtenso(600));
+        assertEquals("setecentos", NumeroUtils.porExtenso(700));
+        assertEquals("oitocentos", NumeroUtils.porExtenso(800));
+        assertEquals("novecentos", NumeroUtils.porExtenso(900));
+    }
 }
