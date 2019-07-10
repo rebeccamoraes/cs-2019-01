@@ -28,10 +28,12 @@ public final class NumeroController {
     @RequestMapping("ds")
     public static NumeroDTO numeroPorExtenso(
             @RequestParam(value = "numero",
-                    defaultValue = null)
-                    final int numero) {
+                    defaultValue = "não fornecida")
+                    final String arg) {
+        final int numero = Integer.parseInt(arg);
+        System.out.println(numero+"\n");
 
-        final int numeroPorExtenso = NumeroUtils.porExtenso(numero);
+        final String numeroPorExtenso = NumeroUtils.porExtenso(numero);
 
         return new NumeroDTO(numeroPorExtenso);
     }

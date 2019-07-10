@@ -9,64 +9,66 @@ public final class NumeroUtils {
     /**
      * Escrita por extenso dos números na classe de unidades.
      */
-    private final String unidadesPorExtenso = {
-            0: "zero"
-            1: "um",
-            2: "dois",
-            3: "tres",
-            4: "quatro",
-            5: "cinco",
-            6: "seis",
-            7: "sete",
-            8: "oito",
-            9: "nove",
-    }
+    private static final String[] unidadesPorExtenso = {
+            "zero",
+            "um",
+            "dois",
+            "três",
+            "quatro",
+            "cinco",
+            "seis",
+            "sete",
+            "oito",
+            "nove"
+    };
 
     /**
      * Escrita por extenso dos números entre 10 e 19.
      */
-    private final String dezADezenovePorExtenso = {
-            10: "dez",
-            11: "onze",
-            12: "doze",
-            13: "treze",
-            14: "quatorze",
-            15: "quinze",
-            16: "dezesseis",
-            17: "dezesete",
-            18: "dezoito",
-            19: "dezenove",
-    }
+    private static final String[] dezADezenovePorExtenso = {
+            "dez",
+            "onze",
+            "doze",
+            "treze",
+            "quatorze",
+            "quinze",
+            "dezesseis",
+            "dezesete",
+            "dezoito",
+            "dezenove"
+    };
 
     /**
      * Escrita por extenso dos números na classe das dezenas.
      */
-    private final String dezenasPorExtenso = {
-            1: "dez",
-            2: "vinte",
-            3: "trinta",
-            4: "quarenta",
-            5: "cinquenta",
-            6: "sessenta",
-            7: "setenta",
-            8: "oitenta",
-            9: "noventa",
-    }
+    private static final String[] dezenasPorExtenso = {
+            "",
+            "dez",
+            "vinte",
+            "trinta",
+            "quarenta",
+            "cinquenta",
+            "sessenta",
+            "setenta",
+            "oitenta",
+            "noventa"
+    };
 
     /**
      * Escrita por extenso dos números na classe das centenas.
      */
-    private final String centenasPorExtenso = {
-            1: "cem",
-            2: "duzentos",
-            3: "trezentos",
-            4: "quatrocentos",
-            5: "quinhentos",
-            6: "seiscentos",
-            7: "setecentos",
-            8: "oitocentos",
-            9: "novecentos",
-        }
+    private static final String[] centenasPorExtenso = {
+            "",
+            "cem",
+            "duzentos",
+            "trezentos",
+            "quatrocentos",
+            "quinhentos",
+            "seiscentos",
+            "setecentos",
+            "oitocentos",
+            "novecentos"
+        };
 
     /**
      * Evita instancialização.
@@ -93,7 +95,7 @@ public final class NumeroUtils {
 
         if (milhar > 0) {
             if (milhar > 1){
-                numeroPorExtenso = unidadesPorExtenso(milhar) + " ";
+                numeroPorExtenso = unidadesPorExtenso[milhar] + " ";
             }
 
             numeroPorExtenso = numeroPorExtenso + "mil";
@@ -102,7 +104,7 @@ public final class NumeroUtils {
         if (centena > 0) {
             if (dezena == 0 && unidade == 0) {
                 numeroPorExtenso = numeroPorExtenso + " e "
-                    + centenasPorExtenso(centena);
+                    + centenasPorExtenso[centena];
                 return numeroPorExtenso;
             } else {
                 numeroPorExtenso = numeroPorExtenso + ", ";
@@ -111,7 +113,7 @@ public final class NumeroUtils {
                     numeroPorExtenso = numeroPorExtenso + "cento ";
                 } else {
                     numeroPorExtenso = numeroPorExtenso
-                        + centenaPorExtenso(centena);
+                        + centenasPorExtenso[centena];
                 }
             }
         }
@@ -119,12 +121,13 @@ public final class NumeroUtils {
         if (dezena > 0) {
             numeroPorExtenso = numeroPorExtenso + " e ";
 
-            if (dezena < 20) {
+            if (dezena == 1) {
                 numeroPorExtenso = numeroPorExtenso
-                    + dezADezenovePorExtenso(dezena);
+                    + dezADezenovePorExtenso[unidade];
+                return numeroPorExtenso;
             } else {
                 numeroPorExtenso = numeroPorExtenso
-                    + dezenasPorExtens(dezena);
+                    + dezenasPorExtenso[dezena];
             }
         }
 
@@ -132,7 +135,7 @@ public final class NumeroUtils {
             numeroPorExtenso = numeroPorExtenso + " e ";
 
             numeroPorExtenso = numeroPorExtenso
-                + unidadesPorExtenso(unidade);
+                + unidadesPorExtenso[unidade];
         }
 
         return numeroPorExtenso;
