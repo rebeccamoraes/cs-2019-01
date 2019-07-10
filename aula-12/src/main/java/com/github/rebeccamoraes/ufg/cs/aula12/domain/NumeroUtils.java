@@ -102,15 +102,20 @@ public final class NumeroUtils {
         }
 
         if (centena > 0) {
-            if (dezena == 0 && unidade == 0) {
+            if (milhar > 0 && dezena == 0 && unidade == 0) {
                 numeroPorExtenso = numeroPorExtenso + " e "
                     + centenasPorExtenso[centena];
                 return numeroPorExtenso;
             } else {
-                numeroPorExtenso = numeroPorExtenso + ", ";
-
+                if (milhar > 0) {
+                    numeroPorExtenso = numeroPorExtenso + ", ";
+                }
                 if (centena == 1) {
-                    numeroPorExtenso = numeroPorExtenso + "cento ";
+                    if (dezena == 0 && unidade == 0){
+                        numeroPorExtenso = numeroPorExtenso + "cem";
+                    } else {
+                        numeroPorExtenso = numeroPorExtenso + "cento";
+                    }
                 } else {
                     numeroPorExtenso = numeroPorExtenso
                         + centenasPorExtenso[centena];
