@@ -9,7 +9,7 @@ public final class NumeroUtils {
     /**
      * Escrita por extenso dos números na classe de unidades.
      */
-    private static final String[] unidadesPorExtenso = {
+    private static final String[] UNIDADES_POR_EXTENSO = {
             "zero",
             "um",
             "dois",
@@ -25,7 +25,7 @@ public final class NumeroUtils {
     /**
      * Escrita por extenso dos números entre 10 e 19.
      */
-    private static final String[] dezADezenovePorExtenso = {
+    private static final String[] DEZ_A_DEZENOVE_POR_EXTENSO = {
             "dez",
             "onze",
             "doze",
@@ -41,7 +41,7 @@ public final class NumeroUtils {
     /**
      * Escrita por extenso dos números na classe das dezenas.
      */
-    private static final String[] dezenasPorExtenso = {
+    private static final String[] DEZENAS_POR_EXTENSO = {
             "",
             "dez",
             "vinte",
@@ -57,7 +57,7 @@ public final class NumeroUtils {
     /**
      * Escrita por extenso dos números na classe das centenas.
      */
-    private static final String[] centenasPorExtenso = {
+    private static final String[] CENTENAS_POR_EXTENSO = {
             "",
             "cem",
             "duzentos",
@@ -94,8 +94,8 @@ public final class NumeroUtils {
         final int milhar = getMilhar(numero);
 
         if (milhar > 0) {
-            if (milhar > 1){
-                numeroPorExtenso = unidadesPorExtenso[milhar] + " ";
+            if (milhar > 1) {
+                numeroPorExtenso = UNIDADES_POR_EXTENSO[milhar] + " ";
             }
 
             numeroPorExtenso = numeroPorExtenso + "mil";
@@ -104,21 +104,21 @@ public final class NumeroUtils {
         if (centena > 0) {
             if (milhar > 0 && dezena == 0 && unidade == 0) {
                 numeroPorExtenso = numeroPorExtenso + " e "
-                    + centenasPorExtenso[centena];
+                    + CENTENAS_POR_EXTENSO[centena];
                 return numeroPorExtenso;
             } else {
                 if (milhar > 0) {
                     numeroPorExtenso = numeroPorExtenso + ", ";
                 }
                 if (centena == 1) {
-                    if (dezena == 0 && unidade == 0){
+                    if (dezena == 0 && unidade == 0) {
                         numeroPorExtenso = numeroPorExtenso + "cem";
                     } else {
                         numeroPorExtenso = numeroPorExtenso + "cento";
                     }
                 } else {
                     numeroPorExtenso = numeroPorExtenso
-                        + centenasPorExtenso[centena];
+                        + CENTENAS_POR_EXTENSO[centena];
                 }
             }
         }
@@ -130,11 +130,11 @@ public final class NumeroUtils {
 
             if (dezena == 1) {
                 numeroPorExtenso = numeroPorExtenso
-                    + dezADezenovePorExtenso[unidade];
+                    + DEZ_A_DEZENOVE_POR_EXTENSO[unidade];
                 return numeroPorExtenso;
             } else {
                 numeroPorExtenso = numeroPorExtenso
-                    + dezenasPorExtenso[dezena];
+                    + DEZENAS_POR_EXTENSO[dezena];
             }
         }
 
@@ -144,25 +144,29 @@ public final class NumeroUtils {
             }
 
             numeroPorExtenso = numeroPorExtenso
-                + unidadesPorExtenso[unidade];
+                + UNIDADES_POR_EXTENSO[unidade];
         }
 
         return numeroPorExtenso;
     }
 
     public static int getUnidade(final int numero) {
-        return numero % 10;
+        final int unidade = numero % 10;
+        return unidade;
     }
 
     public static int getDezena(final int numero) {
-        return numero % 100 / 10;
+        final int dezena = numero % 100 / 10;
+        return dezena;
     }
 
-    public static int getCentena(final int numero){
-        return numero % 1000 / 100;
+    public static int getCentena(final int numero) {
+        final int centena = numero % 1000 / 100;
+        return centena;
     }
 
-    public static int getMilhar(final int numero){
-        return numero / 1000;
+    public static int getMilhar(final int numero) {
+        final int milhar = numero / 1000;
+        return milhar;
     }
 }
