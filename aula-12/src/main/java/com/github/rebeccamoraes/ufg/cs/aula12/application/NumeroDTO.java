@@ -17,7 +17,7 @@ public class NumeroDTO {
 
     /**
      * Armazena o valor do número por extenso.
-     * @param numero
+     * @param numero Número por Extenso.
      */
     public NumeroDTO(final String numero) {
         this.numero = numero;

@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 @RestController
 public final class NumeroController {
 
@@ -31,7 +28,6 @@ public final class NumeroController {
                     defaultValue = "não fornecida")
                     final String arg) {
         final int numero = Integer.parseInt(arg);
-        System.out.println(numero+"\n");
 
         final String numeroPorExtenso = NumeroUtils.porExtenso(numero);
 
