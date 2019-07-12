@@ -86,7 +86,7 @@ public final class NumeroUtils {
             return "zero";
         }
 
-        String numeroPorExtenso = "";
+        final StringBuilder numeroPorExtenso = new StringBuilder();
 
         final int unidade = getUnidade(numero);
         final int dezena = getDezena(numero);
@@ -95,78 +95,68 @@ public final class NumeroUtils {
 
         if (milhar > 0) {
             if (milhar > 1) {
-                numeroPorExtenso = UNIDADES_POR_EXTENSO[milhar] + " ";
+                numeroPorExtenso.append(UNIDADES_POR_EXTENSO[milhar] + " ");
             }
-
-            numeroPorExtenso = numeroPorExtenso + "mil";
+            numeroPorExtenso.append("mil");
         }
 
         if (centena > 0) {
             if (milhar > 0 && dezena == 0 && unidade == 0) {
-                numeroPorExtenso = numeroPorExtenso + " e "
-                    + CENTENAS_POR_EXTENSO[centena];
-                return numeroPorExtenso;
+                numeroPorExtenso.append(" e " + CENTENAS_POR_EXTENSO[centena]);
+                return numeroPorExtenso.toString();
             } else {
                 if (milhar > 0) {
-                    numeroPorExtenso = numeroPorExtenso + ", ";
+                    numeroPorExtenso.append(", ");
                 }
                 if (centena == 1) {
                     if (dezena == 0 && unidade == 0) {
-                        numeroPorExtenso = numeroPorExtenso + "cem";
+                        numeroPorExtenso.append("cem");
                     } else {
-                        numeroPorExtenso = numeroPorExtenso + "cento";
+                        numeroPorExtenso.append("cento");
                     }
                 } else {
-                    numeroPorExtenso = numeroPorExtenso
-                        + CENTENAS_POR_EXTENSO[centena];
+                    numeroPorExtenso.append(CENTENAS_POR_EXTENSO[centena]);
                 }
             }
         }
 
         if (dezena > 0) {
             if (centena > 0 || milhar > 0) {
-                numeroPorExtenso = numeroPorExtenso + " e ";
+                numeroPorExtenso.append(" e ");
             }
 
             if (dezena == 1) {
-                numeroPorExtenso = numeroPorExtenso
-                    + DEZ_A_DEZENOVE_POR_EXTENSO[unidade];
-                return numeroPorExtenso;
+                numeroPorExtenso.append(DEZ_A_DEZENOVE_POR_EXTENSO[unidade]);
+                return numeroPorExtenso.toString();
             } else {
-                numeroPorExtenso = numeroPorExtenso
-                    + DEZENAS_POR_EXTENSO[dezena];
+                numeroPorExtenso.append(DEZENAS_POR_EXTENSO[dezena]);
             }
         }
 
         if (unidade > 0) {
             if (dezena > 0 || centena > 0 || milhar > 0) {
-                numeroPorExtenso = numeroPorExtenso + " e ";
+                numeroPorExtenso.append(" e ");
             }
 
-            numeroPorExtenso = numeroPorExtenso
-                + UNIDADES_POR_EXTENSO[unidade];
+            numeroPorExtenso.append(UNIDADES_POR_EXTENSO[unidade]);
         }
 
-        return numeroPorExtenso;
+        return numeroPorExtenso.toString();
     }
 
     public static int getUnidade(final int numero) {
-        final int unidade = numero % 10;
-        return unidade;
+        return numero % 10;
     }
 
     public static int getDezena(final int numero) {
-        final int dezena = numero % 100 / 10;
-        return dezena;
+        return numero % 100 / 10;
     }
 
     public static int getCentena(final int numero) {
-        final int centena = numero % 1000 / 100;
-        return centena;
+        return numero % 1000 / 100;
     }
 
     public static int getMilhar(final int numero) {
-        final int milhar = numero / 1000;
-        return milhar;
+        return numero / 1000;
     }
 }

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller da aplicação.
+ */
 @RestController
 public final class NumeroController {
 
@@ -21,6 +24,11 @@ public final class NumeroController {
      */
     private NumeroController() { }
 
+    /**
+     * Obtém o número de referência e retorna o mesmo por extenso.
+     * @param arg Número.
+     * @return Número por extenso.
+     */
     @CrossOrigin
     @RequestMapping("ds")
     public static NumeroDTO numeroPorExtenso(
