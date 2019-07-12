@@ -2,6 +2,9 @@ package com.github.rebeccamoraes.ufg.cs.aula12.application.console;
 
 import com.github.rebeccamoraes.ufg.cs.aula12.domain.NumeroUtils;
 
+/**
+ * Programa que obtém o valor por extenso de um número.
+ */
 public final class ProgramaNumeral {
 
     /**
@@ -9,8 +12,12 @@ public final class ProgramaNumeral {
      */
     private ProgramaNumeral() { }
 
+    /**
+     * Executa o programa.
+     * @param args Argumento numérico de referência.
+     */
     public static void main(final String[] args) {
         final int numero = Integer.parseInt(args[0]);
-        System.out.println(NumeroUtils.porExtenso(numero));
+        NumeroUtils.porExtenso(numero);
     }
 }
